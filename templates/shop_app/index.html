@@ -3,14 +3,25 @@
 
 {% block content %}
 
-<section class="container hero">
+<section class="hero">
+    <div class="hero-image">
+        <img class="hero-image" src="{% static 'shop_app/images/Genshin-Impact-Lumine-and-Aether-fight.webp'%}" alt="">
+    </div>
+    <div class="container height-100 flex text-center">
+        <div class="hero-text">
+            <h1>Shop Index page</h1>
+            <p>small text as a helper Lorem ipsum, dolor elit. Pariatur earum quam magni.</p>
+        </div>
+        <a class="btn mt-2" href="#">Click here</a>
+    </div>
+
+</section>
+<section class="container">
     <h1>Shop Index page</h1>
     <h2>Shop Index page</h2>
     <h3>Shop Index page</h3>
     <h4>Shop Index page</h4>
     <h5>Shop Index page</h5>
     <p>small text as a helper</p>
-    <a class="btn" href="#">Click here</a>
 </section>
-
 {% endblock content %}

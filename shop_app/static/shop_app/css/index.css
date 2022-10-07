@@ -14,7 +14,7 @@
     --white: rgb(250, 250, 250);
     --black: rgb(15, 15, 15);
     --gray-black: rgb(41, 41, 41);
-    --primary: rgb(106, 23, 184);
+    --primary: rgb(0, 133, 172);
 }
 
 body {
@@ -24,22 +24,27 @@ body {
 
 }
 
+.text-center {
+    text-align: center;
+}
+
 h1 {
-    font-size: 2.6rem;
+    font-size: 3rem;
+    font-weight: 400;
+    /* color: var(--primary); */
+    margin-bottom: 2rem;
 }
 
 h2 {
     font-size: 2rem;
-
+    font-weight: 400;
 }
 
 h3 {
     font-size: 1.4rem;
 }
 
-p {
-    /* font-size: 1.2rem; */
-}
+
 
 .main-grid {
     display: grid;
@@ -54,7 +59,53 @@ p {
     padding: 2em;
 }
 
-/* navbar */
+/* ----------------------------------------- */
+/* padding */
+/* ----------------------------------------- */
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
+
+.mt-5 {
+    margin-top: 5rem;
+}
+
+.mt-6 {
+    margin-top: 6rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mb-3 {
+    margin-bottom: 3rem;
+}
+
+.mb-4 {
+    margin-bottom: 4rem;
+}
+
+.mb-5 {
+    margin-bottom: 5rem;
+}
+
+.mb-6 {
+    margin-bottom: 6rem;
+}
+
+
+/* ----------------------------------------- */
+/* nav */
+/* ----------------------------------------- */
 .nav-content {
     display: flex;
     align-items: center;
@@ -82,22 +133,72 @@ nav a {
     font-weight: 500;
 }
 
+.height-100 {
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ----------------------------------------- */
+/*  hero section */
+/* ----------------------------------------- */
 .hero {
-    background-color: rgb(179, 223, 213);
+    position: relative;
+    color: aliceblue;
+    height: 400px;
+}
+
+.hero-image {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+    filter: brightness(.7);
+    z-index: -10;
+}
+
+.hero-text p {
+    max-width: 30em;
+    /* background-color: aqua; */
 }
 
 .btn {
     display: inline-block;
     color: white;
-    background-color: rgb(38, 0, 206);
+    background-color: rgb(206, 0, 96);
     text-decoration: none;
     font-weight: 500;
     padding: .8rem 1rem;
     border-radius: 4px;
-    margin-top: 1em;
     transition: 80ms;
+    width: 100%;
 }
 
 .btn:hover {
     filter: saturate(.6)
+}
+
+
+/* @media only screen and (min-width: 43em) {} */
+/* @media only screen and (min-width: 62em) {} */
+/* @media only screen and (min-width: 82em) {} */
+
+
+
+@media only screen and (min-width: 43em) {
+
+    .btn {
+        width: max-content;
+    }
+}
+
+@media only screen and (min-width: 62em) {
+    h1 {
+        font-size: 3.4rem;
+    }
 }
