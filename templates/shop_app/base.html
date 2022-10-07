@@ -13,10 +13,11 @@
   <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
 </head>
 
-<body>
+<body class="main-grid">
   {% include 'shop_app/navbar.html' %}
-  <main class="container">{% block content %}{% endblock content %}</main>
-  <h6>BASE html extended</h6>
+  <main class="container-center">
+    {% block content %}{% endblock content %}
+  </main>
 </body>
 
 </html>
