@@ -17,11 +17,20 @@
 
 </section>
 <section class="container">
-    <h1>Shop Index page</h1>
-    <h2>Shop Index page</h2>
-    <h3>Shop Index page</h3>
-    <h4>Shop Index page</h4>
-    <h5>Shop Index page</h5>
-    <p>small text as a helper</p>
+    {% for book in books %}
+    <div class="">
+        <div class="card">
+            <img src="{{ book.image.image.url }}" class="cover" alt="book cover">
+            <div>
+                <h4>{{ book.title }}</h4>
+                <p>{{ book.authors.all }}</p>
+                <p>{{ book.publisher }}</p>
+                <p><span class="stock">{{ book.number_in_stock }}</span> left</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </section>
+
+
 {% endblock content %}

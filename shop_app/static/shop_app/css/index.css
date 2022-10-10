@@ -184,6 +184,18 @@ nav a {
 }
 
 
+.cover {
+    height: 300px;
+    border-radius: 4px;
+    /* padding: 1em; */
+    margin-bottom: 1em;
+}
+
+.stock {
+    color: rgb(218, 0, 0);
+    font-weight: 600;
+}
+
 /* @media only screen and (min-width: 43em) {} */
 /* @media only screen and (min-width: 62em) {} */
 /* @media only screen and (min-width: 82em) {} */

@@ -25,3 +25,14 @@ urlpatterns = [
     path('', include('shop_app.urls')),
 
 ]
+
+
+# handler403 = "techblog_app.views.access_denied"
+# handler400 = "techblog_app.views.bad_request"
+# handler404 = "techblog_app.views.page_not_found_view"
+# handler500 = "techblog_app.views.handler500"
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
