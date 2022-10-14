@@ -4,4 +4,10 @@
     <div class="nav-content container-center container">
         <a class="brand" href="{% url 'shop_app-home' %}">Site</a>
     </div>
+
+    <form action="{% url 'shop_app-home' %}" method="GET">
+        <input type="text" name="q" placeholder="Search title, ISBN...">
+        <button class="btn" type="submit">Search</button>
+    </form>
+
 </nav>

@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, reverse, get_object_or_404
+import secrets
+from django.contrib import messages
+from email import message
+from django.db.models import Q
 
 
 from django.views.generic import ListView, DetailView
@@ -9,8 +13,23 @@ from .models import Book, Author
 
 def home(request):
 
+    books = Book.objects.all()
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                message.error(request, "You didn't any search")
+                return redirect(reverse('books'))
+            querises = Q(title__icontains=query) | Q(
+                isbn__icontains=query)
+            books = books.filter(querises)
+
     context = {
-        'books': Book.objects.all()
+        'books': books,
+        'search_term': query,
+
     }
     return render(request, 'shop_app/index.html', context)
 

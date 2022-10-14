@@ -1,0 +1,31 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container">
+    <div class="gutter-3">
+        <div class="card-flex">
+            <h4 class="book-title-small">{{ object.title }}</h4>
+            <img src="{{ book.image.image.url }}" class="cover-large" alt="book cover">
+            <div class="card-text">
+                <h4 class="book-title-medium ">{{ object.title }}</h4>
+                <h5>(author) {{ object.authors.all }}</h5>
+                <p><span class="stock-color">{{ object.number_in_stock }}</span> left</p>
+
+                <a href="#" class="mt-1 btn">Add to basket</a>
+            </div>
+        </div>
+    </div>
+    <div class="gutter-2">
+        <h3>Product details</h3>
+        <p>Publisher: {{ object.publisher }}</p>
+        <p>Publication date: {{ object.publication_date }}</p>
+        {% if object.isbn %}
+        <p>ISBN: {{ object.isbn }}</p>
+        {% else %}
+        <p>no ISBN found</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock content %}
