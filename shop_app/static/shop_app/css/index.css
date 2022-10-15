@@ -73,8 +73,11 @@ h5 {
 }
 
 .container {
-    padding: 2em;
+    padding: 2rem;
 }
+
+
+
 
 /* ----------------------------------------- */
 /* gutter margin & padding */
@@ -231,12 +234,19 @@ button {
 }
 
 
+.sub-title {
+    text-align: center;
+}
+
+
+
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     /* background-color: rgb(139, 155, 245); */
     max-width: 200px;
+    margin: auto;
 
 }
 
@@ -298,6 +308,21 @@ button {
         width: max-content;
     }
 
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* justify-content: space-around; */
+        /* background-color: aquamarine; */
+
+    }
+
+    .sub-title {
+        grid-column: 1/-1;
+        text-align: start;
+        /* background-color: aqua; */
+    }
+
     .card-flex {
         display: flex;
         flex-direction: row;
@@ -353,6 +378,16 @@ button {
 
     .gutter-3 {
         margin: 3em 0 3em 0;
+    }
+
+
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* justify-content: space-around; */
+        /* background-color: aquamarine; */
+
     }
 
 

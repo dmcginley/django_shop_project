@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 import secrets
 from django.contrib import messages
-from email import message
+# from email import message
 from django.db.models import Q
 
 
@@ -20,11 +20,11 @@ def home(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                message.error(request, "You didn't any search")
-                return redirect(reverse('books'))
-            querises = Q(title__icontains=query) | Q(
+                messages.error(request, "Hi, you didn't enter a search")
+                return redirect(reverse('home'))
+            queries = Q(title__icontains=query) | Q(
                 isbn__icontains=query)
-            books = books.filter(querises)
+            books = books.filter(queries)
 
     context = {
         'books': books,
