@@ -41,11 +41,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storages",
-    "shop_app.apps.ShopAppConfig",
     "django.contrib.sites",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "shop_app.apps.ShopAppConfig",
+    "cart_app.apps.CartAppConfig",
 ]
 
 MIDDLEWARE = [

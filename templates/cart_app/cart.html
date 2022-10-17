@@ -1,0 +1,17 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="main-grid">
+    <div class="container cart-section">
+        <div>
+            <h2>Shopping Cart</h2>
+        </div> {% if cart_items %}
+        <div class="cart-items">test</div>
+        {% else %}
+        <p>Your cart is empty...</p>
+        <a class="btn mt-2" href="{% url 'home' %}">link to books</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}

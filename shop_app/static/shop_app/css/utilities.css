@@ -1,0 +1,177 @@
+/* google font - Roboto Sans-serif  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,900;1,300;1,400;1,500&display=swap');
+
+/* ----------------------------------------- */
+/* basic css */
+/* ----------------------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --white: rgb(250, 250, 250);
+    --black: rgb(15, 15, 15);
+    --gray-black: rgb(41, 41, 41);
+    --primary: rgb(0, 133, 172);
+    --muted: rgb(71, 71, 71);
+}
+
+body,
+html {
+    color: var(--black);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+
+}
+
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 300;
+
+    /* color: var(--primary); */
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+
+h5 {
+    font-size: .9rem;
+    color: var(--muted);
+}
+
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(100px, 200ch) 1fr;
+}
+
+.container-center {
+    grid-area: auto/2/auto;
+}
+
+.container {
+    padding: 2rem;
+}
+
+/* ----------------------------------------- */
+/* gutter margin & padding */
+/* ----------------------------------------- */
+
+.gutter-1 {
+    margin: .6em 0 .6em 0;
+}
+
+.gutter-2 {
+    margin: 1em 0 1em 0;
+}
+
+.gutter-3 {
+    margin: 2em 0 2em 0;
+}
+
+.mt-1 {
+    margin-top: 1em;
+    background-color: aqua;
+}
+
+.mt-2 {
+    margin-top: 1.4em;
+    background-color: rgb(255, 187, 0);
+}
+
+
+
+
+/* ----------------------------------------- */
+/* svg */
+/* ----------------------------------------- */
+.nav-icon {
+    fill: var(--white);
+
+}
+
+/* ----------------------------------------- */
+/* class btn (button) */
+/* ----------------------------------------- */
+.btn {
+    display: inline-block;
+    color: white;
+    background-color: rgb(206, 0, 96);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    padding: .8rem 1.2rem;
+    border-radius: 4px;
+    transition: 80ms;
+    width: 100%;
+}
+
+.btn:hover {
+    filter: saturate(.6)
+}
+
+
+form {
+    display: flex;
+    height: max-content;
+    /* height: 3rem; */
+    width: 100%;
+}
+
+input {
+    padding: 0 1rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    width: 100%
+}
+
+.secondary-nav-content form button {
+    padding: .8rem 1rem .8rem 1rem;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 30%;
+}
+
+
+
+.height-100 {
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.stock-color {
+    color: rgb(218, 0, 0);
+}
+
+/* @media only screen and (min-width: 43em) {} */
+/* @media only screen and (min-width: 62em) {} */
+/* @media only screen and (min-width: 82em) {} */

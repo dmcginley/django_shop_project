@@ -2,26 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  {% block meta %}
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Donnchadh Mc Ginley" />
-  {% endblock meta %}
+  <head>
+    {% block meta %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Donnchadh Mc Ginley" />
+    {% endblock meta %}
 
-  {# jQuery CDN #}
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="{% static 'shop_app/css/index.css' %}" />
-  <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
-</head>
+    {# alpineJS CDN #}
+    <script src="//unpkg.com/alpinejs" defer></script>
 
-<body class="main-grid">
-  {% include 'shop_app/navbar.html' %}
-  <main class="container-center">
-    {% block content %}{% endblock content %}
-  </main>
-</body>
+    {# jQuery CDN #}
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'shop_app/css/utilities.css' %}" />
+    <link rel="stylesheet" href="{% static 'shop_app/css/style.css' %}" />
+    <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
+  </head>
+
+  <body class="main-grid">
+    {% include 'shop_app/navbar.html' %}
+    <main class="container-center">
+      {% block content %}{% endblock content %}
+    </main>
+  </body>
 
 </html>

@@ -52,5 +52,11 @@ class Book(models.Model):
         Image, blank=True, null=True, on_delete=models.CASCADE)
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
 
+    def author_names(self):
+        all = []
+        for a in self.authors.all():
+            all.append(str(a))
+        return "; ".join(all)
+
     def __str__(self):
         return self.title
