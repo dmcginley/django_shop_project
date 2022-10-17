@@ -75,6 +75,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "cart_app.contexts.cart_contents",
             ],
         },
     },
@@ -165,6 +166,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 # SITE_ID = 1
 SITE_ID = 2
+
+
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10
 
 
 # Default primary key field type

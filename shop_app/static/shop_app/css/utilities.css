@@ -16,6 +16,8 @@
     --gray-black: rgb(41, 41, 41);
     --primary: rgb(0, 133, 172);
     --muted: rgb(71, 71, 71);
+    --btn-color: rgb(206, 0, 96);
+    --btn-focus-color: rgba(240, 6, 76, 0.493);
 }
 
 body,
@@ -73,6 +75,12 @@ h5 {
     padding: 2rem;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(165, 42, 118);
+}
+
 /* ----------------------------------------- */
 /* gutter margin & padding */
 /* ----------------------------------------- */
@@ -100,7 +108,9 @@ h5 {
 }
 
 
-
+.text-center {
+    text-align: center;
+}
 
 /* ----------------------------------------- */
 /* svg */
@@ -111,12 +121,16 @@ h5 {
 }
 
 /* ----------------------------------------- */
-/* class btn (button) */
+/* class btn & button */
 /* ----------------------------------------- */
+button {
+    font-family: 'Roboto', sans-serif;
+}
+
 .btn {
     display: inline-block;
     color: white;
-    background-color: rgb(206, 0, 96);
+    background-color: var(--btn-color);
     text-align: center;
     text-decoration: none;
     font-weight: 500;
@@ -130,6 +144,88 @@ h5 {
     filter: saturate(.6)
 }
 
+.nav-btn {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    border: none;
+    padding: 1em .6em;
+}
+
+.cart {
+    margin-right: .4em;
+}
+
+
+.nav-btn .nav-icon {
+    margin: 0 6px 0 0;
+}
+
+
+
+/* ----------------------------------------- */
+/* dropdown button & dropdown menu */
+/* ----------------------------------------- */
+.dropdown {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 10;
+    background-color: var(--white);
+    border-radius: 4px;
+    /* margin-top: 20px;     */
+    /* background-color: aqua; */
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+    box-shadow: 0 10px 16px -8px rgba(0, 0, 0, 0.274);
+    border-radius: 4px;
+}
+
+
+.dropdown-menu ul li a {
+    display: block;
+    color: var(--black);
+    padding: 1em 2em;
+    text-decoration: none;
+}
+
+.dropdown-menu ul li {
+    transition: 100ms;
+}
+
+.dropdown-menu ul li:hover {
+    text-decoration: none;
+    background-color: rgb(202, 212, 209);
+}
+
+.dropdown-menu ul li:hover:nth-child(1) {
+    border-radius: 4px 4px 0 0;
+}
+
+.dropdown-menu ul li:hover:nth-child(3) {
+    border-radius: 0 0 4px 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 form {
     display: flex;
@@ -138,11 +234,24 @@ form {
     width: 100%;
 }
 
+
 input {
     padding: 0 1rem;
     border: none;
     border-radius: 4px 0 0 4px;
     width: 100%
+}
+
+/* .nav-brand:focus, */
+/* .nav-btn:focus, */
+.btn:focus,
+input[type=text]:focus,
+.cover:focus {
+    outline: 3px solid var(--btn-focus-color);
+}
+
+.cover:focus {
+    border-radius: 4px;
 }
 
 .secondary-nav-content form button {

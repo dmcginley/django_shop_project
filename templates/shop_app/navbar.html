@@ -2,7 +2,12 @@
 
 <nav class="navbar main-navbar">
     <div class="main-nav-content container-center container">
-        <a class="nav-brand" href="{% url 'home' %}">Site</a>
+        <div class="brand-container">
+            <a class="nav-brand" href="{% url 'home' %}">Site</a>
+            <span class="banner nav">
+                <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
+            </span>
+        </div>
 
         <div class="nav-account-area">
             <a class="nav-btn cart" href="{% url 'view_cart' %}">
@@ -52,3 +57,6 @@
         </form>
     </div>
 </nav>
+<span class="mobile-banner nav">
+    <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
+</span>
