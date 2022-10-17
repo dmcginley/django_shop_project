@@ -212,25 +212,12 @@ button {
     border-radius: 0 0 4px 4px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 form {
     display: flex;
     height: max-content;
     /* height: 3rem; */
     width: 100%;
 }
-
 
 input {
     padding: 0 1rem;
@@ -260,8 +247,6 @@ input[type=text]:focus,
     width: 30%;
 }
 
-
-
 .height-100 {
     height: 100%;
 }
@@ -273,11 +258,6 @@ input[type=text]:focus,
     align-items: center;
 }
 
-
 .stock-color {
     color: rgb(218, 0, 0);
 }
-
-/* @media only screen and (min-width: 43em) {} */
-/* @media only screen and (min-width: 62em) {} */
-/* @media only screen and (min-width: 82em) {} */
