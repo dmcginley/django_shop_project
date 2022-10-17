@@ -55,12 +55,10 @@ h4 {
     font-size: 1.2rem;
 }
 
-
 h5 {
     font-size: .9rem;
     color: var(--muted);
 }
-
 
 .main-grid {
     display: grid;
@@ -107,10 +105,10 @@ h5 {
     background-color: rgb(255, 187, 0);
 }
 
-
 .text-center {
     text-align: center;
 }
+
 
 /* ----------------------------------------- */
 /* svg */
@@ -119,6 +117,7 @@ h5 {
     fill: var(--white);
 
 }
+
 
 /* ----------------------------------------- */
 /* class btn & button */
@@ -165,7 +164,6 @@ button {
 }
 
 
-
 /* ----------------------------------------- */
 /* dropdown button & dropdown menu */
 /* ----------------------------------------- */
@@ -189,7 +187,6 @@ button {
     box-shadow: 0 10px 16px -8px rgba(0, 0, 0, 0.274);
     border-radius: 4px;
 }
-
 
 .dropdown-menu ul li a {
     display: block;
