@@ -60,6 +60,10 @@ h5 {
     color: var(--muted);
 }
 
+ul li {
+    list-style: none;
+}
+
 .main-grid {
     display: grid;
     grid-template-columns: 1fr minmax(100px, 200ch) 1fr;
@@ -167,7 +171,12 @@ button {
 /* ----------------------------------------- */
 /* dropdown button & dropdown menu */
 /* ----------------------------------------- */
+
 .dropdown {
+    display: none;
+}
+
+.dropdown-btn {
     position: relative;
     background-color: transparent;
     cursor: pointer;
@@ -175,6 +184,7 @@ button {
 
 .dropdown-menu {
     position: absolute;
+    display: none;
     z-index: 10;
     background-color: var(--white);
     border-radius: 4px;
@@ -182,34 +192,107 @@ button {
     /* background-color: aqua; */
 }
 
-.dropdown-menu ul {
+.dropdown-menu {
     list-style-type: none;
     box-shadow: 0 10px 16px -8px rgba(0, 0, 0, 0.274);
     border-radius: 4px;
 }
 
-.dropdown-menu ul li a {
+.dropdown-menu li a {
     display: block;
     color: var(--black);
     padding: 1em 2em;
     text-decoration: none;
 }
 
-.dropdown-menu ul li {
+.dropdown-menu li {
     transition: 100ms;
 }
 
-.dropdown-menu ul li:hover {
+.dropdown-menu li:hover {
     text-decoration: none;
     background-color: rgb(202, 212, 209);
 }
 
-.dropdown-menu ul li:hover:nth-child(1) {
+.dropdown-menu li:hover:nth-child(1) {
     border-radius: 4px 4px 0 0;
 }
 
-.dropdown-menu ul li:hover:nth-child(3) {
+.dropdown-menu li:hover:nth-child(4) {
     border-radius: 0 0 4px 4px;
+}
+
+
+.dropdown-menu.visible {
+    display: block;
+}
+
+.mobile-btn {
+    position: relative;
+    display: block;
+    display: flex;
+    border: none;
+    padding: 1em;
+    fill: var(--white);
+    background-color: transparent;
+    /* border: 1px solid black; */
+    cursor: pointer;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    color: var(--black);
+    background-color: rgb(238, 238, 238);
+    z-index: 30;
+}
+
+.mobile-menu.visible {
+    display: block;
+}
+
+.mobile-btn-close-container {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 1em;
+    width: 100%;
+}
+
+.mobile-btn-close {
+    fill: var(--black);
+    background-color: transparent;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.mobile-menu {
+    text-align: center;
+    text-decoration: none;
+    /* background-color: aquamarine; */
+}
+
+
+.mobile-menu ul li a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    max-width: 100%;
+    color: var(--black);
+}
+
+
+.mobile-menu ul li a:hover {
+    background-color: rgb(216, 216, 216)
+}
+
+.fixed-position {
+    position: fixed;
+    /* background-color: aqua; */
 }
 
 form {

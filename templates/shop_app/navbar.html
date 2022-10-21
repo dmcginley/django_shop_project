@@ -1,6 +1,7 @@
 {% load static %}
 
 <nav class="navbar main-navbar">
+
     <div class="main-nav-content container-center container">
         <div class="brand-container">
             <a class="nav-brand" href="{% url 'home' %}">Site</a>
@@ -21,9 +22,10 @@
                 </svg>
                 Cart
             </a>
+            {% include 'shop_app/offcanvas_nav.html' %}
 
-            <div x-data="{ open: false,}" @mouseover="open = true" @mouseleave="open = false">
-                <button class="nav-btn dropdown" @click="open = ! open">
+            <div class="dropdown">
+                <button class="dropdown-btn nav-btn">
                     <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0,
                         mirror=1);">
@@ -37,17 +39,17 @@
                     Account
                 </button>
 
-                <div class="dropdown-menu" x-show="open" @click.outside="open = false" x-transition>
-                    <ul>
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'home' %}">Logout</a></li>
-                        <li><a href="">Home</a></li>
-                    </ul>
-                </div>
+
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'home' %}">Logout</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="#">cat</a></li>
+                </ul>
             </div>
+
         </div>
     </div>
-
 </nav>
 <nav class="navbar secondary-navbar">
     <div class="secondary-nav-content container-center">
