@@ -11,8 +11,25 @@
                 <h4 class="book-title-medium ">{{ object.title }}</h4>
                 <h5>(author) {{ object.author_names }}</h5>
                 <p><span class="stock-color">{{ object.number_in_stock }}</span> left</p>
+                <p class="stock-color">€{{ book.price }}</p>
 
-                <a href="#" class="mt-1 btn">Add to basket</a>
+                <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                    {% csrf_token %}
+
+                    <label>Quantity</label>
+                    <div>
+
+                        <input type="number" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                            id="id_qty{{ book.id }}">
+                    </div>
+
+
+                    <div>
+                        <input type="submit" class="btn" value="Add to Cart">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
