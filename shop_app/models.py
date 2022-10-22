@@ -1,3 +1,5 @@
+from tokenize import blank_re
+from unicodedata import decimal
 from django.db import models
 from PIL import Image
 from django.forms import model_to_dict
@@ -50,6 +52,8 @@ class Book(models.Model):
                             verbose_name="ISBN number of the book.")
     image = models.ForeignKey(
         Image, blank=True, null=True, on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=4, decimal_places=2)
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
 
     def author_names(self):

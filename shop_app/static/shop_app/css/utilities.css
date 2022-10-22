@@ -20,6 +20,14 @@
     --btn-focus-color: rgba(240, 6, 76, 0.493);
 }
 
+
+body,
+html,
+.btn {
+    font-family: 'Roboto', sans-serif;
+
+}
+
 body,
 html {
     color: var(--black);
@@ -114,6 +122,7 @@ ul li {
 }
 
 
+
 /* ----------------------------------------- */
 /* svg */
 /* ----------------------------------------- */
@@ -122,6 +131,25 @@ ul li {
 
 }
 
+.nav-account-area {
+    /* background-color: cadetblue; */
+    position: relative;
+
+}
+
+.book-counter {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    width: 22px;
+    top: 8px;
+    left: -12px;
+    background-color: rgb(255, 0, 140);
+    border-radius: 50%;
+    font-size: .8rem;
+}
 
 /* ----------------------------------------- */
 /* class btn & button */
@@ -136,6 +164,7 @@ button {
     background-color: var(--btn-color);
     text-align: center;
     text-decoration: none;
+    font-size: 1rem;
     font-weight: 500;
     padding: .8rem 1.2rem;
     border-radius: 4px;
@@ -301,6 +330,25 @@ form {
     /* height: 3rem; */
     width: 100%;
 }
+
+
+.add-to-cart-form {
+    display: block;
+}
+
+label {
+    font-weight: 500;
+}
+
+input[type=number] {
+    /* background-color: aqua; */
+    width: 10ch;
+    padding: .6rem;
+    margin: .8rem 0 .8rem 0;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
 
 input {
     padding: 0 1rem;

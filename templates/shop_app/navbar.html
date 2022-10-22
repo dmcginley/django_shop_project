@@ -1,4 +1,5 @@
 {% load static %}
+{% include 'shop_app/offcanvas_menu.html' %}
 
 <nav class="navbar main-navbar">
 
@@ -12,18 +13,39 @@
 
         <div class="nav-account-area">
             <a class="nav-btn cart" href="{% url 'view_cart' %}">
-                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    transform: ;msFilter:;">
+
+
+                {% if book_count%}
+                <div class="book-counter">
+                    {{ book_count }}
+                </div>
+                {% endif %}
+                <svg class="nav-icon cart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" transform: ;msFilter:;">
                     <path
                         d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
                     </path>
                     <circle cx="10.5" cy="19.5" r="1.5"></circle>
                     <circle cx="17.5" cy="19.5" r="1.5"></circle>
                 </svg>
-                Cart
-            </a>
-            {% include 'shop_app/offcanvas_nav.html' %}
 
+
+                Cart
+                <p>
+
+                    {% if grand_total%}
+                    €{{ grand_total|floatformat:2 }}
+                    {% else %}
+                    €0.00
+                    {% endif %}
+                </p>
+            </a>
+            <button class="mobile-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" transform:
+                    ;msFilter:;">
+                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+                </svg>
+            </button>
             <div class="dropdown">
                 <button class="dropdown-btn nav-btn">
                     <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -42,7 +64,14 @@
 
                 <ul class="dropdown-menu">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'home' %}">Logout</a></li>
+
+                    {%  if user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                    {% endif %}
+
+
                     <li><a href="">Home</a></li>
                     <li><a href="#">cat</a></li>
                 </ul>
