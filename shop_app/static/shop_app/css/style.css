@@ -170,6 +170,12 @@
     margin-bottom: 1rem;
 }
 
+.cover-small {
+    height: 180px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
 .cart-section {
     grid-template-columns: 2;
     display: inline-block;

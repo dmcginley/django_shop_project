@@ -1,0 +1,34 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="container grid-container">
+    <h2 class="sub-title">{{ genre }}</h2>
+    {% for book in book %}
+    <div class="gutter-3">
+        <div class="card">
+            <a class="cover" href="{% url 'book_detail' book.id %}">
+                <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
+            </a>
+            <div class="card-text">
+                <h4>{{ book.title }}</h4>
+                <h5>{{ book.author_names }}</h5>
+                <p class="stock-color">€{{ book.price }}</p>
+            </div>
+            <div>
+                <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                    id="id_qty{{ book.id }}">
+            </div>
+            <div>
+                <input type="submit" class="btn primary-btn" value="Add to Cart">
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+            </div>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+
+{% endblock content %}

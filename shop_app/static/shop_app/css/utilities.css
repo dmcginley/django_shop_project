@@ -109,12 +109,10 @@ ul li {
 
 .mt-1 {
     margin-top: 1em;
-    background-color: aqua;
 }
 
 .mt-2 {
     margin-top: 1.4em;
-    background-color: rgb(255, 187, 0);
 }
 
 .text-center {
@@ -160,8 +158,6 @@ button {
 
 .btn {
     display: inline-block;
-    color: white;
-    background-color: var(--btn-color);
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
@@ -170,6 +166,17 @@ button {
     border-radius: 4px;
     transition: 80ms;
     width: 100%;
+}
+
+.primary-btn {
+    color: white;
+    background-color: var(--btn-color);
+}
+
+.secondary-btn {
+    color: var(--btn-color);
+    outline: 2px solid var(--btn-color);
+    outline-offset: -2px;
 }
 
 .btn:hover {
@@ -191,6 +198,9 @@ button {
     margin-right: .4em;
 }
 
+.cart-price {
+    padding-left: 6px;
+}
 
 .nav-btn .nav-icon {
     margin: 0 6px 0 0;
@@ -227,27 +237,27 @@ button {
     border-radius: 4px;
 }
 
-.dropdown-menu li a {
+.dropdown-menu a {
     display: block;
     color: var(--black);
     padding: 1em 2em;
     text-decoration: none;
 }
 
-.dropdown-menu li {
+.dropdown-menu a {
     transition: 100ms;
 }
 
-.dropdown-menu li:hover {
+.dropdown-menu a:hover {
     text-decoration: none;
     background-color: rgb(202, 212, 209);
 }
 
-.dropdown-menu li:hover:nth-child(1) {
+.dropdown-menu a:hover:nth-child(1) {
     border-radius: 4px 4px 0 0;
 }
 
-.dropdown-menu li:hover:nth-child(4) {
+.dropdown-menu a:hover:nth-child(4) {
     border-radius: 0 0 4px 4px;
 }
 
@@ -306,7 +316,7 @@ button {
 }
 
 
-.mobile-menu ul li a {
+.mobile-menu div a {
     display: block;
     padding: 1rem;
     text-decoration: none;
@@ -315,7 +325,7 @@ button {
 }
 
 
-.mobile-menu ul li a:hover {
+.mobile-menu div a:hover {
     background-color: rgb(216, 216, 216)
 }
 
@@ -361,12 +371,14 @@ input {
 /* .nav-btn:focus, */
 .btn:focus,
 input[type=text]:focus,
+input[type=number]:focus,
 .cover:focus {
     outline: 3px solid var(--btn-focus-color);
 }
 
-.cover:focus {
-    border-radius: 4px;
+.secondary-btn:focus {
+    /* outline-offset: -2; */
+    outline: 4px solid var(--btn-focus-color);
 }
 
 .secondary-nav-content form button {

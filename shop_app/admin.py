@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Author, Publisher, Image
+from .models import Book, Author, Publisher, Image, Genre
 
 # from django.contrib.admin.views.main import ChangeList
 # from .forms import BookChangeListForm
@@ -26,11 +26,14 @@ from .models import Book, Author, Publisher, Image
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
+    search_fields = ['first_name', 'last_name']
     list_display = ['first_name', 'last_name']
+    list_filter = ['first_name', 'last_name']
 
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'website']
     list_display = ['name', 'website']
 
 
@@ -43,12 +46,19 @@ class BookAdmin(admin.ModelAdmin):
     # def get_changelist_form(self, request, **kwargs):
     #     return BookChangeListForm
 
-    search_fields = ('title', 'authors',
+    search_fields = ('title', 'authors', 'genre',
                      'isbn')
-    list_display = ['title', 'author_names', 'isbn']
-    list_filter = ('title', 'authors', 'isbn')
+    list_display = ['title', 'author_names', 'genre_name', 'isbn']
+    list_filter = ('title', 'authors', 'genre', 'isbn')
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['image']
+
+
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}

@@ -10,10 +10,9 @@
                 <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
             </span>
         </div>
-
         <div class="nav-account-area">
-            <a class="nav-btn cart" href="{% url 'view_cart' %}">
-
+            <a class="nav-btn car
+        " href="{% url 'view_cart' %}">
 
                 {% if book_count%}
                 <div class="book-counter">
@@ -28,15 +27,10 @@
                     <circle cx="10.5" cy="19.5" r="1.5"></circle>
                     <circle cx="17.5" cy="19.5" r="1.5"></circle>
                 </svg>
-
-
                 Cart
-                <p>
-
+                <p class="cart-price">
                     {% if grand_total%}
                     €{{ grand_total|floatformat:2 }}
-                    {% else %}
-                    €0.00
                     {% endif %}
                 </p>
             </a>
@@ -60,21 +54,17 @@
                     </svg>
                     Account
                 </button>
-
-
-                <ul class="dropdown-menu">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-
+                <div class="dropdown-menu">
+                    <a href="{% url 'home' %}">Home</a>
                     {%  if user.is_authenticated %}
-                    <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                    <a href="{% url 'account_logout' %}">Logout</a>
                     {% else %}
-                    <li><a href="{% url 'account_login' %}">Login</a></li>
+                    <a href="{% url 'account_login' %}">Login</a>
                     {% endif %}
-
-
-                    <li><a href="">Home</a></li>
-                    <li><a href="#">cat</a></li>
-                </ul>
+                    <a href="">Home</a>
+                    <a href="#">cat</a>
+                    <a href="{{ book.get_absolute_url }}">text</a>
+                </div>
             </div>
 
         </div>
@@ -84,7 +74,7 @@
     <div class="secondary-nav-content container-center">
         <form action="{% url 'home' %}" method="GET">
             <input type="text" name="q" placeholder="Search by title, author, ISBN...">
-            <button class="btn" type="submit">Search</button>
+            <button class="btn primary-btn" type="submit">Search</button>
         </form>
     </div>
 </nav>

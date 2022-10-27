@@ -8,12 +8,64 @@
             <h2>Shopping Cart</h2>
         </div> {% if cart_items %}
         <div class="cart-items">
-            {{ cart_items }}
+            <!-- {{ cart_items }} -->
+
+            {% for item in cart_items %}
+            <img src="{{ item.book.image.image.url }}" class="cover-small" alt="book cover">
+            <p>{{ item.book.title }}</p>
+            <p>{{ item.quantity }}</p>
+            <p>€{{ item.book.price }}</p>
+
+            <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                        date-item_id="{{ item.item_id }}" id="id_qty{{ item.item_id }}">
+                </div>
+
+
+
+
+            </form>
+            <a class="update-item" href="">update</a>
+            <a class="remove-item" href="" id="remove_{{ item.item_id }}">remove</a>
+
+            {% endfor %}
+
+            <p>Total: €{{ total|floatformat:2 }}</p>
+            <p>Delivery: €{{ delivery|floatformat:2 }}</p>
+            <p>Order Total: €{{ grand_total|floatformat:2 }}</p>
+
+            <a class="btn secondary-btn mt-2" href="{% url 'home' %}">continue shopping</a>
+            <a class="btn primary-btn mt-2" href="">checkout</a>
         </div>
         {% else %}
         <p>Your cart is empty...</p>
-        <a class="btn mt-2" href="{% url 'home' %}">link to books</a>
+        <a class="btn secondary-btn mt-2" href="{% url 'home' %}">continue shopping</a>
         {% endif %}
     </div>
 </section>
+
+<script>
+    // update item in cart
+    $('.update-item').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // remove item in cart
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/cart/remove/${itemId}`;
+        var data = { 'csrfmiddlewaretoken': csrfToken }
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
+
+
 {% endblock content %}

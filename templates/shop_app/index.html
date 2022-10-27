@@ -12,7 +12,7 @@
             <h1>Shop Index page</h1>
             <p>small text as a helper Lorem ipsum, dolor elit. Pariatur earum quam magni.</p>
         </div>
-        <a class="btn mt-2" href="#">Click here</a>
+        <a class="btn primary-btn mt-2" href="#">Click here</a>
     </div>
 
 </section>
@@ -21,7 +21,7 @@
     {% for book in books %}
     <div class="gutter-3">
         <div class="card">
-            <a class="cover" href="{% url 'book-detail' book.id %}">
+            <a class="cover" href="{% url 'book_detail' book.id %}">
                 <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
             </a>
             <div class="card-text">
@@ -38,7 +38,7 @@
                         id="id_qty{{ book.id }}">
                 </div>
                 <div>
-                    <input type="submit" class="btn" value="Add to Cart">
+                    <input type="submit" class="btn primary-btn" value="Add to Cart">
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
             </form>
