@@ -16,19 +16,34 @@
             <p>{{ item.quantity }}</p>
             <p>€{{ item.book.price }}</p>
 
+
             <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
                 {% csrf_token %}
-                <div>
-                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                        date-item_id="{{ item.item_id }}" id="id_qty{{ item.item_id }}">
+                <div class="input-group">
+                    <span class="input-group-prepend">
+                        <button class="decrement-qty" data-item_id="{{ item_id }}" id="decrement-qty_{{ item_id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M5 11h14v2H5z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <input class="qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                        date-item_id="{{ item_id }}" id="id_qty{{ item_id }}">
+                    <span class="input-group-append">
+                        <button class="increment-qty" data-item_id="{{ item_id }}" id="increment-qty_{{ item_id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                            </svg>
+                        </button>
+                    </span>
                 </div>
-
-
-
-
             </form>
-            <a class="update-item" href="">update</a>
-            <a class="remove-item" href="" id="remove_{{ item.item_id }}">remove</a>
+
+
+            <a class="update-link">update</a>
+            <a class="remove-item" id="remove_{{ item_id }}">remove</a>
 
             {% endfor %}
 
@@ -46,18 +61,21 @@
     </div>
 </section>
 
+
+{{ block.super }}
 <script>
     // update item in cart
-    $('.update-item').click(function (e) {
+    $('.update-link').click(function (e) {
         var form = $(this).prev('.update-form');
         form.submit();
     })
 
     // remove item in cart
     $('.remove-item').click(function (e) {
+        console.log('hello1')
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}`;
+        var url = `cart/remove/${itemId}`;
         var data = { 'csrfmiddlewaretoken': csrfToken }
 
         $.post(url, data)
@@ -66,6 +84,7 @@
             });
     })
 </script>
+{% include 'cart_app/quantity_input_script.html' %}
 
 
 {% endblock content %}
