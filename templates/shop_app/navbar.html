@@ -4,30 +4,58 @@
 <nav class="navbar main-navbar">
 
     <div class="main-nav-content container-center container">
-        <div class="brand-container">
-            <a class="nav-brand" href="{% url 'home' %}">Site</a>
-            <span class="banner nav">
-                <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
-            </span>
+        <div class="nav-btn-group">
+            <a class="nav-brand btn-flex" href="{% url 'home' %}">
+                <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                    viewBox="0 0 24 24" transform: ;msFilter:;">
+                    <path
+                        d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z">
+                    </path>
+                </svg>
+                Book<strong>Shop</strong>
+            </a>
+            <div class="dropdown">
+                <button class="dropdown-btn js-btn2 nav-btn ">
+                    Genre
+                    <svg class="nav-icon nav-icon-ml" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                        viewBox="0 0 24 24" transform: ;msFilter:;">
+                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                    </svg>
+                </button>
+                <div class="dropdown-menu js-menu2">
+                    {% for g in genres %}
+                    <a href="/{{ g }}">{{ g.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        <div class="nav-account-area">
-            <a class="nav-btn car
-        " href="{% url 'view_cart' %}">
+
+
+
+        <form class="primary-search-form" action="{% url 'home' %}" method="GET">
+            <input class="search-form-input" type="text" name="q" placeholder="Search by title, author, ISBN...">
+            <!-- <button class="btn primary-btn" type="submit">Search</button> -->
+        </form>
+
+
+
+        <div class="nav-btn-group">
+            <a class="nav-btn car" href="{% url 'view_cart' %}">
 
                 {% if book_count%}
                 <div class="book-counter">
                     {{ book_count }}
                 </div>
                 {% endif %}
-                <svg class="nav-icon cart-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                     viewBox="0 0 24 24" transform: ;msFilter:;">
                     <path
-                        d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
+                        d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z">
                     </path>
                     <circle cx="10.5" cy="19.5" r="1.5"></circle>
-                    <circle cx="17.5" cy="19.5" r="1.5"></circle>
+                    <circle cx="16.5" cy="19.5" r="1.5"></circle>
                 </svg>
-                Cart
+                <span class="cart-text">Cart</span>
                 <p class="cart-price">
                     {% if grand_total%}
                     €{{ grand_total|floatformat:2 }}
@@ -41,10 +69,10 @@
                 </svg>
             </button>
             <div class="dropdown">
-                <button class="dropdown-btn nav-btn">
-                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        transform: scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0,
-                        mirror=1);">
+                <button class="dropdown-btn js-btn nav-btn">
+                    <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                        viewBox="0 0 24 24" transform:
+                        scaleX(-1);msFilter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);">
                         <path
                             d="M12 2A10.13 10.13 0 0 0 2 12a10 10 0 0 0 4 7.92V20h.1a9.7 9.7 0 0 0 11.8 0h.1v-.08A10 10 0 0 0 22 12 10.13 10.13 0 0 0 12 2zM8.07 18.93A3 3 0 0 1 11 16.57h2a3 3 0 0 1 2.93 2.36 7.75 7.75 0 0 1-7.86 0zm9.54-1.29A5 5 0 0 0 13 14.57h-2a5 5 0 0 0-4.61 3.07A8 8 0 0 1 4 12a8.1 8.1 0 0 1 8-8 8.1 8.1 0 0 1 8 8 8 8 0 0 1-2.39 5.64z">
                         </path>
@@ -54,30 +82,27 @@
                     </svg>
                     Account
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu js-menu">
                     <a href="{% url 'home' %}">Home</a>
                     {%  if user.is_authenticated %}
                     <a href="{% url 'account_logout' %}">Logout</a>
                     {% else %}
                     <a href="{% url 'account_login' %}">Login</a>
                     {% endif %}
-                    <a href="">Home</a>
-                    <a href="#">cat</a>
-                    <a href="{{ book.get_absolute_url }}">text</a>
                 </div>
             </div>
 
         </div>
     </div>
 </nav>
+
+
+
 <nav class="navbar secondary-navbar">
     <div class="secondary-nav-content container-center">
         <form action="{% url 'home' %}" method="GET">
-            <input type="text" name="q" placeholder="Search by title, author, ISBN...">
-            <button class="btn primary-btn" type="submit">Search</button>
+            <input class="search-form-input" type="text" name="q" placeholder="Search by title, author, ISBN...">
+            <!-- <button class="btn primary-btn" type="submit">Search</button> -->
         </form>
     </div>
 </nav>
-<span class="mobile-banner nav">
-    <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
-</span>

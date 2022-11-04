@@ -27,6 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ['https://railway.app/','http://127.0.0.1:8000']
 
 CSRF_TRUSTED_ORIGINS = ["https://*.railway.app", "https://*.127.0.0.1"]
 
@@ -76,6 +77,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "cart_app.contexts.cart_contents",
+                "shop_app.views.genres",
             ],
         },
     },

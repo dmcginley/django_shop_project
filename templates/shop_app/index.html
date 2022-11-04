@@ -3,19 +3,25 @@
 
 {% block content %}
 
+<div class="mobile-banner">
+    <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
+</div>
+
 <section class="hero">
-    <div class="hero-image">
-        <img class="hero-image" src="{% static 'shop_app/images/Genshin-Impact-Lumine-and-Aether-fight.webp'%}" alt="">
+    <div class="desktop-banner">
+        <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
     </div>
-    <div class="container height-100 flex text-center">
+    <div class="container flex height-100 text-center hero-content">
         <div class="hero-text">
             <h1>Shop Index page</h1>
             <p>small text as a helper Lorem ipsum, dolor elit. Pariatur earum quam magni.</p>
         </div>
-        <a class="btn primary-btn mt-2" href="#">Click here</a>
-    </div>
+        <img class="cover-img" src="{% static 'images/81Ppz1h5GZL.jpg' %}" alt="book cover">
 
+        <a class="btn hero-btn mt-2" href="#">Click here</a>
+    </div>
 </section>
+
 <section class="container grid-container">
     <h2 class="sub-title">Best Sellers</h2>
     {% for book in books %}

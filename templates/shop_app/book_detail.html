@@ -13,22 +13,43 @@
                 <p><span class="stock-color">{{ object.number_in_stock }}</span> left</p>
                 <p class="stock-color">€{{ book.price }}</p>
 
-                <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+
+                <form class="update-form" action="{%  url 'adjust_cart' book.id %}" method="POST">
                     {% csrf_token %}
-
                     <label>Quantity</label>
-                    <div>
 
-                        <input type="number" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
-                            id="id_qty{{ book.id }}">
+                    <div class="input-group">
+                        <span class="input-group-prepend">
+                            <button class="decrement-qty" data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    transform: ;msFilter:;">
+                                    <path d="M5 11h14v2H5z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                        <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99"
+                            date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
+                        <span class="input-group-append">
+                            <button class="increment-qty" data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    transform: ;msFilter:;">
+                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                </svg>
+                            </button>
+                        </span>
                     </div>
+
+
 
 
                     <div>
                         <input type="submit" class="btn primary-btn" value="Add to Cart">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
                     </div>
+
+
                 </form>
+
 
             </div>
         </div>
@@ -44,5 +65,41 @@
         {% endif %}
     </div>
 </section>
+
+
+{{ block.super }}
+<script>
+    // update item in cart
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // remove item in cart
+    $('.remove-item').click(function (e) {
+        console.log('hello1')
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        console.log('hello2')
+        var url = `/cart/remove/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken }
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
+{% include 'cart_app/quantity_input_script.html' %}
+
+
+
+
+
+
+
+
+
+
 
 {% endblock content %}

@@ -10,9 +10,12 @@
     <meta name="author" content="Donnchadh Mc Ginley" />
     {% endblock meta %}
 
+    {% block corejs %}
     {# jQuery CDN #}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    {% endblock corejs %}
+
     <link rel="stylesheet" href="{% static 'shop_app/css/utilities.css' %}" />
     <link rel="stylesheet" href="{% static 'shop_app/css/style.css' %}" />
     <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
@@ -31,12 +34,12 @@
     <!-- script menu dropdown -->
     <script>
       $(document).ready(function () {
-        $(".dropdown-btn").click(function () {
-          $(".dropdown-menu").fadeToggle(300);
-          $(".dropdown-menu").toggleClass("visible"); // Toggle dropdown menu
+        $(".js-btn").click(function () {
+          $(".js-menu").fadeToggle(300);
+          $(".js-menu").toggleClass("visible"); // Toggle dropdown menu
         });
-        $(".dropdown-menu").on("mouseleave", function () {
-          $(".dropdown-menu").fadeOut("300");
+        $(".js-menu").on("mouseleave", function () {
+          $(".js-menu").fadeOut("300");
         });
 
         $(".mobile-btn").click(function () {
@@ -57,7 +60,21 @@
           $(".mobile-menu").fadeOut(300);
         })
 
+
+        $(".js-btn2").click(function () {
+          $(".js-menu2").fadeToggle(300);
+          $(".js-menu2").toggleClass("visible"); // Toggle dropdown menu
+        });
+        $(".js-menu2").on("mouseleave", function () {
+          $(".js-menu2").fadeOut("300");
+        });
+
+
       })
+
+
+
+
     </script>
 
   </body>
