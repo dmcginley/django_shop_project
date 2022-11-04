@@ -79,3 +79,10 @@ def genre_list(request, slug):
     }
 
     return render(request, 'shop_app/genre.html', context)
+
+
+def genres(request):
+
+    return {
+        'genres': Genre.objects.all()
+    }

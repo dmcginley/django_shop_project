@@ -34,8 +34,8 @@ class Publisher(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(
-        default='default.png', upload_to='book_covers')
+    image = models.ImageField(default='default.png',
+                              upload_to='book_covers/')
 
     # def __str__(self):
     #     return self.image
@@ -76,6 +76,8 @@ class Book(models.Model):
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
     genre = models.ManyToManyField(
         Genre, related_name='book', help_text="Select a genre for this book")
+    rating = models.DecimalField(
+        max_digits=5, decimal_places=1, null=True, blank=True)
 
     # TODO: BUG: ValueError: Model shop_app.Book can't have more than one auto-generated field.
     # in_stock = models.BigAutoField(default=True)

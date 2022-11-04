@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Book, Author, Publisher, Image, Genre
+from django.utils.safestring import mark_safe
+
 
 # from django.contrib.admin.views.main import ChangeList
 # from .forms import BookChangeListForm
@@ -48,7 +50,8 @@ class BookAdmin(admin.ModelAdmin):
 
     search_fields = ('title', 'authors', 'genre',
                      'isbn')
-    list_display = ['title', 'author_names', 'genre_name', 'isbn']
+    list_display = ['title', 'author_names',
+                    'genre_name', 'isbn']
     list_filter = ('title', 'authors', 'genre', 'isbn')
 
 
