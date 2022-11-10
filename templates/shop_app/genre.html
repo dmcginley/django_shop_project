@@ -4,7 +4,14 @@
 {% block content %}
 
 <section class="container grid-container">
-    <h2 class="sub-title">{{ genre }}</h2>
+
+
+    <div class="title-and-sort">
+        <h2 class="sub-title">{{ genre }}</h2>
+    </div>
+
+
+    <!-- <h2 class="sub-title">{{ genre }}</h2> -->
     {% for book in book %}
     <div class="gutter-3">
         <div class="card">

@@ -14,6 +14,9 @@
     {# jQuery CDN #}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    {# tataJs #}
+    <link rel="stylesheet" href="{% static 'shop_app/js/tata.js' %}" />
+
     {% endblock corejs %}
 
     <link rel="stylesheet" href="{% static 'shop_app/css/utilities.css' %}" />
@@ -23,26 +26,69 @@
 
   <body class="main-grid">
 
+
+    {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+      {% with message.level as level %}
+
+      {% if level == 40 %} {# error #}
+      {% include 'includes/toast/error.html' %}
+      {% elif level == 30 %} {# warning #}
+      {% include 'includes/toast/warning.html' %}
+      {% elif level == 25 %} {# success #}
+      {% include 'includes/toast/success.html' %}
+      {% else %}
+      {% include 'includes/toast/info.html' %}
+
+      {% endif %}
+      {% endwith %}
+      {% endfor %}
+
+
+    </div>
+    {% endif %}
+
+
     {% include 'shop_app/navbar.html' %}
 
     <main class="container-center">
       {% block content %}{% endblock content %}
     </main>
 
+    <script src="tata.js"></script>
 
 
     <!-- script menu dropdown -->
     <script>
       $(document).ready(function () {
-        $(".js-btn").click(function () {
-          $(".js-menu").fadeToggle(300);
-          $(".js-menu").toggleClass("visible"); // Toggle dropdown menu
+        // toggle the dropdown menus
+        $(".dropdown-btn-account").click(function () {
+          $(".dropdown-menu-account").fadeToggle(300);
+          $(".dropdown-menu-account").toggleClass("visible");
         });
-        $(".js-menu").on("mouseleave", function () {
-          $(".js-menu").fadeOut("300");
+        $(".dropdown-menu-account").on("mouseleave", function () {
+          $(".dropdown-menu-account").fadeOut("300");
+        });
+
+        $(".dropdown-btn-genre").click(function () {
+          $(".dropdown-menu-genre").fadeToggle(300);
+          $(".dropdown-menu-genre").toggleClass("visible");
+        });
+        $(".dropdown-menu-genre").on("mouseleave", function () {
+          $(".dropdown-menu-genre").fadeOut("300");
+        });
+
+        $(".dropdown-btn-sort").click(function () {
+          $(".dropdown-menu-sort").fadeToggle(300);
+          $(".dropdown-menu-sort").toggleClass("visible");
+        });
+        $(".dropdown-menu-sort").on("mouseleave", function () {
+          $(".dropdown-menu-sort").fadeOut("300");
         });
 
         $(".mobile-btn").click(function () {
+          // toggle the mobile dropdown menu
           $(".mobile-menu").fadeToggle(300);
           $(".mobile-menu").toggleClass("visible");
 
@@ -59,16 +105,6 @@
         $("a").click(function () {
           $(".mobile-menu").fadeOut(300);
         })
-
-
-        $(".js-btn2").click(function () {
-          $(".js-menu2").fadeToggle(300);
-          $(".js-menu2").toggleClass("visible"); // Toggle dropdown menu
-        });
-        $(".js-menu2").on("mouseleave", function () {
-          $(".js-menu2").fadeOut("300");
-        });
-
 
       })
 

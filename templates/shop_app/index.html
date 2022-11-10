@@ -23,33 +23,73 @@
 </section>
 
 <section class="container grid-container">
-    <h2 class="sub-title">Best Sellers</h2>
-    {% for book in books %}
-    <div class="gutter-3">
-        <div class="card">
-            <a class="cover" href="{% url 'book_detail' book.id %}">
-                <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
-            </a>
-            <div class="card-text">
-                <h4>{{ book.title }}</h4>
-                <h5>{{ book.author_names }}</h5>
-                <p class="stock-color">€{{ book.price }}</p>
+
+    <div class="title-and-sort">
+        <h2 class="sub-title">New Books</h2>
+
+        <div class="nav-btn-group">
+            <div class="dropdown">
+                <button class="dropdown-btn dropdown-btn-genre js-btn2 nav-btn ">
+                    Genre
+                    <svg class="nav-icon nav-icon-ml" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                        viewBox="0 0 24 24" transform: ;msFilter:;">
+                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                    </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-genre">
+                    {% for g in genres %}
+                    <a href="/{{ g }}">{{ g.name }}</a>
+                    {% endfor %}
+                </div>
             </div>
-
-            <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
-                {% csrf_token %}
-
-                <div>
-                    <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
-                        id="id_qty{{ book.id }}">
+            <div class="dropdown">
+                <button class="dropdown-btn dropdown-btn-sort nav-btn ">
+                    Sort By:
+                    <svg class="nav-icon nav-icon-ml" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                        viewBox="0 0 24 24" transform: ;msFilter:;">
+                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
+                    </svg>
+                </button>
+                <div class="dropdown-menu dropdown-menu-sort">
+                    <a href="{% url 'home' %}?sort=price&direction=asc">Price (Low to High)</a>
+                    <a href="{% url 'home' %}?sort=price&direction=desc">Price (High to Low)</a>
                 </div>
-                <div>
-                    <input type="submit" class="btn primary-btn" value="Add to Cart">
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+
+    {% for book in books %}
+
+    <div class="gutter-3">
+        <div class="card">
+            <div class="card-img-and-text">
+                <a class="cover" href="{% url 'book_detail' book.id %}">
+                    <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
+                </a>
+                <div class="card-text">
+                    <h4>{{ book.title }}</h4>
+                    <h5>{{ book.author_names }}</h5>
+                </div>
+            </div>
+
+            <div class="card-btn-container">
+                <p class="stock-color price">€{{ book.price }}</p>
+                <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                    {% csrf_token %}
+
+                    <div>
+                        <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                            id="id_qty{{ book.id }}">
+                    </div>
+                    <div>
+                        <input type="submit" class="btn primary-btn" value="Add to Cart">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     {% endfor %}
 </section>
 

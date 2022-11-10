@@ -135,6 +135,9 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 #### Images & Icons
 
+- [Boxicons](https://boxicons.com/?query=search)
+- [Css gradient](https://cssgradient.io/)- used for gradient on the search icon
+
 #### Bootstrap
 
 #### Django & Python

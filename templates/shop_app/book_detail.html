@@ -8,13 +8,13 @@
             <h4 class="book-title-small">{{ object.title }}</h4>
             <img src="{{ book.image.image.url }}" class="cover-large" alt="book cover">
             <div class="card-text">
-                <h4 class="book-title-medium ">{{ object.title }}</h4>
+                <h4 class="book-title-medium">{{ object.title }}</h4>
                 <h5>(author) {{ object.author_names }}</h5>
                 <p><span class="stock-color">{{ object.number_in_stock }}</span> left</p>
                 <p class="stock-color">€{{ book.price }}</p>
 
 
-                <form class="update-form" action="{%  url 'adjust_cart' book.id %}" method="POST">
+                <form class="update-form" action="{%  url 'add_to_cart' book.id %}" method="POST">
                     {% csrf_token %}
                     <label>Quantity</label>
 
@@ -44,7 +44,7 @@
 
                     <div>
                         <input type="submit" class="btn primary-btn" value="Add to Cart">
-                        <!-- <input type="hidden" name="redirect_url" value="{{ request.path }}"> -->
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>
 
 
@@ -90,7 +90,7 @@
             });
     })
 </script>
-{% include 'cart_app/quantity_input_script.html' %}
+{% include 'includes/quantity_input_script.html' %}
 
 
 
