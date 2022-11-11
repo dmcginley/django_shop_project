@@ -25,6 +25,7 @@ urlpatterns = [
     # path('cart/', include('view_cart.urls')),
     path('', include('shop_app.urls')),
     path('shop/', include('cart_app.urls')),
+    path('checkout', include('checkout_app.urls')),
 
 ]
 

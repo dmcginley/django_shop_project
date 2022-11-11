@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "shop_app.apps.ShopAppConfig",
     "cart_app.apps.CartAppConfig",
+    "checkout_app.apps.CheckoutAppConfig",
+    "crispy_forms",
 ]
 
 MIDDLEWARE = [
@@ -76,12 +78,21 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
                 "cart_app.contexts.cart_contents",
                 "shop_app.views.genres",
             ],
+            'builtins':[
+                "crispy_forms.templatetags.crispy_forms_tags",
+                "crispy_forms.templatetags.crispy_forms_field"
+            ]
         },
     },
 ]
+
+
+# CRISPY_TEMPLATE_PACK = 'uni_form'
+
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -190,3 +201,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# TODO: fix environ for checkout_app not working why?
+# STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY'),

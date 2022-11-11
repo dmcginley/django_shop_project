@@ -242,8 +242,14 @@
         display: none;
     }
 
-    .btn {
+    /* .btn {
         width: max-content;
+    } */
+
+    .card-btn {
+        display: block;
+        width: 100%;
+        background-color: #c066db;
     }
 
     .grid-container {
@@ -360,9 +366,9 @@
 
 
 
-    form {
+    /* form {
         width: 60%;
-    }
+    } */
 
 }
 

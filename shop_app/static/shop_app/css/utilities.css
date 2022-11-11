@@ -274,7 +274,7 @@ ul li {
     display: flex;
     align-items: center;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--black);
     text-decoration: none;
     border: none;
@@ -296,19 +296,22 @@ ul li {
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     padding: .8rem 1.8rem;
-    border-radius: 3em;
+    border-radius: 4px;
     border: none;
     transition: 80ms;
     width: 100%;
 }
 
 
+
 .hero-btn {
     color: white;
     background-color: var(--hero-btn-color);
-
+    min-width: max-content;
+    max-width: 260px;
+    font-size: 1.2rem;
 }
 
 .primary-btn {
