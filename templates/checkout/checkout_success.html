@@ -1,0 +1,23 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="main-grid">
+    <div>
+        <h2>Success!!</h2>
+    </div>
+    <p>Your order info is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+</section>
+<section>
+
+</section>
+
+{% endblock content %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'shop_app/js/stripe_elements.js' %}"></script>
+{% endblock postloadjs %}
