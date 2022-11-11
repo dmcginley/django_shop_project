@@ -39,7 +39,7 @@ input {
 
 /* stripe */
 
-.StripeElement,
+/* .StripeElement,
 .stripe-style-input {
     box-sizing: border-box;
     height: 40px;
@@ -75,4 +75,4 @@ input {
 #card-element {
     color: #000;
     border: 1px solid #000;
-}
+} */
