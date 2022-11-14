@@ -2,69 +2,63 @@
 {% load static %}
 {% block content %}
 
-<section class="container">
-    <div class="gutter-3">
-        <div class="card-flex">
-            <h4 class="book-title-small">{{ object.title }}</h4>
-            <img src="{{ book.image.image.url }}" class="cover-large" alt="book cover">
-            <div class="card-text">
-                <h4 class="book-title-medium">{{ object.title }}</h4>
-                <h5>(author) {{ object.author_names }}</h5>
-                <p><span class="stock-color">{{ object.number_in_stock }}</span> left</p>
-                <p class="stock-color">€{{ book.price }}</p>
 
-
-                <form class="update-form" action="{%  url 'add_to_cart' book.id %}" method="POST">
-                    {% csrf_token %}
-                    <label>Quantity</label>
-
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <button class="decrement-qty" data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    transform: ;msFilter:;">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
-                        </span>
-                        <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99"
-                            date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
-                        <span class="input-group-append">
-                            <button class="increment-qty" data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    transform: ;msFilter:;">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </span>
-                    </div>
-
-
-
-
-                    <div>
-                        <input type="submit" class="btn primary-btn" value="Add to Cart">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    </div>
-
-
-                </form>
-
-
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <div class="cover">
+                <figure class="image detail-cover">
+                    <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
+                </figure>
             </div>
         </div>
-    </div>
-    <div class="gutter-2">
-        <h3>Product details</h3>
-        <p>Publisher: {{ object.publisher }}</p>
-        <p>Publication date: {{ object.publication_date }}</p>
-        {% if object.isbn %}
-        <p>ISBN: {{ object.isbn }}</p>
-        {% else %}
-        <p>no ISBN found</p>
-        {% endif %}
+        <div class="column">
+            <h4 class="title is-5">{{ book.title }}</h4>
+            <h6 class="subtitle is-6">{{ book.author_names }}</h6>
+            <p class="card-price is-warning pb-3">€{{ book.price }}</p>
+            <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                {% csrf_token %}
+                <label>Quantity</label>
+
+                <div class="input-group">
+                    <span class="input-group-prepend">
+                        <button class="decrement-qty" data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M5 11h14v2H5z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99"
+                        date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
+                    <span class="input-group-append">
+                        <button class="increment-qty" data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+                <div>
+                    <input type="submit" class="button is-link is-fullwidth" value="Add to Cart">
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                </div>
+            </form>
+        </div>
     </div>
 </section>
+<section class="section">
+    <h3>Product details</h3>
+    <p>Publisher: {{ object.publisher }}</p>
+    <p>Publication date: {{ object.publication_date }}</p>
+    {% if object.isbn %}
+    <p>ISBN: {{ object.isbn }}</p>
+    {% else %}
+    <p>no ISBN found</p>
+    {% endif %}
+</section>
+
 
 
 {{ block.super }}

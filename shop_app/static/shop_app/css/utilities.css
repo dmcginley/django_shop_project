@@ -576,9 +576,6 @@ input[type=number]:focus,
     display: none;
 }
 
-.popup-content.active {
-    /* visibility: visible; */
-}
 
 .popup-content button {
     display: inline-flex;

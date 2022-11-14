@@ -11,9 +11,16 @@
     {% endblock meta %}
 
     {% block corejs %}
-    {# jQuery CDN #}
+
+
+
+
+
+
+    <!-- {# jQuery CDN #} -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
     {# stripe #}
     <script src="https://js.stripe.com/v3/"></script>
 
@@ -21,12 +28,16 @@
     {% endblock corejs %}
 
     {% block corecss %}
-    {# Bulma css #}
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" /> -->
 
+    {# Bulma css #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
     {# my css files #}
-    <link rel="stylesheet" href="{% static 'shop_app/css/utilities.css' %}" />
-    <link rel="stylesheet" href="{% static 'shop_app/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'shop_app/css/bulma_extra.css' %}" />
+
+
+    <!-- old css -->
+    <!-- <link rel="stylesheet" href="{% static 'shop_app/css/utilities.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'shop_app/css/style.css' %}" /> -->
     {% endblock corecss %}
 
     {% block extra_css %}
@@ -35,7 +46,7 @@
     <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
   </head>
 
-  <body class="main-grid">
+  <body class="has-navbar-fixed-top">
 
 
     {% if messages %}
@@ -43,10 +54,10 @@
       {% for message in messages %}
       {% with message.level as level %}
 
-      {% if level == 40 %} {# error #}
-      {% include 'includes/toast/error.html' %}
-      {% elif level == 30 %} {# warning #}
+      {% if level == 40 %} {# warning #}
       {% include 'includes/toast/warning.html' %}
+      {% elif level == 30 %} {# danger #}
+      {% include 'includes/toast/danger.html' %}
       {% elif level == 25 %} {# success #}
       {% include 'includes/toast/success.html' %}
       {% else %}
@@ -62,10 +73,13 @@
 
 
     {% include 'shop_app/navbar.html' %}
+    <div class="wrapper">
+      <main class="main-grid">
 
-    <main class="container-center">
-      {% block content %}{% endblock content %}
-    </main>
+        {% block content %}{% endblock content %}
+      </main>
+    </div>
+    {% include 'shop_app/footer.html' %}
 
     <!-- scripts -->
 
@@ -73,9 +87,44 @@
 
     {% endblock postloadjs %}
 
-    {% include 'includes/dropdown_menu_script.html' %}
 
 
+    <!-- script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+          el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+
+
+        // toast script
+        $(".delete").on("click", function () {
+          $(".toast").addClass("visibility");
+        });
+
+        //  $(".toast").show();
+        //  setTimeout(function () {
+        //    $(".toast").fadeOut("slow");
+        //  }, 1900);
+
+      });
+
+    </script>
   </body>
 
 </html>

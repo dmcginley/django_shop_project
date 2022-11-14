@@ -69,8 +69,7 @@ class Book(models.Model):
                             verbose_name="ISBN number of the book.")
     image = models.ForeignKey(
         Image, blank=True, null=True, on_delete=models.CASCADE)
-    # slug = models.ForeignKey(Genre, related_name='book',
-    #                          on_delete=models.RESTRICT)
+    slug = models.SlugField(max_length=255, unique=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)

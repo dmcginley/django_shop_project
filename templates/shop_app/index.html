@@ -1,97 +1,65 @@
 {% extends 'shop_app/base.html' %}
 {% load static %}
 
+
+
 {% block content %}
 
-<div class="mobile-banner">
-    <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
-</div>
-
-<section class="hero">
-    <div class="desktop-banner">
-        <p>Free delivery on orders over €{{ free_delivery_threshold}}</p>
-    </div>
-    <div class="container flex height-100 text-center hero-content">
-        <div class="hero-text">
-            <h1>Shop Index page</h1>
-            <p>small text as a helper Lorem ipsum, dolor elit. Pariatur earum quam magni.</p>
+<section class="search-section">
+    <!-- <input class="input is-medium" type="text" placeholder="Medium input"> -->
+    <form class="search-form field has-addons" action="{% url 'home' %}" method="GET">
+        <div class="control is-expanded">
+            <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN...">
         </div>
-        <img class="cover-img" src="{% static 'images/81Ppz1h5GZL.jpg' %}" alt="book cover">
-
-        <a class="btn hero-btn mt-2" href="#">Click here</a>
-    </div>
+        <div class="control">
+            <button class="button is-info" type="submit">
+                Search
+            </button>
+        </div>
+    </form>
 </section>
 
-<section class="container grid-container">
+{% include 'shop_app/hero.html' %}
 
-    <div class="title-and-sort">
-        <h2 class="sub-title">New Books</h2>
+<section class="section books-section">
 
-        <div class="nav-btn-group">
-            <div class="dropdown">
-                <button class="dropdown-btn dropdown-btn-genre js-btn2 nav-btn ">
-                    Genre
-                    <svg class="nav-icon nav-icon-ml" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                        viewBox="0 0 24 24" transform: ;msFilter:;">
-                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
-                    </svg>
-                </button>
-                <div class="dropdown-menu dropdown-menu-genre">
-                    {% for g in genres %}
-                    <a href="/{{ g }}">{{ g.name }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropdown-btn dropdown-btn-sort nav-btn ">
-                    Sort By:
-                    <svg class="nav-icon nav-icon-ml" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                        viewBox="0 0 24 24" transform: ;msFilter:;">
-                        <path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path>
-                    </svg>
-                </button>
-                <div class="dropdown-menu dropdown-menu-sort">
-                    <a href="{% url 'home' %}?sort=price&direction=asc">Price (Low to High)</a>
-                    <a href="{% url 'home' %}?sort=price&direction=desc">Price (High to Low)</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h2 class="section-title subtitle is-2">Best Pick</h2>
 
     {% for book in books %}
 
-    <div class="gutter-3">
-        <div class="card">
-            <div class="card-img-and-text">
-                <a class="cover" href="{% url 'book_detail' book.id %}">
+    <div class="card index-card pb-4">
+        <div class="card-image">
+            <a class="cover" href="{% url 'book_detail' book.id %}">
+                <figure class="cover-figure">
                     <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
-                </a>
-                <div class="card-text">
-                    <h4>{{ book.title }}</h4>
-                    <h5>{{ book.author_names }}</h5>
+                </figure>
+            </a>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <div class="card-text">
+                        <h4 class="title is-5">{{ book.title }}</h4>
+                        <h6 class="subtitle is-6">{{ book.author_names }}</h6>
+                        <p class="card-price is-warning pb-3">€{{ book.price }}</p>
+                    </div>
+                    <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                        {% csrf_token %}
+
+                        <div>
+                            <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                                id="id_qty{{ book.id }}">
+                        </div>
+                        <div>
+                            <input type="submit" class="button is-link is-fullwidth" value="Add to Cart">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </div>
+                    </form>
                 </div>
-            </div>
-
-            <div class="card-btn-container">
-                <p class="stock-color price">€{{ book.price }}</p>
-                <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
-                    {% csrf_token %}
-
-                    <div>
-                        <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
-                            id="id_qty{{ book.id }}">
-                    </div>
-                    <div>
-                        <input type="submit" class="btn card-btn primary-btn" value="Add to Cart">
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-
     {% endfor %}
 </section>
-
 
 {% endblock content %}

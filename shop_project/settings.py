@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "cart_app.apps.CartAppConfig",
     "checkout_app.apps.CheckoutAppConfig",
     "crispy_forms",
+    "crispy_bulma",
 ]
 
 MIDDLEWARE = [
@@ -91,7 +92,9 @@ TEMPLATES = [
 ]
 
 
-# CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)
+
+CRISPY_TEMPLATE_PACK = "bulma"
 
 
 AUTHENTICATION_BACKENDS = [
