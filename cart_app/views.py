@@ -23,11 +23,11 @@ def add_to_cart(request, item_id):
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
         messages.success(
-            request, f'Added {book.title} to cart')
+            request, f'Added {book.title} to your cart')
 
     else:
         cart[item_id] = quantity
-        messages.success(request, f'Added {book.title} to cart')
+        messages.success(request, f'Added {book.title} to your cart')
 
     request.session['cart'] = cart
     return redirect(redirect_url)
@@ -42,11 +42,12 @@ def adjust_cart(request, item_id):
 
     if quantity > 0:
         cart[item_id] = quantity
-        messages.success(request, f'Updated {book.title} quantity in cart')
+        messages.success(
+            request, f'Updated {book.title} quantity in your cart')
 
     else:
         cart.pop[item_id]
-        messages.success(request, f'Removed {book.title} from cart')
+        messages.success(request, f'Removed {book.title} from your cart')
 
     request.session['cart'] = cart
 

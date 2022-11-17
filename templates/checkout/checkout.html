@@ -1,5 +1,9 @@
 {% extends 'shop_app/base.html' %}
 {% load static %}
+<!-- {% load formsetify %} -->
+<!-- {% render_form form "bulma" %} -->
+
+
 <!-- {% load crispy_forms_tags %} -->
 
 
@@ -10,7 +14,8 @@
 
 
 {% block content %}
-<section class="main-grid">
+
+<section class="section">
     <div class="container cart-section">
         <div class="title-and-sort">
             <h2 class="sub-title">Checkout</h2>
@@ -19,56 +24,96 @@
             <div class="">
                 <form action="{% url 'checkout' %}" method="POST" id='payment-form'>
                     {% csrf_token %}
-                    <fieldset>
+                    <fieldset class="mt-4">
                         <legend>Details</legend>
-                        {{ order_form.full_name | as_crispy_field }}
-                        {{ order_form.email | as_crispy_field }}
-                    </fieldset>
-                    <fieldset>
-                        <legend>Delivery</legend>
-                        {{ order_form.phone_number | as_crispy_field }}
-                        {{ order_form.country | as_crispy_field }}
-                        {{ order_form.postcode | as_crispy_field }}
-                        {{ order_form.town_or_city | as_crispy_field }}
-                        {{ order_form.street_address1 | as_crispy_field }}
-                        {{ order_form.street_address2 | as_crispy_field }}
-                        {{ order_form.county | as_crispy_field }}
-
-                        <div>
-                            {% if user.is_authenticated %}
-                            <label for="id-save-info">Save delivery info to profile</label>
-                            <input type="checkbox" id="id-save-info" name="'save-info" checked>
-                            {% else %}
-                            <label for="id-save-info">
-                                <a href="{% url 'account_signup' %}">Create an account</a> or
-                                <a href="{% url 'account_login' %}">Login</a> to save info
-                            </label>
-                            {% endif %}
+                        <div class="field">
+                            <label class="label">Full Name <sup>*</sup></label>
+                            <div class="control">
+                                {{ order_form.full_name | as_crispy_field }}
+                            </div>
                         </div>
+                        <div class="field">
+
+                            <label class="label">Email <sup>*</sup></label>
+                            <div class="control">
+                                {{ order_form.email | as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Phone number </label>
+                            <div class="control">
+                                {{ order_form.phone_number | as_crispy_field }}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="mt-4">
+                        <legend>Delivery</legend>
+
+                        <div class="field">
+                            <label class="label">Street address 1</label>
+                            {{ order_form.street_address1 | as_crispy_field }}
+                        </div>
+                        <div class="field">
+                            <label class="label">Street address 2</label>
+                            {{ order_form.street_address2 | as_crispy_field }}
+                        </div>
+                        <div class="field">
+                            <label class="label">Town or City </label>
+                            {{ order_form.town_or_city | as_crispy_field }}
+                        </div>
+                        <div class="field">
+                            <label class="label">County </label>
+                            {{ order_form.county | as_crispy_field }}
+                        </div>
+                        <div class="field">
+                            <label class="label">Postcode</label>
+                            {{ order_form.postcode | as_crispy_field }}
+                        </div>
+                        <div class="field">
+                            <label class="label">Country</label>
+                            {{ order_form.country | as_crispy_field }}
+                        </div>
+                    </fieldset>
+
+                    <div>
+                        {% if user.is_authenticated %}
+                        <label for="id-save-info">Save delivery info to profile</label>
+                        <input type="checkbox" id="id-save-info" name="'save-info" checked>
+                        {% else %}
+                        <label for="id-save-info">
+                            <a href="{% url 'account_signup' %}">Create an account</a> or
+                            <a href="{% url 'account_login' %}">Login</a> to save info
+                        </label>
+                        {% endif %}
+                    </div>
                     </fieldset>
                     <fieldset>
                         <legend>Payment</legend>
                         <div id="card-element"></div>
-                        <div id="card-errors" role="alert"></div>
+                        <div class="pt-4" id="card-errors" role="alert"></div>
                     </fieldset>
-                    <a href="{% url 'view_cart' %}">Adjust Cart</a>
-                    <button id="submit-button">
-                        Complete Order
-                    </button>
+                    <a class="button is-link is-outlined mt-4" href="{% url 'view_cart' %}">Adjust Cart</a>
+                    <button id="submit-button" class="button is-link mt-4">Complete Order</button>
                     <p>
                         <span>icon</span>
                         <span>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
                     </p>
 
                 </form>
-
-
             </div>
         </div>
-
     </div>
 </section>
 
+
+<div id="loading-overlay">
+    <div id="processing-order">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle id="circle" cx="50" cy="50" r="45" />
+        </svg>
+        <span class="pl-2">Processing order</span>
+    </div>
+</div>
 
 {% endblock content %}
 

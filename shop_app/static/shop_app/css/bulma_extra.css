@@ -1,13 +1,14 @@
-/* ----------------------------------------- */
-/* main css */
-/* ----------------------------------------- */
 :root {
     --hero-color: #3ac6d9;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
     --body-gray: rgb(248, 248, 248);
+    --red: #dc3545;
 }
 
+/* ----------------------------------------- */
+/* main css */
+/* ----------------------------------------- */
 body {
     /* background-color: var(--body-gray); */
 
@@ -92,6 +93,16 @@ section,
 
 .nav-btn {
     border: 0;
+}
+
+.nav-btn:focus {
+    border: 0;
+    outline: 0;
+}
+
+.nav-btn:active {
+    border: 0;
+    outline: 0;
 }
 
 .nav-btn span {
@@ -280,6 +291,10 @@ footer {
     fill: rgba(0, 0, 0, 0.397);
     height: 64px;
 }
+
+
+
+
 
 
 

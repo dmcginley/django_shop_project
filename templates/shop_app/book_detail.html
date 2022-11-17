@@ -20,19 +20,23 @@
                 {% csrf_token %}
                 <label>Quantity</label>
 
-                <div class="input-group">
-                    <span class="input-group-prepend">
-                        <button class="decrement-qty" data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                <div class="field has-addons input-group">
+                    <span class="control input-group-prepend">
+                        <button class="button is-small is-info decrement-qty" data-item_id="{{ book.id }}"
+                            id="decrement-qty_{{ book.id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 transform: ;msFilter:;">
                                 <path d="M5 11h14v2H5z"></path>
                             </svg>
                         </button>
                     </span>
-                    <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99"
-                        date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
-                    <span class="input-group-append">
-                        <button class="increment-qty" data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                    <div class="control">
+                        <input class="input qty_input is-small" type="number" name="quantity" value="1" min="1" max="99"
+                            date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
+                    </div>
+                    <span class="control input-group-append">
+                        <button class="button is-small is-info increment-qty" data-item_id="{{ book.id }}"
+                            id="increment-qty_{{ book.id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 transform: ;msFilter:;">
                                 <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
@@ -71,10 +75,8 @@
 
     // remove item in cart
     $('.remove-item').click(function (e) {
-        console.log('hello1')
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        console.log('hello2')
         var url = `/cart/remove/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken }
 

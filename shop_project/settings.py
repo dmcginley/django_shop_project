@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     "django.contrib.sites",
+    "formset",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",

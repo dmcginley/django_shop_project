@@ -2,14 +2,52 @@
 {% load static %}
 
 {% block content %}
-<section class="main-grid">
-    <div>
+<section class="section">
+    <div class="container">
         <h2>Success!!</h2>
+        <p>Your order information is below.</p>
     </div>
-    <p>Your order info is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
 </section>
-<section>
+<section class="section">
+    <div class="container">
 
+        <div class="pb-4">
+            <h3 class="is-size-3">Order info</h3>
+            <p>Order number: {{ order.order_number }}</p>
+            <p>{{ order.date }}</p>
+        </div>
+        <div>
+            <div class="pb-4">
+                <h4 class="is-size-4">Details</h4>
+                <p>{{ order.full_name }}</p>
+                <p>{{ order.email }}</p>
+                <p>{{ order.phone_number }}</p>
+            </div>
+            <div class="pb-4">
+                <h4 class="is-size-4">Delivery address</h4>
+                <p>{{ order.street_address1 }}</p>
+                {% if  order.street_address2 %}
+                <p>{{ order.street_address2 }}</p>
+                {% endif %}
+                <p>{{ order.town_or_city }}</p>
+                {% if order.county %}
+                <p>{{ order.county }}</p>
+
+                {% endif %}
+                {% if order.postcode %}
+                <p>{{ order.postcode }}</p>
+                {% endif %}
+                <p></p>{{ order.country }}</p>
+            </div>
+            <div class="pb-4">
+                <h4 class="is-size-4">Cost</h4>
+                <p>Order Total: <span>€{{ order.order_total }}</span></p>
+                <p>Delivery: <span>€{{ order.delivery_cost }}</span></p>
+                <p>Total: <span>€{{ order.grand_total }}</span></p>
+            </div>
+        </div>
+        <p>A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+    </div>
 </section>
 
 {% endblock content %}

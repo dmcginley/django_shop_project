@@ -114,13 +114,13 @@
 
         // toast script
         $(".delete").on("click", function () {
-          $(".toast").addClass("visibility");
+          $(".toast-container").addClass("visibility");
         });
 
-        //  $(".toast").show();
-        //  setTimeout(function () {
-        //    $(".toast").fadeOut("slow");
-        //  }, 1900);
+        $(".toast-container").show();
+        setTimeout(function () {
+          $(".toast-container").fadeOut("slow");
+        }, 1200);
 
       });
 

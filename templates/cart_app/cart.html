@@ -1,72 +1,101 @@
 {% extends 'shop_app/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'shop_app/css/cart.css' %}" />
+{% endblock %}
+
+
 {% block content %}
-<section class="main-grid">
-    <div class="container cart-section">
-        <div class="title-and-sort">
-            <h2 class="sub-title">Shopping Cart</h2>
-        </div> {% if cart_items %}
-        <div class="cart-items gutter-3">
-            <div class="">
+<div class="cart-grid">
 
-                <!-- {{ cart_items }} -->
+    <section class="section heading">
+        <h1 class="subtitle">Shopping Cart</h1>
 
-                {% for item in cart_items %}
-                <a class="cover" href="{% url 'book_detail' item.book.id %}">
-                    <img src="{{ item.book.image.image.url }}" class="cover-small" alt="book cover">
+        {% if cart_items %}
+        {% for item in cart_items %}
+
+        <div class="cart-contents pb-5">
+            <div>
+                <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
+                    <figure class="cover-figure">
+                        <img src="{{ item.book.image.image.url }}" class="cover-img cover-small" alt="book cover">
+                    </figure>
                 </a>
-                <p>{{ item.book.title }}</p>
-                <p>{{ item.quantity }}</p>
-                <p>€{{ item.book.price }}</p>
+            </div>
+
+
+
+            <div class="cart-contents-info">
+                <p class="title is-5">{{ item.book.title }}</p>
+                <p class="subtitle is-6">{{ item.quantity }}</p>
+                <p class="card-price has-text-danger pb-3">€{{ item.book.price }}</p>
+
 
 
                 <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
                     {% csrf_token %}
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <button class="decrement-qty" data-item_id="{{ item_id }}" id="decrement-qty_{{ item_id }}">
+                    <div class="field has-addons input-group">
+                        <div class="control input-group-prepend">
+                            <button class="button is-small is-info decrement-qty" data-item_id="{{ item_id }}"
+                                id="decrement-qty_{{ item_id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     transform: ;msFilter:;">
                                     <path d="M5 11h14v2H5z"></path>
                                 </svg>
                             </button>
-                        </span>
-                        <input class="qty_input" type="number" name="quantity" value="{{ item.quantity }}" min="1"
-                            max="99" date-item_id="{{ item_id }}" id="id_qty{{ item_id }}">
-                        <span class="input-group-append">
-                            <button class="increment-qty" data-item_id="{{ item_id }}" id="increment-qty_{{ item_id }}">
+                        </div>
+                        <div class="control">
+                            <input class="input qty_input is-small" type="number" name="quantity"
+                                value="{{ item.quantity }}" min="1" max="99" date-item_id="{{ item_id }}"
+                                id="id_qty{{ item_id }}">
+                        </div>
+                        <div class="control input-group-append">
+                            <button class="button is-small is-info increment-qty" data-item_id="{{ item_id }}"
+                                id="increment-qty_{{ item_id }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     transform: ;msFilter:;">
                                     <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
                                 </svg>
                             </button>
-                        </span>
+                        </div>
                     </div>
                 </form>
 
-
                 <a class="update-link">update</a>
                 <a class="remove-item" id="remove_{{ item_id }}">remove</a>
-
-                {% endfor %}
             </div>
-            <div>
-                <p>Total: €{{ total|floatformat:2 }}</p>
-                <p>Delivery: €{{ delivery|floatformat:2 }}</p>
-                <p>Order Total: €{{ grand_total|floatformat:2 }}</p>
-            </div>
-
-            <a class="btn secondary-btn mt-2" href="{% url 'home' %}">continue shopping</a>
-            <a href="{% url 'checkout' %}" class="btn primary-btn mt-2" href="">checkout</a>
-
         </div>
+        {% endfor %}
+    </section>
+
+    <div class="cart-total">
+
+        <section class="section heading">
+            <h2 class="subtitle is-size-3 is-size-4-mobile">Cart total</h2>
+            <div>
+                <p class="is-size-6-mobile is-size-5">Total: €{{ total|floatformat:2 }}</p>
+                <p class="is-size-6-mobile is-size-5">Delivery: €{{ delivery|floatformat:2 }}</p>
+                <p class="is-size-6-mobile is-size-5">Order Total: €{{ grand_total|floatformat:2 }}</p>
+            </div>
+
+            <div class="pt-4">
+                <a class="button is-link is-outlined mt-3 is-fullwidth" href="{% url 'home' %}">continue shopping</a>
+                <a class="button is-link mt-3 is-fullwidth" href="{% url 'checkout' %}">checkout</a>
+            </div>
+        </section>
         {% else %}
         <p>Your cart is empty...</p>
         <a class="btn secondary-btn mt-2" href="{% url 'home' %}">continue shopping</a>
         {% endif %}
     </div>
-</section>
+
+</div>
+
+
+
+
+
 
 
 {{ block.super }}
@@ -84,8 +113,6 @@
         var itemId = $(this).attr('id').split('remove_')[1];
         var url = `remove/${itemId}`;
         var data = { 'csrfmiddlewaretoken': csrfToken }
-        console.log('hello2')
-
         $.post(url, data)
             .done(function () {
                 location.reload();
