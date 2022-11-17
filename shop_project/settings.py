@@ -202,9 +202,6 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# TODO: fix environ for checkout_app not working why?
-# STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY'),
-
 FREE_DELIVERY_THRESHOLD = 40
 STANDARD_DELIVERY_PERCENTAGE = 10
 
