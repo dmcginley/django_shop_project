@@ -26,8 +26,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['https://railway.app/','http://127.0.0.1:8000']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['https://railway.app/', 'http://127.0.0.1:8000']
 
 CSRF_TRUSTED_ORIGINS = ["https://*.railway.app", "https://*.127.0.0.1"]
 
