@@ -68,14 +68,14 @@
                         </p>
                     </a>
 
-                    {%  if user.is_authenticated %}
-                    <a href="{% url 'account_logout' %}" class="button is-light">
+                    {% if user.is_authenticated %}
+                    <a class="button is-light" href="{% url 'account_logout' %}">
                         Logout
                     </a> {% else %}
-                    <a href="{% url 'account_login' %}" class="button is-light">
+                    <a class="button is-light" href="{% url 'account_login' %}">
                         Log in
                     </a>
-                    <a class="button is-light">
+                    <a class="button is-light" href="{% url 'account_signup' %}">
                         Register
                     </a> {% endif %}
                 </div>

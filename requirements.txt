@@ -10,6 +10,7 @@ cryptography==38.0.1
 defusedxml==0.7.1
 Django==4.1.2
 django-allauth==0.51.0
+django-countries==7.4.2
 django-crispy-forms==1.14.0
 django-formset==0.10.3
 django-postgresql==0.0.3
@@ -33,4 +34,5 @@ sqlparse==0.4.3
 stripe==4.2.0
 toml==0.10.2
 types-cryptography==3.3.23
+typing_extensions==4.4.0
 urllib3==1.26.12
