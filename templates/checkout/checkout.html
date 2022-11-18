@@ -18,14 +18,14 @@
 <section class="section">
     <div class="container cart-section">
         <div class="title-and-sort">
-            <h2 class="sub-title">Checkout</h2>
+            <h2 class="is-size-2">Checkout</h2>
         </div>
         <div class="cart-items gutter-3">
             <div class="">
                 <form action="{% url 'checkout' %}" method="POST" id='payment-form'>
                     {% csrf_token %}
                     <fieldset class="mt-4">
-                        <legend>Details</legend>
+                        <legend class="subtitle">Details</legend>
                         <div class="field">
                             <label class="label">Full Name <sup>*</sup></label>
                             <div class="control">
@@ -40,17 +40,17 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Phone number </label>
+                            <label class="label">Phone number <sup>*</sup></label>
                             <div class="control">
                                 {{ order_form.phone_number | as_crispy_field }}
                             </div>
                         </div>
                     </fieldset>
                     <fieldset class="mt-4">
-                        <legend>Delivery</legend>
+                        <legend class="subtitle">Delivery</legend>
 
                         <div class="field">
-                            <label class="label">Street address 1</label>
+                            <label class="label">Street address 1 <sup>*</sup></label>
                             {{ order_form.street_address1 | as_crispy_field }}
                         </div>
                         <div class="field">
@@ -58,19 +58,19 @@
                             {{ order_form.street_address2 | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Town or City </label>
+                            <label class="label">Town or City <sup>*</sup></label>
                             {{ order_form.town_or_city | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">County </label>
+                            <label class="label">County</label>
                             {{ order_form.county | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Postcode</label>
+                            <label class="label">Postcode <sup>*</sup></label>
                             {{ order_form.postcode | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Country</label>
+                            <label class="label">Country <sup>*</sup></label>
                             {{ order_form.country | as_crispy_field }}
                         </div>
                     </fieldset>
@@ -86,9 +86,8 @@
                         </label>
                         {% endif %}
                     </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Payment</legend>
+                    <fieldset class="mt-4">
+                        <legend class="subtitle">Payment</legend>
                         <div id="card-element"></div>
                         <div class="pt-4" id="card-errors" role="alert"></div>
                     </fieldset>

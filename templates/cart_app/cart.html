@@ -27,43 +27,46 @@
 
 
             <div class="cart-contents-info">
-                <p class="title is-5">{{ item.book.title }}</p>
-                <p class="subtitle is-6">{{ item.quantity }}</p>
-                <p class="card-price has-text-danger pb-3">€{{ item.book.price }}</p>
-
-
-
-                <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="field has-addons input-group">
-                        <div class="control input-group-prepend">
-                            <button class="button is-small is-info decrement-qty" data-item_id="{{ item_id }}"
-                                id="decrement-qty_{{ item_id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    transform: ;msFilter:;">
-                                    <path d="M5 11h14v2H5z"></path>
-                                </svg>
-                            </button>
+                <div>
+                    <p class="title is-4">{{ item.book.title }}</p>
+                    <p class="subtitle is-size-7">(Author) {{ item.book.author_names }}</p>
+                    <p class="is-size-7">{{ item.book.genre }}</p>
+                </div>
+                <div>
+                    <p class="card-price has-text-danger is-size-6 pb-3">€{{ item.book.price }}</p>
+                    <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons input-group">
+                            <div class="control input-group-prepend">
+                                <button class="button quantity-btn is-small is-info decrement-qty"
+                                    data-item_id="{{ item_id }}" id="decrement-qty_{{ item_id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        transform: ;msFilter:;">
+                                        <path d="M5 11h14v2H5z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="control">
+                                <input class="input qty_input is-small" type="number" name="quantity"
+                                    value="{{ item.quantity }}" min="1" max="99" date-item_id="{{ item_id }}"
+                                    id="id_qty{{ item_id }}">
+                            </div>
+                            <div class="control input-group-append">
+                                <button class="button quantity-btn is-small is-info increment-qty"
+                                    data-item_id="{{ item_id }}" id="increment-qty_{{ item_id }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        transform: ;msFilter:;">
+                                        <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <div class="control">
-                            <input class="input qty_input is-small" type="number" name="quantity"
-                                value="{{ item.quantity }}" min="1" max="99" date-item_id="{{ item_id }}"
-                                id="id_qty{{ item_id }}">
-                        </div>
-                        <div class="control input-group-append">
-                            <button class="button is-small is-info increment-qty" data-item_id="{{ item_id }}"
-                                id="increment-qty_{{ item_id }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    transform: ;msFilter:;">
-                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                </svg>
-                            </button>
-                        </div>
+                    </form>
+                    <div class="pt-2">
+                        <a class="update-link">update</a>
+                        <a class="remove-item pl-2" id="remove_{{ item_id }}">remove</a>
                     </div>
-                </form>
-
-                <a class="update-link">update</a>
-                <a class="remove-item" id="remove_{{ item_id }}">remove</a>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -74,9 +77,9 @@
         <section class="section heading">
             <h2 class="subtitle is-size-3 is-size-4-mobile">Cart total</h2>
             <div>
-                <p class="is-size-6-mobile is-size-5">Total: €{{ total|floatformat:2 }}</p>
-                <p class="is-size-6-mobile is-size-5">Delivery: €{{ delivery|floatformat:2 }}</p>
-                <p class="is-size-6-mobile is-size-5">Order Total: €{{ grand_total|floatformat:2 }}</p>
+                <p class="is-size-6-mobile is-size-5"><strong>Total:</strong> €{{ total|floatformat:2 }}</p>
+                <p class="is-size-6-mobile is-size-5"><strong>Delivery:</strong> €{{ delivery|floatformat:2 }}</p>
+                <p class="is-size-6-mobile is-size-5"><strong>Order Total:</strong> €{{ grand_total|floatformat:2 }}</p>
             </div>
 
             <div class="pt-4">
@@ -85,8 +88,8 @@
             </div>
         </section>
         {% else %}
-        <p>Your cart is empty...</p>
-        <a class="btn secondary-btn mt-2" href="{% url 'home' %}">continue shopping</a>
+        <p class="is-size-5">Your cart is empty...</p>
+        <a class="button is-link is-outlined mt-4" href="{% url 'home' %}">continue shopping</a>
         {% endif %}
     </div>
 

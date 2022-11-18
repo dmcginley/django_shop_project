@@ -15,14 +15,15 @@
         <div class="column">
             <h4 class="title is-5">{{ book.title }}</h4>
             <h6 class="subtitle is-6">{{ book.author_names }}</h6>
-            <p class="card-price is-warning pb-3">€{{ book.price }}</p>
+            <p class="card-price pb-3">{{ book.number_in_stock }}</p>
+            <p class="card-price has-text-danger pb-3">€{{ book.price }}</p>
             <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
                 {% csrf_token %}
                 <label>Quantity</label>
 
-                <div class="field has-addons input-group">
+                <div class="field has-addons input-group pt-1">
                     <span class="control input-group-prepend">
-                        <button class="button is-small is-info decrement-qty" data-item_id="{{ book.id }}"
+                        <button class="button quantity-btn is-small is-info decrement-qty" data-item_id="{{ book.id }}"
                             id="decrement-qty_{{ book.id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 transform: ;msFilter:;">
@@ -35,7 +36,7 @@
                             date-item_id="{{ book.id }}" id="id_qty{{ book.id }}">
                     </div>
                     <span class="control input-group-append">
-                        <button class="button is-small is-info increment-qty" data-item_id="{{ book.id }}"
+                        <button class="button quantity-btn is-small is-info increment-qty" data-item_id="{{ book.id }}"
                             id="increment-qty_{{ book.id }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 transform: ;msFilter:;">
@@ -53,11 +54,12 @@
     </div>
 </section>
 <section class="section">
-    <h3>Product details</h3>
-    <p>Publisher: {{ object.publisher }}</p>
-    <p>Publication date: {{ object.publication_date }}</p>
+    <h2 class="subtitle is-2">Book Details</h2>
+    <!-- <h3>Product details</h3> -->
+    <p><strong>Publisher:</strong> {{ object.publisher }}</p>
+    <p><strong>Publication date:</strong> {{ object.publication_date }}</p>
     {% if object.isbn %}
-    <p>ISBN: {{ object.isbn }}</p>
+    <p><strong>ISBN:</strong> {{ object.isbn }}</p>
     {% else %}
     <p>no ISBN found</p>
     {% endif %}

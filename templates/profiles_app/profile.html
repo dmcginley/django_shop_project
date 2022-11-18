@@ -1,25 +1,16 @@
-{% extends 'shop_app/base.html' %}
-{% load static %}
+{% extends 'shop_app/base.html' %} {% load static %}
 <!-- {% load formsetify %} -->
 <!-- {% render_form form "bulma" %} -->
 
-
 <!-- {% load crispy_forms_tags %} -->
-
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'shop_app/css/profile.css' %}" />
-{% endblock extra_css %}
-
-
-
-{% block content %}
+{% endblock extra_css %} {% block content %}
 
 <section class="section">
-    <div class="container cart-section">
-        <h2 class="sub-title">Profile</h2>
-    </div>
+  <h2 class="is-size-2">My Profile</h2>
+  <p class="is-capitalized">{{ profile }}</p>
 </section>
-
 
 {% endblock content %}

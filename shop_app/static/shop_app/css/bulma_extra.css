@@ -76,6 +76,12 @@ section,
 /* ----------------------------------------- */
 /* nav area css */
 /* ----------------------------------------- */
+
+
+.cart-icon {
+    /* position: relative; */
+}
+
 .book-counter {
     position: absolute;
     display: flex;
@@ -83,13 +89,14 @@ section,
     justify-content: center;
     height: 22px;
     width: 22px;
-    top: 8px;
+    top: 0px;
     left: -6px;
-    color: var(--white);
-    background-color: rgb(255, 0, 140);
+    color: var(--has-text-white);
+    background-color: var(--red);
     border-radius: 50%;
     font-size: .8rem;
 }
+
 
 .nav-btn {
     border: 0;
@@ -128,11 +135,11 @@ section,
 /* ----------------------------------------- */
 /* card css */
 /* ----------------------------------------- */
-.books-section {
-    /* margin: auto; */
-}
 
-.card-content {
+
+.index-content {
+    max-width: 190px;
+    margin: auto;
     padding: 1.5rem 0;
 }
 
@@ -144,12 +151,10 @@ section,
     margin: auto;
 }
 
-
 .card-text {
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
 }
 
-.card-price {}
 
 .section-form {
     display: flex;
@@ -159,13 +164,18 @@ section,
     width: 100%;
 }
 
-
 form {
-    /* min-width: 400px; */
     max-width: 600px;
 }
 
+label sup {
+    color: var(--red) !important;
+}
 
+#div_id_country label::after {
+    content: '*';
+    color: var(--red) !important;
+}
 
 .hero-color {
     color: aliceblue;
@@ -194,7 +204,6 @@ form {
     width: 100%;
 }
 
-
 .columns {
     padding: 1em;
     width: 100%;
@@ -212,7 +221,14 @@ form {
     background-color: coral;
 }
 
-
+.text-ellipsis {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    min-height: 46px;
+}
 
 
 .cover-figure {
@@ -244,9 +260,9 @@ form {
     width: 600px
 }
 
-
-
-
+.quantity-btn svg {
+    fill: aliceblue;
+}
 
 
 footer {
@@ -260,23 +276,12 @@ footer {
     right: 0;
     z-index: 100;
     width: 100%;
-
 }
 
 .toast {
     display: block;
     margin-left: auto;
-    /* position: fixed; */
-    /* z-index: 100; */
-    /* top: 0;
-    right: 0; */
-    /* margin: 1em; */
-    /* margin-left: 1em; */
-    /* width: 100%; */
-    /* max-width: 600px; */
 }
-
-
 
 .toast.visibility {
     display: none;
@@ -292,19 +297,6 @@ footer {
     height: 64px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (min-width: 668px) {
     .books-section {
         display: grid;
@@ -315,7 +307,6 @@ footer {
         padding: 0;
     }
 
-
     .toast-container {
         width: clamp(200px, 60%, 500px);
     }
@@ -325,6 +316,15 @@ footer {
 @media only screen and (min-width: 768px) {
     #cart {
         display: none;
+    }
+
+}
+
+@media only screen and (min-width: 1068px) {
+
+    .books-section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
     }
 
 }
