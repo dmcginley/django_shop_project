@@ -48,8 +48,8 @@
                             </div>
                             <div class="control">
                                 <input class="input qty_input is-small" type="number" name="quantity"
-                                    value="{{ item.quantity }}" min="1" max="99" date-item_id="{{ item_id }}"
-                                    id="id_qty{{ item_id }}">
+                                    value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item_id }}"
+                                    id="id_qty_{{ item_id }}">
                             </div>
                             <div class="control input-group-append">
                                 <button class="button quantity-btn is-small is-info increment-qty"
@@ -62,10 +62,8 @@
                             </div>
                         </div>
                     </form>
-                    <div class="pt-2">
                         <a class="update-link">update</a>
                         <a class="remove-item pl-2" id="remove_{{ item_id }}">remove</a>
-                    </div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,17 @@
 <section class="section">
   <h2 class="is-size-2">My Profile</h2>
   <p class="is-capitalized">{{ profile }}</p>
+  <div>
+    <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="button">Update Info</button>
+    </form>
+  </div>
+
+  <div>
+    {{ orders }}
+  </div>
 </section>
 
 {% endblock content %}
