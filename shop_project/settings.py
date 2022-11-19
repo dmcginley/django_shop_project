@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     "cart_app.apps.CartAppConfig",
     "checkout_app.apps.CheckoutAppConfig",
     "profiles_app.apps.ProfilesAppConfig",
-    "formset",
+    # "formset",
     "crispy_forms",
     "crispy_bulma",
 ]
@@ -180,8 +180,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static")
 

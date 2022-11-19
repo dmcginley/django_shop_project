@@ -12,6 +12,7 @@ Django==4.1.2
 django-allauth==0.51.0
 django-countries==7.4.2
 django-crispy-forms==1.14.0
+django-extensions==3.2.1
 django-formset==0.10.3
 django-postgresql==0.0.3
 django-storages==1.13.1
