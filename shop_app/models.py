@@ -64,7 +64,7 @@ class Book(models.Model):
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
 
     publication_date = models.DateField(
-        verbose_name="Date the book was published.")
+        verbose_name="Date the book was published.", null=True)
     isbn = models.CharField(max_length=20,
                             verbose_name="ISBN number of the book.")
     image = models.ForeignKey(
