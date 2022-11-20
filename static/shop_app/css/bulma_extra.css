@@ -10,9 +10,17 @@
 /* main css */
 /* ----------------------------------------- */
 body {
-    /* background-color: var(--body-gray); */
+    background-color: var(--hero-color);
 
 }
+
+div .columns {
+    grid-column: 2/4;
+    background-color: #dc3545;
+    /* "-0.75rem". */
+}
+
+
 
 .wrapper {
     min-height: 100vh;
@@ -21,13 +29,6 @@ body {
     /* background-color: blueviolet; */
 }
 
-h1 {
-    font-size: 2.6rem !important;
-}
-
-.book-h1 {
-    font-weight: 300 !important;
-}
 
 .section-title {
     grid-column: 1/-1;
@@ -77,10 +78,6 @@ section,
 /* nav area css */
 /* ----------------------------------------- */
 
-
-.cart-icon {
-    /* position: relative; */
-}
 
 .book-counter {
     position: absolute;
@@ -135,10 +132,6 @@ section,
 /* ----------------------------------------- */
 /* card css */
 /* ----------------------------------------- */
-.books-section {
-    /* margin: auto; */
-}
-
 .card-content {
     padding: 1.5rem 0;
 }
@@ -157,21 +150,6 @@ section,
 }
 
 .card-price {}
-
-.section-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* background-color: aqua; */
-    width: 100%;
-}
-
-
-form {
-    /* min-width: 400px; */
-    max-width: 600px;
-}
-
 
 
 .hero-color {

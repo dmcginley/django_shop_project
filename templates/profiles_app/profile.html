@@ -1,26 +1,32 @@
-{% extends 'shop_app/base.html' %} {% load static %}
-<!-- {% load formsetify %} -->
-<!-- {% render_form form "bulma" %} -->
+{% extends 'shop_app/base.html' %}
+{% load static %}
+{# {% load formsetify %} #}
+{# {% render_form form "bulma" %} #}
 
 <!-- {% load crispy_forms_tags %} -->
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'shop_app/css/profile.css' %}" />
+<link rel="stylesheet" href="{% static 'shop_app/css/forms.css' %}" />
 {% endblock extra_css %} {% block content %}
 
-<section class="section">
-  <h2 class="is-size-2">My Profile</h2>
-  <p class="is-capitalized">{{ profile }}</p>
-  <div>
-    <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="button">Update Info</button>
-    </form>
-  </div>
 
-  <div>
-    {{ orders }}
+<section class="">
+  <div class="columns">
+    <h2 class="is-size-2 pl-2">My Profile</h2>
+    <p class="is-capitalized">{{ profile }}</p>
+  </div>
+  <div class="columns">
+    <div class="column is-half-tablet">
+      <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="button is-link">Update Info</button>
+      </form>
+    </div>
+    <div class="column is-half-tablet" style="background-color: rgb(210, 245, 233);">
+      <button class="button">hello!!!</button>
+      <div>{{ orders }}</div>
+    </div>
   </div>
 </section>
 

@@ -6,66 +6,31 @@
     --red: #dc3545;
 }
 
+
+
+.columns {
+    margin: 0;
+}
+
+.column {
+    /* padding: auto .2em; */
+    margin: 0;
+}
+
 form {
     display: block;
+    max-width: 600px;
     z-index: 700;
 }
 
-/*
-fieldset {
-    border: 0 none;
-}
 
-legend {
-    padding: 1rem 0;
-}
-
-input {
-    font-size: 1rem;
-    padding: 1rem 1.8rem;
-    margin-bottom: 1em;
-    background-color: var(--light-gray);
-    border: 1px solid var(--hero-btn-color);
-    border-radius: 3em;
+.section-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
     width: 100%;
-} */
-
-
-
-/* stripe */
-
-/* .StripeElement,
-.stripe-style-input {
-    box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid transparent;
-    border-radius: 0px;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    -webkit-transition: box-shadow 150ms ease;
-    transition: box-shadow 150ms ease;
-} */
-
-/* .StripeElement--focus,
-.stripe-style-input:focus,
-.stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
-} */
-
-/* .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
-} */
-
-/* .stripe-style-input::placeholder {
-    color: #aab7c4;
-} */
-
-/* .fieldset-label {
-    position: relative;
-    right: .5rem;
-} */
-
+}
 
 input {
     font-weight: 400;
@@ -77,25 +42,32 @@ input {
 
 /* #payment-form .form-control, */
 #card-element {
-    border: 1px solid #8f8f9d;
+    border: 1px solid #e3e3e3;
     border-radius: 2px;
     font-size: 1rem;
     font-weight: 200 !important;
     padding: .25rem;
 }
 
-.InputElement {
-    padding-bottom: 2em !important;
-
-
+#card-element:hover {
+    border: 1px solid #b5b5b5;
 }
 
+.InputElement {
+    padding-bottom: 2em !important;
+}
+
+
+/* #card-element:hover>#card-element:active {
+    border: 1px solid #485fc7 !important;
+
+} */
 
 .StripeElement {
     border-radius: 4px !important;
     padding: .6rem !important;
-
 }
+
 
 .StripeElement--focus {
     margin: 0;
@@ -103,23 +75,25 @@ input {
     outline: 2px #d1d7f1 solid;
 }
 
-
 #card-errors {
     display: flex;
     align-items: center;
-    color: #dc3545;
+    color: var(--red);
 }
 
 #card-errors svg {
     margin-right: .4rem;
-    fill: #dc3545;
+    fill: var(--red);
 }
 
 sup {
-    color: #dc3545;
+    color: var(--red);
 }
 
 
+/* ------------------------------------------- */
+/* SVG spinner overlay & animation */
+/* ------------------------------------------- */
 #loading-overlay {
     display: none;
     position: fixed;
@@ -128,7 +102,6 @@ sup {
     /* display: none; */
     background-color: #ffffffaf;
 }
-
 
 
 #processing-order {
@@ -147,13 +120,6 @@ sup {
 
 }
 
-
-
-select,
-select option {
-    color: black;
-}
-
 select:invalid,
 select option[value=""] {
     color: gray !important;
@@ -161,16 +127,7 @@ select option[value=""] {
 
 
 
-
-
-
-
-
-
-
-
-
-/* SVG animation. */
+/* SVG spinner animation */
 @keyframes svg-animation {
     0% {
         transform: rotateZ(0deg);

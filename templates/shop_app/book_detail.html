@@ -14,9 +14,9 @@
         </div>
         <div class="column">
             <h4 class="title is-5">{{ book.title }}</h4>
-            <h6 class="subtitle is-6">{{ book.author_names }}</h6>
-            <p class="card-price pb-3">{{ book.number_in_stock }}</p>
-            <p class="card-price has-text-danger pb-3">€{{ book.price }}</p>
+            <h6 class="subtitle is-5">{{ book.author_names }}</h6>
+            <p class="card-price pb-3">{{ book.number_in_stock }} in stock</p>
+            <p class="card-price has-text-danger is-size-5  pb-3">€{{ book.price }}</p>
             <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
                 {% csrf_token %}
                 <label>Quantity</label>

@@ -26,13 +26,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['https://web-production-7efa.up.railway.app',
-#                  'https://railway.app/', 'http://127.0.0.1:8000']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['https://railway.app/', '127.0.0.1']
 
-# CSRF_TRUSTED_ORIGINS = ["https://*.railway.app", "https://*.127.0.0.1"]
-# CSRF_TRUSTED_ORIGINS = ['https://web-production-7efa.up.railway.app',
-#                         "https://*.railway.app", "https://*.127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://*.railway.app", "https://127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = ["https://web-production-7efa.up.railway.app",
+                        "https://*.railway.app", "https://127.0.0.1"]
 
 # Application definition
 
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "storages",
-    "django.contrib.sites",
+    # "django.contrib.sites",
     "django_countries",
     "allauth",
     "allauth.account",

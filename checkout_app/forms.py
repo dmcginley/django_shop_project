@@ -14,6 +14,11 @@ class OrderForm(forms.ModelForm):
         labels and set autofocus on first field
         """
         super().__init__(*args, **kwargs)
+
+        # fields = ('full_name', 'email', 'phone_number',
+        #           'street_address1', 'street_address2',  'town_or_city', 'county', 'postcode', 'country')
+
+
         placeholders = {
             'full_name': 'e.g Alex Smith',
             'email': 'e.g. alexsmith@gmail.com',
@@ -43,4 +48,3 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].widget.attrs['class'] = 'is-fullwidth'
 
-            self.fields[field].label = False

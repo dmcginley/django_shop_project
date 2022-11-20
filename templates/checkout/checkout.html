@@ -1,7 +1,9 @@
 {% extends 'shop_app/base.html' %}
 {% load static %}
+{% comment "" %}
 <!-- {% load formsetify %} -->
 <!-- {% render_form form "bulma" %} -->
+{% endcomment %}
 
 
 <!-- {% load crispy_forms_tags %} -->
@@ -27,20 +29,17 @@
                     <fieldset class="mt-4">
                         <legend class="subtitle">Details</legend>
                         <div class="field">
-                            <label class="label">Full Name <sup>*</sup></label>
                             <div class="control">
                                 {{ order_form.full_name | as_crispy_field }}
                             </div>
                         </div>
                         <div class="field">
 
-                            <label class="label">Email <sup>*</sup></label>
                             <div class="control">
                                 {{ order_form.email | as_crispy_field }}
                             </div>
                         </div>
                         <div class="field">
-                            <label class="label">Phone number <sup>*</sup></label>
                             <div class="control">
                                 {{ order_form.phone_number | as_crispy_field }}
                             </div>
@@ -50,27 +49,21 @@
                         <legend class="subtitle">Delivery</legend>
 
                         <div class="field">
-                            <label class="label">Street address 1 <sup>*</sup></label>
                             {{ order_form.street_address1 | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Street address 2</label>
                             {{ order_form.street_address2 | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Town or City <sup>*</sup></label>
                             {{ order_form.town_or_city | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">County</label>
                             {{ order_form.county | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Postcode <sup>*</sup></label>
                             {{ order_form.postcode | as_crispy_field }}
                         </div>
                         <div class="field">
-                            <label class="label">Country <sup>*</sup></label>
                             {{ order_form.country | as_crispy_field }}
                         </div>
                     </fieldset>

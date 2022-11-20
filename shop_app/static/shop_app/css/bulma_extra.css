@@ -138,7 +138,8 @@ section,
 
 
 .index-content {
-    max-width: 190px;
+    /* min-width: 180px; */
+    /* max-width: 190px; */
     margin: auto;
     padding: 1.5rem 0;
 }
@@ -172,8 +173,7 @@ label sup {
     color: var(--red) !important;
 }
 
-#div_id_country label::after {
-    content: '*';
+.label .asterisk {
     color: var(--red) !important;
 }
 
@@ -316,6 +316,15 @@ footer {
     .books-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+
+
+    .index-content {
+        /* min-width: 180px; */
+        width: 190px;
+        /* margin: auto; */
+        /* padding: 1.5rem 0; */
     }
 
     .card-text {
