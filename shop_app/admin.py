@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Book, Author, Publisher, Image, Genre
+# from .models import Book, Image
 from django.utils.safestring import mark_safe
 
 
@@ -26,27 +27,30 @@ from django.utils.safestring import mark_safe
 #     self.list_editable = ['authors']
 
 
+# -----------------------------------------------------
+
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'last_name']
     list_display = ['first_name', 'last_name']
     list_filter = ['first_name', 'last_name']
 
+# -----------------------------------------------------
+
+# @admin.register(Publisher)
+# class PublisherAdmin(admin.ModelAdmin):
+#     search_fields = ['name', 'website']
+#     list_display = ['name', 'website']
+
 
 @admin.register(Publisher)
 class PublisherAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'website']
-    list_display = ['name', 'website']
+    search_fields = ['name']
+    list_display = ['name']
 
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-
-    # def get_changelist(self, request, **kwargs):
-    #     return BookChangeList
-
-    # def get_changelist_form(self, request, **kwargs):
-    #     return BookChangeListForm
 
     search_fields = ('title', 'authors', 'genre',
                      'isbn')
@@ -54,10 +58,21 @@ class BookAdmin(admin.ModelAdmin):
                     'genre_name', 'isbn']
     list_filter = ('title', 'authors', 'genre', 'isbn')
 
+    # ----------------------------------------------------------
+
+    # search_fields = ('title', 'author', 'isbn')
+    # list_display = ['title', 'author', 'isbn']
+    # list_filter = ('title', 'author', 'isbn')
+    # search_fields = ('title',  'isbn')
+    # list_display = ['title', 'isbn']
+    # list_filter = ('title', 'isbn')
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['image']
+
+# ----------------------------------------------------------
 
 
 @admin.register(Genre)
@@ -65,3 +80,4 @@ class GenreAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name',)}
+# ----------------------------------------------------------

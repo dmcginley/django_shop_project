@@ -1,13 +1,11 @@
 <nav class="navbar is-transparent is-fixed-top">
     <div class="navbar-brand">
         <a class="navbar-item" href="{% url 'home' %}">
-            <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                viewBox="0 0 24 24" transform: ;msFilter:;">
-                <path
-                    d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z">
-                </path>
+            <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" transform: ;msFilter:;">
+                <path d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z"></path>
             </svg>
-            <span class="pl-2">Book<strong>Shop</strong></span>
+            <span class="pl-2">Book<strong>Shop</strong>
+            </span>
         </a>
         <div class="navbar-burger" data-target="navbarExampleTransparentExample">
             <span></span>
@@ -18,18 +16,19 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
+
             <div class="navbar-item has-dropdown is-hoverable" {% if request.path != '/' %} style="display: none;" {% endif %}>
                 <span class="navbar-link">
                     Genre
                 </span>
                 <div class="navbar-dropdown is-boxed">
                     {% for g in genres %}
-                    <a class="navbar-item" href="/{{ g }}">{{ g.name }}</a>
+                        <a class="navbar-item" href="/{{ g }}">{{ g.name }}</a>
                     {% endfor %}
                 </div>
             </div>
 
-            <div class="navbar-item has-dropdown is-hoverable" {% if request.path != '/'%} style="display: none;" {% endif %}>
+            <div class="navbar-item has-dropdown is-hoverable" {% if request.path != '/' %} style="display: none;" {% endif %}>
                 <span class="navbar-link">
                     Sort by
                 </span>
@@ -37,55 +36,54 @@
                     <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=asc">Price (Low to High)</a>
                     <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=desc">Price (High to Low)</a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                        Overview
-                    </a>
+                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+                            Overview
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a href="{% url 'view_cart' %}" class="button nav-btn">
-                        {% if book_count%}
-                        <div class="book-counter">
-                            {{ book_count }}
-                        </div>
-                        {% endif %}
-                        <svg class="nav-icon cart-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28"
-                            height="28" viewBox="0 0 24 24" transform: ;msFilter:;">
-                            <path
-                                d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z">
-                            </path>
-                            <circle cx="10.5" cy="19.5" r="1.5"></circle>
-                            <circle cx="16.5" cy="19.5" r="1.5"></circle>
-                        </svg>
-                        <span class="pl-1"><strong>Cart</strong></span>
-                        <p class="cart-price pl-1">
-                            {% if grand_total%}
-                            €{{ grand_total|floatformat:2 }}
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href="{% url 'view_cart' %}" class="button nav-btn">
+                            {% if book_count %}
+                                <div class="book-counter">
+                                    {{ book_count }}
+                                </div>
                             {% endif %}
-                        </p>
-                    </a>
+                            <svg class="nav-icon cart-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" transform: ;msFilter:;">
+                                <path d="M21 4H2v2h2.3l3.28 9a3 3 0 0 0 2.82 2H19v-2h-8.6a1 1 0 0 1-.94-.66L9 13h9.28a2 2 0 0 0 1.92-1.45L22 5.27A1 1 0 0 0 21.27 4 .84.84 0 0 0 21 4zm-2.75 7h-10L6.43 6h13.24z"></path>
+                                <circle cx="10.5" cy="19.5" r="1.5"></circle>
+                                <circle cx="16.5" cy="19.5" r="1.5"></circle>
+                            </svg>
+                            <span class="pl-1">
+                                <strong>Cart</strong>
+                            </span>
+                            <p class="cart-price pl-1">
+                                {% if grand_total %}
+                                    €{{ grand_total|floatformat:2 }}
+                                {% endif %}
+                            </p>
+                        </a>
 
-                    {% if user.is_authenticated %}
-                    <a class="button is-light" href="{% url 'profile' %}">
-                        Profile
-                    </a>
-                    <a class="button is-light" href="{% url 'account_logout' %}">
-                        Logout
-                    </a>
-                    {% else %}
-                    <a class="button is-light" href="{% url 'account_login' %}">
-                        Log in
-                    </a>
-                    <a class="button is-light" href="{% url 'account_signup' %}">
-                        Register
-                    </a>
-                    {% endif %}
+                        {% if user.is_authenticated %}
+                            <a class="button is-light" href="{% url 'profile' %}">
+                                Profile
+                            </a>
+                            <a class="button is-light" href="{% url 'account_logout' %}">
+                                Logout
+                            </a>
+                        {% else %}
+                            <a class="button is-light" href="{% url 'account_login' %}">
+                                Log in
+                            </a>
+                            <a class="button is-light" href="{% url 'account_signup' %}">
+                                Register
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
