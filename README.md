@@ -133,13 +133,31 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 **Sites content, media, and help with implementing code from tutorials & online help.**
 
-#### Images & Icons
+#### CSS, Images & Icons
 
 - [Boxicons](https://boxicons.com/?query=search)
 - [Css gradient](https://cssgradient.io/)- used for gradient on the search icon
+- [How To Shorten Text With CSS (ellipsis)](https://www.youtube.com/watch?v=lurEwLtdWMI)
+- []()
 
-#### Bootstrap
+#### Bulma
+
+- [Bulma - Column sizes](https://bulma.io/documentation/columns/sizes/)
+- [BUG FIX: columns.is-variable overflow #1540](https://github.com/jgthms/bulma/issues/1540)
+- [Build a Django Front End With Bulma – Part 2](https://realpython.com/django-social-front-end-2/)
 
 #### Django & Python
 
+- [Layouts, Fundamentals of crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html)
+- [stack*overflow*](https://stackoverflow.com/questions/61609953/is-there-a-way-to-hide-a-button-on-every-page-except-home-page-of-a-site-in-djan) - hiding button on every page except Home page in Django
+- []()
+- []()
+- []()
+
+- [Chapter 10: Advanced Models](https://django-book.readthedocs.io/en/latest/chapter10.html) - help for creating the book model and related models
+
 #### PostgreSQL _- database_
+
+- []()
+- []()
+- []()
