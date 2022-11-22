@@ -26,3 +26,29 @@ input {
     padding-bottom: 2em !important;
 
 }
+
+
+
+
+/* select,
+select option {
+    color: black;
+} */
+
+
+
+
+/* select {
+    background-color: #3ac6d9;
+    padding: 2em;
+}
+
+select #id_default_country,
+select #id_default_country option:not(:first-child) {
+    color: #485fc7 !important;
+}
+
+#id_default_country,
+#id_default_country option:first-child {
+    color: #dc3545;
+} */

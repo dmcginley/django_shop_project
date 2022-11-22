@@ -1,13 +1,12 @@
-.cart-grid {
+/* .cart-grid {
     grid-column: 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* background-color: rgb(194, 247, 247); */
-}
+} */
 
 .cart-grid section {
     grid-column: 1/4;
-    /* background-color: rgb(232, 251, 252); */
+    background-color: rgb(232, 251, 252);
 }
 
 .cover-small {
@@ -16,16 +15,25 @@
 }
 
 
-.cart-contents {
-    /* background-color: rgb(206, 252, 236); */
+
+.cart-text-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 40ch) 1fr;
+    padding: 0;
 }
+
+.cart-text-container {
+    grid-column: 2;
+    padding: 0;
+}
+
+.cart-contents {}
 
 .cart-contents-info {
     width: 50%;
     padding-top: 1rem;
     margin: auto;
     margin-top: 0;
-    /* background-color: rgb(224, 199, 247); */
 }
 
 
@@ -34,11 +42,26 @@
     /* margin: auto; */
 }
 
+.cart-contents-info button {
+    fill: aliceblue;
+}
+
+button svg {
+    fill: aliceblue;
+}
+
+
 .cart-total {
     grid-column: 1/4;
     /* background-color: rgb(255, 242, 210); */
     width: 100%;
 }
+
+
+
+
+
+
 
 
 
@@ -50,23 +73,17 @@
     }
 
     .cart-contents-info {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
         padding-top: 0;
-        margin-right: 0;
-        min-height: 200px;
-        width: 60%;
-        /* background-color: rgb(231, 164, 164); */
     }
 
-    .cart-contents-info form {
-        margin-top: auto;
-    }
+
+
 
 }
 
-@media only screen and (min-width: 768px) {
+
+
+@media only screen and (min-width: 668px) {
     .cart-grid section {
         grid-column: 1/3;
         /* background-color: rgb(232, 251, 252); */
@@ -78,20 +95,32 @@
 }
 
 
-@media only screen and (min-width: 868px) {
-    .cart-contents-info {
-        margin-right: 4em;
-        /* background-color: aqua; */
-
+/* mobile */
+@media only screen and (min-width: 769px) {
+    .cart-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* background-color: rgb(17, 182, 182); */
     }
+
 
 }
 
-@media only screen and (min-width: 1068px) {
-    .cart-contents-info {
-        margin-right: 10%;
-        /* background-color: rgb(35, 155, 155); */
+/* tablet */
+@media only screen and (min-width: 1024px) {
+    .cart-text-container {
+        grid-column: 1/3;
 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* background-color: rgb(69, 182, 17); */
     }
-
 }
+
+/* widescreen */
+@media only screen and (min-width: 1216px) {}
+
+/* fullhd */
+@media only screen and (min-width: 1408px) {}

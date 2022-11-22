@@ -1,0 +1,226 @@
+:root {
+    --hero-color: #3ac6d9;
+    --has-text-white: hsl(0, 0%, 100%);
+    --has-text-white-ter: hsl(0, 0%, 96%);
+    --body-gray: rgb(248, 248, 248);
+    --red: #dc3545;
+}
+
+form {
+    display: block;
+    z-index: 700;
+}
+
+
+
+/*
+fieldset {
+    border: 0 none;
+}
+
+legend {
+    padding: 1rem 0;
+}
+
+input {
+    font-size: 1rem;
+    padding: 1rem 1.8rem;
+    margin-bottom: 1em;
+    background-color: var(--light-gray);
+    border: 1px solid var(--hero-btn-color);
+    border-radius: 3em;
+    width: 100%;
+} */
+
+
+
+/* stripe */
+
+/* .StripeElement,
+.stripe-style-input {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+} */
+
+/* .StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+} */
+
+/* .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+} */
+
+/* .stripe-style-input::placeholder {
+    color: #aab7c4;
+} */
+
+/* .fieldset-label {
+    position: relative;
+    right: .5rem;
+} */
+
+
+input {
+    font-weight: 400;
+}
+
+::placeholder {
+    color: #aab7c4 !important;
+}
+
+/* #payment-form .form-control, */
+#card-element {
+    border: 1px solid #8f8f9d;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 200 !important;
+    padding: .25rem;
+}
+
+.InputElement {
+    padding-bottom: 2em !important;
+
+
+}
+
+
+.StripeElement {
+    border-radius: 4px !important;
+    padding: .6rem !important;
+
+}
+
+.StripeElement--focus {
+    margin: 0;
+    border: 1px solid #485fc7 !important;
+    outline: 2px #d1d7f1 solid;
+}
+
+
+#card-errors {
+    display: flex;
+    align-items: center;
+    color: #dc3545;
+}
+
+#card-errors svg {
+    margin-right: .4rem;
+    fill: #dc3545;
+}
+
+sup {
+    color: #dc3545;
+}
+
+#loading-overlay * {
+    display: none;
+}
+
+#loading-overlay {
+    /* display: none; */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* display: none; */
+    background-color: #e22c2caf;
+}
+
+
+
+#processing-order {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#processing-order svg {
+    height: 64px;
+    width: 64px;
+    fill: #5a5a61;
+    z-index: 900;
+    animation: 2s linear infinite svg-animation;
+
+}
+
+
+
+/* select,
+select option {
+    color: black;
+} */
+
+select:invalid,
+select option[value=""] {
+    color: gray !important;
+}
+
+
+
+/* SVG animation. */
+@keyframes svg-animation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg)
+    }
+}
+
+/* Circle styles. */
+/* #circle {
+    display: block;
+    fill: transparent;
+    stroke: #666a6e !important;
+    stroke-linecap: round;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 280;
+    stroke-width: 8px;
+    transform-origin: 50% 50%;
+    animation: 1.8s ease-in-out infinite both circle-animation;
+} */
+
+@keyframes circle-animation {
+
+    0%,
+    25% {
+        stroke-dashoffset: 280;
+        transform: rotate(0);
+    }
+
+    50%,
+    75% {
+        stroke-dashoffset: 75;
+        transform: rotate(45deg);
+    }
+
+    100% {
+        stroke-dashoffset: 280;
+        transform: rotate(360deg);
+    }
+}
+
+/* select {
+    background-color: #3ac6d9;
+    padding: 2em;
+}
+
+select #id_default_country,
+select #id_default_country option:not(:first-child) {
+    color: #485fc7 !important;
+}
+
+#id_default_country,
+#id_default_country option:first-child {
+    color: #dc3545;
+} */

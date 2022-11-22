@@ -26,10 +26,6 @@
   </div>
 
   {% include "socialaccount/snippets/login_extra.html" %} {% else %}
-  <p>
-    {% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-  </p>
   {% endif %}
 
   <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -44,12 +40,18 @@
       </label>
     </fieldset>
     {% endif %}
-    <a class="button is-link is-outlined secondaryAction" href="{% url 'account_reset_password' %}">
-      {% trans "Forgot Password?" %}</a>
-    <button class="button is-link primaryAction" type="submit">
-      {% trans "Sign In" %}
-    </button>
+    <div class="mt-4">
+      <a class="button is-link is-outlined secondaryAction" href="{% url 'account_reset_password' %}">
+        {% trans "Forgot Password?" %}</a>
+      <button class="button is-link primaryAction" type="submit">
+        {% trans "Sign In" %}
+      </button>
+    </div>
   </form>
+  <p class="mt-2">
+    {% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+  </p>
 </section>
 
 {% endblock %}

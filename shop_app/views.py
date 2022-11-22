@@ -9,27 +9,20 @@ from django.db.models import Q
 from django.views.generic import ListView, DetailView
 
 # from shop_app.models import Product
-
-# -----------------------------------------------------------------
-# from .models import Book, Author, Genre
-# -----------------------------------------------------------------
-
-from .models import Book, Genre
+from .models import Book, Author, Genre
+# from .models import Book, Author
 
 
 def home(request):
 
     books = Book.objects.all()
-
-    # ----------------------------------------
-    # authors = Author.objects.all()
-    # ----------------------------------------
+    authors = Author.objects.all()
 
     query = None
     sort = None
     direction = None
     # TODO: Queries and Categories, one of two ways
-    genre = None
+    # genre = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -59,13 +52,10 @@ def home(request):
                 isbn__icontains=query)
             books = books.filter(queries)
 
-
-# -----------------------------------------------------------------
             q2 = Q(first_name__icontains=query) | Q(last_name__icontains=query)
             authors = authors.filter(q2)
             for a in authors:
                 print("found author>> ", str(a))
-# -----------------------------------------------------------------
 
             # TODO: find how Django does many-to-many search
             #  add matching books with found authors to list 'books'
@@ -102,7 +92,6 @@ class BookDetailView(DetailView):
 #     return render(request, 'shop_app/book_detail.html')
 
 
-# -----------------------------------------------------------------
 def genre_list(request, slug):
     genres = get_object_or_404(Genre, slug=slug)
     book = Book.objects.filter(genre=genres)
@@ -120,4 +109,3 @@ def genres(request):
     return {
         'genres': Genre.objects.all()
     }
-# -----------------------------------------------------------------
