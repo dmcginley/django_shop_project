@@ -214,6 +214,7 @@ section,
     max-width: 300px;
 }
 
+
 .search-section {
     padding: 1em;
     display: flex;
@@ -222,9 +223,22 @@ section,
 
 }
 
+/* ------------------------------- */
+/* forms */
+/* ------------------------------- */
 .search-form {
     width: 600px
 }
+
+.shopping-btn svg {
+    left: -20px;
+    fill: #485fc7;
+}
+
+.shopping-btn:hover svg {
+    fill: #fefefb;
+}
+
 
 
 /* placeholder text for every form */

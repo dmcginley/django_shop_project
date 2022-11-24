@@ -109,3 +109,22 @@ def genres(request):
     return {
         'genres': Genre.objects.all()
     }
+
+
+# ------------------------------
+#   error views: 400, 403, 404, & 500
+# ------------------------------
+def bad_request(request, *args, **argv):
+    return render(request, 'shop_app/error400.html', status=400)
+
+
+def access_denied(request,  *args, **argv):
+    return render(request, 'shop_app/error403.html', status=403)
+
+
+def page_not_found_view(request, *args, **argv):
+    return render(request, 'shop_app/error404.html', status=404)
+
+
+def handler500(request,  *args, **argv):
+    return render(request, 'shop_app/error500.html', status=500)

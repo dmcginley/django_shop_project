@@ -30,10 +30,10 @@ urlpatterns = [
 ]
 
 
-# handler403 = "techblog_app.views.access_denied"
-# handler400 = "techblog_app.views.bad_request"
-# handler404 = "techblog_app.views.page_not_found_view"
-# handler500 = "techblog_app.views.handler500"
+handler400 = "shop_app.views.bad_request"
+handler403 = "shop_app.views.access_denied"
+handler404 = "shop_app.views.page_not_found_view"
+handler500 = "shop_app.views.handler500"
 
 
 if settings.DEBUG:
