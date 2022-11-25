@@ -43,12 +43,12 @@
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-      {% include 'includes/toast/cart.html' %}
 
 
       {% with message.level as level %}
-
-      {% if level == 40 %} {# warning #}
+      {% if level == 50 %} {# cart #}
+      {% include 'includes/toast/cart.html' %}
+      {% elif level == 40 %} {# warning #}
       {% include 'includes/toast/warning.html' %}
       {% elif level == 30 %} {# danger #}
       {% include 'includes/toast/danger.html' %}
@@ -107,11 +107,13 @@
         $(".delete").on("click", function () {
           $(".toast-container").addClass("visibility");
         });
-
-        //  $(".toast-container").show();
-        //  setTimeout(function () {
-        //    $(".toast-container").fadeOut("slow");
-        //  }, 1200);
+        $(".delete").on("click", function () {
+          $(".boast-container").addClass("visibility");
+        });
+        $(".toast-container").show();
+        setTimeout(function () {
+          $(".toast-container").fadeOut("slow");
+        }, 1200);
 
       });
 

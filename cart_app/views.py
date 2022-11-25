@@ -24,8 +24,9 @@ def add_to_cart(request, item_id):
         cart[item_id] += quantity
         # messages.cart(
         #     request, f'Added {book.title} to your cart')
-        messages.success(
-            request, f'Added {book.title} to your cart')
+        # messages.success(
+        # request, f'Added {book.title} to your cart')
+        messages.add_message(request, 50, "foo")
 
     else:
         cart[item_id] = quantity
