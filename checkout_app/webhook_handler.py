@@ -33,6 +33,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
+        print("intent.metadata", intent.metadata)
         cart = intent.metadata.bag
         save_info = intent.metadata.save_info
 
