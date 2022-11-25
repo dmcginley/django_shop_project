@@ -8,35 +8,5 @@
         <div class="message-body">
             <p class="">{{ message }}</p>
         </div>
-        <div>
-            {% if grand_total and not on_profile_page %}
-            <p class="py-1">({{ book_count }}) items in cart</p>
-
-
-            {% for item in cart_items %}
-            <div class="cart-image">
-                <img class="" src="{{ item.book.image.image.url }}">
-                <p class=""><strong>{{ item.book.title }}</strong></p>
-            </div>
-            {% endfor %}
-
-            <div>
-                <p class="">
-                    <strong>Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
-                        <span class="">€{{ total|floatformat:2 }}</span></strong>
-                </p>
-            </div>
-            {% if free_delivery_delta > 0 %}
-            <p class="">
-                Spend <strong>€{{ free_delivery_delta }}</strong> more to get free next day delivery!
-            </p>
-            {% endif %}
-            <a href="{% url 'view_cart' %}" class="button">
-                <span class="">Go To Secure Checkout</span>
-                icon
-            </a>
-            {% endif %}
-        </div>
-
     </article>
 </div>
