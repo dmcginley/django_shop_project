@@ -13,7 +13,7 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    def handel_event(self, event):
+    def handle_event(self, event):
         """ handles unknown/unexpected webhook events """
 
         return HttpResponse(
