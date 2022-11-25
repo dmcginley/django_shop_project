@@ -8,7 +8,10 @@ import time
 
 
 class StripeWH_Handler:
-    """ handles stripe webhooks """
+    """
+    handles stripe webhooks, to handle events that would arise
+    between the payment and the processing of the order
+    """
 
     def __init__(self, request):
         self.request = request
