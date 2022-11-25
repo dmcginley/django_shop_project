@@ -22,6 +22,8 @@ def add_to_cart(request, item_id):
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
+        # messages.cart(
+        #     request, f'Added {book.title} to your cart')
         messages.success(
             request, f'Added {book.title} to your cart')
 

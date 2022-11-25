@@ -25,6 +25,26 @@
     </div>
     <div class="column is-half-tablet">
       <h3 class="subtitle is-3">Order History</h3>
+
+      <div style="background-color: red;">
+        {{ orders }}
+        order div
+        {% for order in orders %}
+
+        <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+          {{ order.order_number|truncatechars:6 }}
+        </a>
+        <p>{{ order.date }}</p>
+        {% for item in order.lineitems.all %}
+        {{ item.book.name }} x{{ item.quantity }}
+        {% endfor %}
+        <p>${{ order.grand_total }}</p>
+
+        {% endfor %}
+
+      </div>
+
+
       <button class="button">button</button>
       <div>{{ orders }}</div>
     </div>

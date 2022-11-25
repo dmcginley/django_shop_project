@@ -44,7 +44,7 @@
                                 <div class="field has-addons input-group">
                                     <div class="control input-group-prepend">
                                         <button class="button quantity-btn is-small is-info decrement-qty"
-                                            data-item_id="{{ item_id }}" id="decrement-qty_{{ item_id }}">
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" transform: ;msFilter:;">
                                                 <path d="M5 11h14v2H5z"></path>
@@ -53,12 +53,12 @@
                                     </div>
                                     <div class="control">
                                         <input class="input qty_input is-small" type="number" name="quantity"
-                                            value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item_id }}"
-                                            id="id_qty_{{ item_id }}">
+                                            value="{{ item.quantity }}" min="1" max="99"
+                                            data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                                     </div>
                                     <div class="control input-group-append">
                                         <button class="button quantity-btn is-small is-info increment-qty"
-                                            data-item_id="{{ item_id }}" id="increment-qty_{{ item_id }}">
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" transform: ;msFilter:;">
                                                 <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
@@ -68,7 +68,7 @@
                                 </div>
                             </form>
                             <a class="update-link mt-2">update</a>
-                            <a class="remove-item pl-2" id="remove_{{ item_id }}">remove</a>
+                            <a class="remove-item pl-2" id="remove_{{ item.item_id }}">remove</a>
                         </div>
                     </div>
                 </div>
@@ -125,11 +125,11 @@
 
     // remove item in cart
     $('.remove-item').click(function (e) {
-        console.log('hello1')
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `remove/${itemId}`;
+        var url = `/cart/remove/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken }
+
         $.post(url, data)
             .done(function () {
                 location.reload();

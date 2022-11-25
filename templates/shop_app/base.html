@@ -43,6 +43,9 @@
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
+      {% include 'includes/toast/cart.html' %}
+
+
       {% with message.level as level %}
 
       {% if level == 40 %} {# warning #}
@@ -105,10 +108,10 @@
           $(".toast-container").addClass("visibility");
         });
 
-        $(".toast-container").show();
-        setTimeout(function () {
-          $(".toast-container").fadeOut("slow");
-        }, 1200);
+        //  $(".toast-container").show();
+        //  setTimeout(function () {
+        //    $(".toast-container").fadeOut("slow");
+        //  }, 1200);
 
       });
 

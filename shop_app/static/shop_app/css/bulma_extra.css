@@ -153,6 +153,24 @@ section,
 
 }
 
+
+
+/* cart dropdown  */
+
+.cart-image {
+    display: flex;
+    height: 100px;
+    padding: 1em;
+}
+
+.cart-image img {
+    height: 100%;
+}
+
+
+
+
+
 /* ----------------------------------------- */
 /* card css */
 /* ----------------------------------------- */
