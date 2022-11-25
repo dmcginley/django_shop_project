@@ -17,7 +17,7 @@ class StripeWH_Handler:
         """ handles unknown/unexpected webhook events """
 
         return HttpResponse(
-            content=f'Undandeled Webhook received: {event["type"]}',
+            content=f'Unhandled Webhook received: {event["type"]}',
             status=200
         )
 
