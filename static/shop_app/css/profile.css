@@ -1,0 +1,28 @@
+:root {
+    --hero-color: #3ac6d9;
+    --has-text-white: hsl(0, 0%, 100%);
+    --has-text-white-ter: hsl(0, 0%, 96%);
+    --body-gray: rgb(248, 248, 248);
+    --red: #dc3545;
+}
+
+form {
+    display: block;
+    z-index: 700;
+}
+
+
+
+input {
+    font-weight: 400;
+}
+
+::placeholder {
+    color: #aab7c4 !important;
+}
+
+
+.InputElement {
+    padding-bottom: 2em !important;
+
+}
