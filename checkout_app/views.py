@@ -20,7 +20,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
             'save_info': request.POST.get('save_info'),
-            'username': request.user,
+            'username': request.user
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -72,7 +72,7 @@ def checkout(request):
                     #         order_line_item.save()
                 except Book.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your cart wasn't found in our database. "
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -87,7 +87,7 @@ def checkout(request):
         cart = request.session.get('cart', {})
         if not cart:
             messages.error(
-                request, "There's nothing in your bag at the moment")
+                request, "There's nothing in your cart at the moment")
             return redirect(reverse('home'))
 
         current_cart = cart_contents(request)
