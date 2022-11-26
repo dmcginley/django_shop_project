@@ -2,36 +2,29 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from shop_app.models import Book
-from profiles_app.models import UserProfile
 
 import json
 import time
 
-import stripe
-
 
 class StripeWH_Handler:
-    """
-    handles stripe webhooks, to handle events that would arise
-    between the payment and the processing of the order
-    """
+    """Handle Stripe webhooks"""
 
     def __init__(self, request):
         self.request = request
 
     def handle_event(self, event):
-        """ handles unknown/unexpected webhook events """
-
+        """
+        Handle a generic/unknown/unexpected webhook event
+        """
         return HttpResponse(
-            content=f'Unhandled Webhook received: {event["type"]}',
-            status=200
-        )
+            content=f'Unhandled webhook received: {event["type"]}',
+            status=200)
 
     def handle_payment_intent_succeeded(self, event):
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
@@ -40,24 +33,6 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)
-
-
-# --------------------------------------------------------------
-#         intent = event.data.object
-#         pid = intent.id
-#         # print("intent.metadata", intent.metadata)
-#         cart = intent.metadata.cart
-#         save_info = intent.metadata.save_info
-
-#         # Get the Charge object
-#         stripe_charge = stripe.Charge.retrieve(
-#             intent.latest_charge
-#         )
-
-#         billing_details = stripe_charge.billing_details  # updated
-#         shipping_details = intent.shipping
-#         grand_total = round(stripe_charge.amount / 100, 2)  # updated
-# --------------------------------------------------------------
 
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
@@ -108,23 +83,23 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(cart).items():
-                    product = Book.objects.get(id=item_id)
+                    book = Book.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
-                            product=product,
+                            book=book,
                             quantity=item_data,
                         )
                         order_line_item.save()
                     # else:
-                        # for size, quantity in item_data['items_by_size'].items():
-                        #     order_line_item = OrderLineItem(
-                        #         order=order,
-                        #         product=product,
-                        #         quantity=quantity,
-                        #         product_size=size,
-                        #     )
-                        #     order_line_item.save()
+                    #     for size, quantity in item_data['items_by_size'].items():
+                    #         order_line_item = OrderLineItem(
+                    #             order=order,
+                    #             product=product,
+                    #             quantity=quantity,
+                    #             product_size=size,
+                    #         )
+                    #         order_line_item.save()
             except Exception as e:
                 if order:
                     order.delete()

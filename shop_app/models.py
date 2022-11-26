@@ -30,8 +30,8 @@ class Image(models.Model):
     image = models.ImageField(default='default.png',
                               upload_to='book_covers/')
 
-    # def __str__(self):
-    #     return self.image
+    def __str__(self):
+        return self.image
 
 
 class Genre(models.Model):
