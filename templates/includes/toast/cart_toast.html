@@ -1,6 +1,6 @@
 <!-- the toast -->
-<div class="boast-container">
-    <article class="toast message">
+<div class="cart_toast-container">
+    <article class="toast message cart-toast">
         <div class="message-header">
             <p>Cart</p>
             <button class="delete" aria-label="delete"></button>
@@ -8,17 +8,19 @@
         <div class="message-body">
             <p class="">{{ message }}</p>
         </div>
-        <!-- <div>
+        <div>
             {% if grand_total and not on_profile_page %}
-            <p class="py-1">({{ book_count }}) items in cart</p>
+            <p class="py-1">({{ book_count }}) books in cart</p>
 
 
-            {% for item in cart_items %}
-            <div class="cart-image">
-                <img class="" src="{{ item.book.image.image.url }}">
+            <div class="cart-toast-item-container">
+                {% for item in cart_items %}
+                <div class="cart-image">
+                    <img class="" src="{{ item.book.image.image.url }}">
+                </div>
                 <p class=""><strong>{{ item.book.title }}</strong></p>
+                {% endfor %}
             </div>
-            {% endfor %}
 
             <div>
                 <p class="">
@@ -26,17 +28,23 @@
                         <span class="">€{{ total|floatformat:2 }}</span></strong>
                 </p>
             </div>
+            <div>
+
+            </div>
+
+
+
             {% if free_delivery_delta > 0 %}
             <p class="">
                 Spend <strong>€{{ free_delivery_delta }}</strong> more to get free next day delivery!
             </p>
             {% endif %}
-            <a href="{% url 'view_cart' %}" class="button">
+            <a href="{% url 'view_cart' %}" class="button m-2">
                 <span class="">Go To Secure Checkout</span>
                 icon
             </a>
             {% endif %}
-        </div> -->
+        </div>
 
     </article>
 </div>

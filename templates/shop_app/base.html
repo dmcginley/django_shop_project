@@ -47,7 +47,7 @@
 
       {% with message.level as level %}
       {% if level == 50 %} {# cart #}
-      {% include 'includes/toast/cart.html' %}
+      {% include 'includes/toast/cart_toast.html' %}
       {% elif level == 40 %} {# warning #}
       {% include 'includes/toast/warning.html' %}
       {% elif level == 30 %} {# danger #}
@@ -108,12 +108,12 @@
           $(".toast-container").addClass("visibility");
         });
         $(".delete").on("click", function () {
-          $(".boast-container").addClass("visibility");
+          $(".cart_toast-container").addClass("visibility");
         });
         $(".toast-container").show();
-        //     setTimeout(function () {
-        //       $(".toast-container").fadeOut("slow");
-        //     }, 1200);
+        setTimeout(function () {
+          $(".toast-container").fadeOut("slow");
+        }, 1200);
 
       });
 

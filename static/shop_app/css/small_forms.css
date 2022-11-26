@@ -1,32 +1,3 @@
-:root {
-    --hero-color: #3ac6d9;
-    --has-text-white: hsl(0, 0%, 100%);
-    --has-text-white-ter: hsl(0, 0%, 96%);
-    --body-gray: rgb(248, 248, 248);
-    --red: #dc3545;
-}
-
-form {
-    display: block;
-    z-index: 700;
-}
-
-
-
-input {
-    font-weight: 400;
-}
-
-::placeholder {
-    color: #aab7c4 !important;
-}
-
-
-.InputElement {
-    padding-bottom: 2em !important;
-
-}
-
 .container {
     grid-column: 1/-1;
     /* background-color: rgb(127, 193, 255); */
@@ -39,16 +10,11 @@ section {
     /* width: 700px; */
 }
 
-/* form .button,
-form a, */
 .button {
+    margin: .4rem .4rem .4rem 0;
     width: 100%;
 }
 
-.button-pl {
-    margin: .4rem .4rem .4rem 0;
-
-}
 
 
 @media only screen and (min-width: 380px) {

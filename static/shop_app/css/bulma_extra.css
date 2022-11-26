@@ -73,7 +73,7 @@ section,
 /* nav area css */
 /* ----------------------------------------- */
 .navbar-end {
-    /* background-color: #f7c7cb; */
+    background-color: #c7e064;
     /* margin-top: 0 !important; */
     /* padding-top: 0 !; */
 
@@ -82,7 +82,6 @@ section,
 
 .menu-btn {
     /* margin: .4rem; */
-    /* background-color: #3ac6d9 !important; */
     width: 100%;
 }
 
