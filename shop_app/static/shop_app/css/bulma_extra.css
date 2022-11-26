@@ -81,7 +81,7 @@ section,
 
 
 .menu-btn {
-    margin: .4rem;
+    /* margin: .4rem; */
     width: 100%;
 }
 
@@ -346,9 +346,9 @@ footer {
         margin-right: .5rem !important;
     }
 
-    .button {
+    /* .button {
         width: max-content;
-    }
+    } */
 
 }
 

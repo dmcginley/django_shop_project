@@ -52,7 +52,7 @@ def checkout(request):
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
-            order.original_bag = json.dumps(cart)
+            order.original_cart = json.dumps(cart)
             order.save()
             for item_id, item_data in cart.items():
                 try:
@@ -60,7 +60,7 @@ def checkout(request):
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
-                            product=book,
+                            book=book,
                             quantity=item_data,
                         )
                         order_line_item.save()
