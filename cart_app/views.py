@@ -9,7 +9,8 @@ from shop_app.models import Book
 def view_cart(request):
     """ The view that renders the cart contents page """
 
-    return render(request, 'cart_app/cart.html')
+    template = 'cart_app/cart.html'
+    return render(request, template)
 
 
 def add_to_cart(request, item_id):

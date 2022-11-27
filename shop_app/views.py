@@ -56,19 +56,20 @@ def home(request):
             authors = authors.filter(q2)
             for a in authors:
                 print("found author>> ", str(a))
+                # print("Q2", q2)
 
             # TODO: find how Django does many-to-many search
             #  add matching books with found authors to list 'books'
     else:
         print("can't find author>> ")
 
-    curent_sorting = f'{sort}_{direction}'
+    current_sorting = f'{sort}_{direction}'
 
     context = {
         'books': books,
         'search_term': query,
         # 'current_genres': genre,
-        'curent_sorting': curent_sorting
+        'current_sorting': current_sorting
     }
 
     return render(request, 'shop_app/index.html', context)
