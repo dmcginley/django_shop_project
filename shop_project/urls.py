@@ -20,12 +20,13 @@ from django.urls import include, path
 
 
 urlpatterns = [
+    path('cart/', include('cart_app.urls')),
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('shop_app.urls')),
     path('checkout/', include('checkout_app.urls')),
-    path('cart/', include('cart_app.urls')),
     path('profile/', include('profiles_app.urls')),
+    path('', include('shop_app.urls')),
+    # path('vw/', include('cart_app.urls')),
     # path('cart/', include('view_cart.urls')),
 ]
 
