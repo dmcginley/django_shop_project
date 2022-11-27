@@ -93,6 +93,20 @@
 
 ## Troubleshooting
 
+**webhook_handler** error, couldn't locate the issue with:
+
+- missing "clientSecret"
+- forgot fields in models
+- missing code in strip_elements.js
+
+```
+var postData = {
+        ...
+        'client_secret': clientSecret,
+        ...
+    };
+```
+
 ## Deployment
 
 #### prerequisite for deployment

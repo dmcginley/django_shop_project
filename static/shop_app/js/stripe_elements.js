@@ -17,12 +17,12 @@ var style = {
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
-            color: '#aab7c4'
+            color: '#97a1ac'
         }
     },
     invalid: {
         color: '#dc3545',
-        iconColor: '#dc3545'
+        iconColor: '#97a1ac'
     }
 };
 var card = elements.create('card', { style: style });
