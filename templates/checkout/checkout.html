@@ -83,6 +83,7 @@
                             <legend class="subtitle">Payment</legend>
                             <div id="card-element"></div>
                             <div class="pt-4" id="card-errors" role="alert"></div>
+                            <input type="hidden" value="{{ client_secret }}" name="{{ client_secret }}">
                         </fieldset>
                         <a class="button button-pl is-link is-outlined mt-4" href="{% url 'view_cart' %}">Adjust
                             Cart
