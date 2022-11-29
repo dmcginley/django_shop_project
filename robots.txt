@@ -1,0 +1,15 @@
+# robots.txt file for bookshop
+#-----------------------------
+# Created in 2022 for my Project 5
+# sample of Disallow links should go through them at a later date
+
+
+User-agent: *
+Disallow: /blog/search/label/
+Disallow: /blog/?s
+Disallow: /courses/all?
+Disallow: /course/data-foundations-nanodegree--nd100-ent
+Disallow: /course/training-exercise-nanodegree--nd106
+Disallow: /wiki
+
+Sitemap: https://web-production-7efa.up.railway.app/sitemap.xml

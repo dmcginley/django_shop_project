@@ -144,8 +144,14 @@ section,
     margin-left: auto;
 }
 
+.cart-dropdown-svg,
 #cart svg {
     fill: var(--has-text-white-ter);
+}
+
+.cart-dropdown-svg {
+    width: 24px;
+    height: 24px;
 }
 
 .cart-svg-container {
@@ -154,21 +160,39 @@ section,
 
 }
 
-
+/* -------------------------------------- */
+/* cart-toast dropdown */
+/* -------------------------------------- */
+.cart-toast {
+    box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
+}
 
 /* cart dropdown  */
+.cart-toast-item-container {
+    background-color: rgb(255, 255, 255);
+    max-height: 400px;
+    /* width: 200px; */
+    overflow-y: scroll;
+}
 
-.cart-image {
+.cart-book-container {
     display: flex;
+}
+
+.cart-book-cover {
     height: 100px;
-    padding: 1em;
-}
-
-.cart-image img {
-    height: 100%;
+    border-radius: .25rem;
+    ;
 }
 
 
+
+.cart-book-text {
+    padding-left: 1em;
+    /* background-color: #485fc7; */
+    height: 100px;
+    /* width: 400px; */
+}
 
 
 

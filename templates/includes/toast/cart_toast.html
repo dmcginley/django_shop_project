@@ -8,29 +8,34 @@
         <div class="message-body">
             <p class="">{{ message }}</p>
         </div>
-        <div>
+        <div class="pl-5 pb-2">
             {% if grand_total and not on_profile_page %}
-            <p class="py-1">({{ book_count }}) books in cart</p>
+            <p class="">({{ book_count }}) books in cart</p>
+        </div>
+        <div class="cart-toast-item-container py-2">
+            {% for item in cart_items %}
+            <div class="cart-book-container py-2 px-5">
+                <img class="cart-book-cover" src="{{ item.book.image.image.url }}">
+                <div class="cart-book-text">
+                    <p><strong>{{ item.book.title }}</strong></p>
 
+                    {% if item.quantity < 2 %}
+                    <p>{{ item.quantity }} book</p>
+                    {% else %}
+                    <p>{{ item.quantity }} books</p>
 
-            <div class="cart-toast-item-container">
-                {% for item in cart_items %}
-                <div class="cart-image">
-                    <img class="" src="{{ item.book.image.image.url }}">
+                    {% endif %}
+
                 </div>
-                <p class=""><strong>{{ item.book.title }}</strong></p>
-                {% endfor %}
             </div>
+            {% endfor %}
+        </div>
 
-            <div>
-                <p class="">
-                    <strong>Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
-                        <span class="">€{{ total|floatformat:2 }}</span></strong>
-                </p>
-            </div>
-            <div>
-
-            </div>
+        <div class="pl-5 pt-2">
+            <p class="">
+                <strong>Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
+                    <span class="">€{{ total|floatformat:2 }}</span></strong>
+            </p>
 
 
 
@@ -39,9 +44,14 @@
                 Spend <strong>€{{ free_delivery_delta }}</strong> more to get free next day delivery!
             </p>
             {% endif %}
-            <a href="{% url 'view_cart' %}" class="button m-2">
-                <span class="">Go To Secure Checkout</span>
-                icon
+            <a href="{% url 'view_cart' %}" class="button is-link my-4">
+                <svg class="cart-dropdown-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" transform:
+                    ;msFilter:;">
+                    <path
+                        d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z">
+                    </path>
+                </svg>
+                <span class="pl-2">Go To Secure Checkout</span>
             </a>
             {% endif %}
         </div>
