@@ -4,12 +4,6 @@ from .models import Book, Author, Publisher, Image, Genre
 from django.utils.safestring import mark_safe
 
 
-# from django.contrib.admin.views.main import ChangeList
-# from .forms import BookChangeListForm
-
-# Register your models here.
-
-
 # class BookChangeList(ChangeList):
 #     def __init__(self, request, model, list_display,
 #                  list_display_links, list_filter, date_hierarchy,
@@ -27,20 +21,11 @@ from django.utils.safestring import mark_safe
 #     self.list_editable = ['authors']
 
 
-# -----------------------------------------------------
-
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'last_name']
     list_display = ['first_name', 'last_name']
     list_filter = ['first_name', 'last_name']
-
-# -----------------------------------------------------
-
-# @admin.register(Publisher)
-# class PublisherAdmin(admin.ModelAdmin):
-#     search_fields = ['name', 'website']
-#     list_display = ['name', 'website']
 
 
 @admin.register(Publisher)
@@ -52,20 +37,13 @@ class PublisherAdmin(admin.ModelAdmin):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
 
-    search_fields = ('title', 'authors', 'genre',
-                     'isbn')
+    search_fields = ('title', 'author_names',
+                     'genre_name', 'isbn')
+
     list_display = ['title', 'author_names',
                     'genre_name', 'isbn']
-    list_filter = ('title', 'authors', 'genre', 'isbn')
 
-    # ----------------------------------------------------------
-
-    # search_fields = ('title', 'author', 'isbn')
-    # list_display = ['title', 'author', 'isbn']
-    # list_filter = ('title', 'author', 'isbn')
-    # search_fields = ('title',  'isbn')
-    # list_display = ['title', 'isbn']
-    # list_filter = ('title', 'isbn')
+    list_filter = ('title', 'authors', 'genre')
 
 
 @admin.register(Image)
