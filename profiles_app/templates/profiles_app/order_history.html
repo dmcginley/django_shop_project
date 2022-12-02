@@ -1,0 +1,106 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+{% load cart_tools %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-12">
+                <div class="pb-4">
+                    <h3 class="subtitle is-size-2">Past Orders!</h3>
+                    <p>Order number: {{ order.order_number }}</p>
+                    <p>{{ order.date }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-6">
+                <div>
+                    <div class="pb-4">
+                        <h4 class="is-size-3 is-size-4-mobile">Details</h4>
+                        <p>{{ order.full_name }}</p>
+                        <p>{{ order.email }}</p>
+                        <p>{{ order.phone_number }}</p>
+                    </div>
+                    <div class="pb-4">
+                        <h4 class="is-size-3 is-size-4-mobile">Delivery address</h4>
+                        <p>{{ order.street_address1 }}</p>
+                        {% if  order.street_address2 %}
+                        <p>{{ order.street_address2 }}</p>
+                        {% endif %}
+                        <p>{{ order.town_or_city }}</p>
+                        {% if order.county %}
+                        <p>{{ order.county }}</p>
+
+                        {% endif %}
+                        {% if order.postcode %}
+                        <p>{{ order.postcode }}</p>
+                        {% endif %}
+                        <p></p>{{ order.country }}</p>
+                    </div>
+
+                    <h2 class="is-size-3 is-size-4-mobile">Order total</h2>
+                    <div>
+                        <p><strong>Total:</strong>
+                            €{{ order.order_total|floatformat:2 }}
+                        </p>
+                        <p><strong>Delivery:</strong>
+                            €{{ order.delivery_cost|floatformat:2 }}
+                        </p>
+                        <p class=""><strong>Order Total:</strong>
+                            €{{ order.grand_total|floatformat:2 }}</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="column is-12-tablet is-6-desktop orders-column">
+                <h3 class="is-size-3 is-size-4-mobile">Your Order</h3>
+                {% for item in order.lineitems.all %}
+                <div class="order-card">
+                    <div class="">
+                        <a href="{% url 'book_detail' item.book.id %}">
+                            {% if item.book.image %}
+                            <figure class="cover-figure">
+                                <img class="cover-img cover-small" src="{{ item.book.image.image.url }}"
+                                    alt="{{ book.name }}">
+                            </figure>
+                            {% else %}
+                            <figure class="cover-figure">
+                                <img class="cover-img cover-small" src="{{ MEDIA_URL }}noimage.png"
+                                    alt="{{ book.name }}">
+                            </figure>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="order-card-text">
+                        <p class=""><strong>{{ item.book }} x {{ item.quantity }}</strong></p>
+                        <!-- <p class="">Quaintly: {{ item.quantity }}</p> -->
+                        <p class="">€{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- <button class="button is-link">button</button> -->
+
+
+            </div>
+
+        </div>
+
+        <p class="pb-4">A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+
+
+        <!-- <div> -->
+        <a class="button button-pl" href="{% url 'profile' %}">Back to Profile</a>
+        <a class="button button-pl is-link" href="{% url 'home' %}">Continue Shopping</a>
+        <!-- </div> -->
+    </div>
+
+</section>
+
+{% endblock content %}

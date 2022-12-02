@@ -105,8 +105,13 @@ select option {
 
 select:invalid,
 select option[value=""] {
-    color: gray !important;
+    color: rgb(197, 197, 197) !important;
 }
+
+
+
+
+
 
 
 

@@ -1,0 +1,57 @@
+{% extends 'shop_app/base.html' %} {% load static %} {% block content %}
+
+<section class="search-section">
+  <!-- <input class="input is-medium" type="text" placeholder="Medium input"> -->
+  <form class="search-form field has-addons" action="{% url 'home' %}" method="GET">
+    <div class="control is-expanded">
+      <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN..." />
+    </div>
+    <div class="control">
+      <button class="button is-info" type="submit">Search</button>
+    </div>
+  </form>
+</section>
+
+{% include 'shop_app/hero.html' %}
+
+<section class="section books-section">
+  <h2 class="section-title subtitle is-2">Best Pick</h2>
+
+  {% for book in books %}
+
+  <div class="card index-card">
+    <div class="card-image">
+      <a class="cover" href="{% url 'book_detail' book.id %}">
+        <figure class="cover-figure pb-4">
+          <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
+        </figure>
+      </a>
+      <div class="card-text">
+        <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
+        <h6 class="subtitle is-6 author-ellipsis">{{ book.author_names }}</h6>
+        <p class="card-price is-warning pb-5">€{{ book.price }}</p>
+      </div>
+    </div>
+    <div class="index-content">
+      <div class="media">
+        <div class="media-content">
+          <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+            {% csrf_token %}
+
+            <div>
+              <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                id="id_qty{{ book.id }}" />
+            </div>
+            <div>
+              <input type="submit" class="button is-link is-fullwidth" value="Add to Cart" />
+              <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock content %}

@@ -30,6 +30,7 @@ def home(request):
             sort = sortkey
             if sortkey == 'title':
                 sortkey = 'lower_title'
+                # TODO: error lower not defined
                 books = books.annotate(lower_title=Lower('title'))
 
             if 'direction' in request.GET:

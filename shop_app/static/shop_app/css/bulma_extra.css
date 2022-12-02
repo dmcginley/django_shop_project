@@ -50,6 +50,7 @@ div .columns {
 section,
 .sub-grid * {
     grid-column: 2;
+
 }
 
 
@@ -67,7 +68,11 @@ section,
 
 .books-section {
     grid-template-rows: 2;
+    margin: auto;
+    /* background-color: #dc3545; */
 }
+
+
 
 /* ----------------------------------------- */
 /* nav area css */
@@ -91,10 +96,22 @@ section,
     margin-left: auto;
 }
 
+
+
 .buttons .button {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
+
+.button {
+    width: 100%;
+}
+
+.button-pl {
+    margin: .4rem .4rem .4rem 0;
+
+}
+
 
 
 .book-counter {
@@ -155,7 +172,6 @@ section,
 }
 
 .cart-svg-container {
-    /* background-color: #dc3545; */
     position: relative;
 
 }
@@ -182,16 +198,13 @@ section,
 .cart-book-cover {
     height: 100px;
     border-radius: .25rem;
-    ;
 }
 
 
 
 .cart-book-text {
     padding-left: 1em;
-    /* background-color: #485fc7; */
     height: 100px;
-    /* width: 400px; */
 }
 
 
@@ -204,17 +217,41 @@ section,
 }
 
 .index-card {
-    max-width: 260px;
-    background-color: transparent;
+    max-width: 360px;
     border-radius: 0;
     box-shadow: none;
     margin: auto;
+    /* background-color: rgb(211, 247, 247); */
+    padding: 2em 0 0 0;
+    margin: 1em 0;
 }
 
+.index-card img {
+    width: 100%;
+}
 
 .card-text {
     padding: 0 2rem;
 }
+
+.title-ellipsis,
+.author-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.title-ellipsis {
+    -webkit-line-clamp: 2;
+    height: 46px;
+}
+
+.author-ellipsis {
+    -webkit-line-clamp: 1;
+}
+
 
 .card-price {}
 
@@ -275,7 +312,7 @@ section,
 }
 
 .cover-img {
-    max-height: 300px;
+    /* max-height: 300px; */
     border-radius: .25rem;
     object-fit: contain;
 }
@@ -315,6 +352,44 @@ section,
 ::placeholder {
     color: #a3abb3 !important;
 }
+
+
+
+#id_country {
+    width: 100% !important;
+}
+
+/* ----------------------------------------------------- */
+/* order & profile order history cart */
+/* ----------------------------------------------------- */
+.order-card {
+    display: flex;
+    /* background-color: #3ac6d9; */
+    /* height: 100px; */
+    /* width: 100%; */
+    margin: 1em 0;
+}
+
+
+.cover-small {
+    width: 90px;
+}
+
+.cover-medium {
+    width: 120px;
+}
+
+.order-card-text {
+    padding-left: 1em;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -377,6 +452,9 @@ footer {
 }
 
 
+
+
+
 @media only screen and (min-width: 480px) {
 
 
@@ -394,7 +472,22 @@ footer {
     .books-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 2em;
+        width: 90vw;
+
+        /* background-color: #7281c5; */
+
     }
+
+    .index-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 30ch;
+        height: 520px;
+        margin: auto;
+    }
+
 
     .card-text {
         padding: 0;
@@ -408,9 +501,68 @@ footer {
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
     #cart {
         display: none;
     }
 
 }
+
+@media only screen and (min-width: 960px) {
+
+    /* .reverse-columns {
+        display: block;
+    } */
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .orders-column {
+        padding-left: 6vw;
+
+        /* width: 55%; */
+    }
+
+
+
+
+    .reverse-columns {
+        flex-direction: row-reverse;
+
+    }
+
+}
+
+
+
+
+
+@media only screen and (min-width: 1068px) {
+
+    .books-section {
+        grid-template-rows: 2;
+        width: 95%;
+        grid-template-columns: repeat(4, 1fr);
+        /* background-color: #dc3545; */
+    }
+
+
+}
+
+
+
+
+/* -------------------------------------------------------- */
+/* Bulma mobile first breakpoints */
+/* tablet: from 769px */
+@media only screen and (min-width: 769px) {}
+
+/* desktop: from 1024px */
+@media only screen and (min-width: 1024px) {}
+
+/* widescreen: from 1216px */
+@media only screen and (min-width: 1216px) {}
+
+/* fullhd: from 1408px */
+@media only screen and (min-width: 1408px) {}
