@@ -161,6 +161,10 @@ section,
     margin-left: auto;
 }
 
+/* -------------------------------------- */
+/* cart-toast dropdown */
+/* -------------------------------------- */
+
 .cart-dropdown-svg,
 #cart svg {
     fill: var(--has-text-white-ter);
@@ -176,9 +180,7 @@ section,
 
 }
 
-/* -------------------------------------- */
-/* cart-toast dropdown */
-/* -------------------------------------- */
+
 .cart-toast {
     box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
 }
@@ -416,14 +418,6 @@ footer {
 .toast {
     display: block;
     margin-left: auto;
-    /* position: fixed; */
-    /* z-index: 100; */
-    /* top: 0;
-    right: 0; */
-    /* margin: 1em; */
-    /* margin-left: 1em; */
-    /* width: 100%; */
-    /* max-width: 600px; */
 }
 
 
@@ -435,7 +429,6 @@ footer {
 .cart-toast-item-container {
     background-color: rgb(255, 255, 255);
     max-height: 400px;
-    /* width: 200px; */
     overflow-y: scroll;
 }
 
@@ -451,6 +444,12 @@ footer {
     height: 64px;
 }
 
+.orders-column-books {
+    max-height: 520px;
+    /* width: 200px; */
+    overflow-y: scroll;
+    /* background-color: #3ac6d9; */
+}
 
 
 
@@ -501,9 +500,16 @@ footer {
 
 }
 
+
+
+
 @media only screen and (min-width: 769px) {
     #cart {
         display: none;
+    }
+
+    .order-history-container {
+        padding-left: 2vw;
     }
 
 }
@@ -518,6 +524,7 @@ footer {
 }
 
 @media only screen and (min-width: 1024px) {
+
     .orders-column {
         padding-left: 6vw;
 

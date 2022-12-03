@@ -7,6 +7,7 @@ from django.db.models import Q
 
 
 from django.views.generic import ListView, DetailView
+from django.views import generic
 
 # from shop_app.models import Product
 from .models import Book, Author, Genre
@@ -67,6 +68,7 @@ def home(request):
     current_sorting = f'{sort}_{direction}'
 
     context = {
+        # 'books': Book.objects.all(),
         'books': books,
         'search_term': query,
         # 'current_genres': genre,
@@ -82,7 +84,7 @@ class BookListView(ListView):
 
     context_object_name = 'books'
     # ordering = ['-date_posted']  # date posted in reverse order
-    paginate_by = 2
+    paginate_by = 4
 
 
 class BookDetailView(DetailView):

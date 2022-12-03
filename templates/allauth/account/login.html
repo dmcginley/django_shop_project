@@ -10,24 +10,20 @@
     <div class="column">
       <h1 class="subtitle is-3">{% trans "Sign In" %}</h1>
       {% get_providers as socialaccount_providers %}
-
       {% if socialaccount_providers %}
       <p>
         {% blocktrans with site.name as site_name %}Please sign in with one of your
         existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a> for
         a {{ site_name }} account and sign in below:{% endblocktrans %}
       </p>
-
       <div class="socialaccount_ballot">
         <ul class="socialaccount_providers">
           {% include "socialaccount/snippets/provider_list.html" with process="login" %}
         </ul>
         <div class="login-or">{% trans 'or' %}</div>
       </div>
-
       {% include "socialaccount/snippets/login_extra.html" %} {% else %}
       {% endif %}
-
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         <fieldset class="mt-4">

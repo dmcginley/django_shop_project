@@ -4,16 +4,18 @@
 {% block content %}
 <section class="section">
     <div class="container">
-        <h2 class="subtitle is-2">Success!!</h2>
-        <p>Your order information is below.</p>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
+        <div class="columns">
+            <div class="column is-12">
+                <div class="pb-4">
+                    <h2 class="subtitle is-2">Success!!</h2>
+                    <p>Your order information is below.</p>
+                </div>
+            </div>
+        </div>
 
         <div class="pb-4">
             <h3 class="is-size-3">Order info</h3>
-            <p>Order number: {{ order.order_number }}</p>
+            <p>Order number: <strong>{{ order.order_number }}</strong></p>
             <p>{{ order.date }}</p>
         </div>
         <div>
@@ -47,13 +49,18 @@
             </div>
         </div>
         <p>A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+        <a class="button shopping-btn is-link is-outlined mt-4" href="{% url 'home' %}">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" transform:
+                    ;msFilter:;">
+                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                </svg>
+            </span>
+            <span>
+                Return to Shop
+            </span>
+        </a>
     </div>
-
-
-    <div>
-        <a class="button" href="{% url 'home' %}">Home</a>
-    </div>
-
 </section>
 
 {% endblock content %}

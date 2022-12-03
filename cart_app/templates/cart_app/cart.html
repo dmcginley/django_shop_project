@@ -4,24 +4,24 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'shop_app/css/cart.css' %}" />
-{% endblock %}
+{% endblock extra_css %}
 
+<title>{% block head_title %}a{% endblock %}</title>
 
 {% block content %}
 
 <section class="">
-
-    <div class="">
-        <h2 class="subtitle is-2">Shopping Cart</h2>
+    <div class="columns">
+        <div class="column">
+            <h2 class="subtitle is-2">Shopping Cart</h2>
+        </div>
     </div>
-
     <div class="columns is-12">
         <div class="column">
             {% if cart_items %}
             {% for item in cart_items %}
             <div class="columns">
                 <div class="column">
-
                     <div class="">
                         <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
                             <figure class="cover-figure">
@@ -35,33 +35,12 @@
                     <div class="cart-text-container">
                         <div>
                             <p class="title is-4">{{ item.book.title }}</p>
-                            <p class="subtitle is-6">(Author) {{ item.book.author_names }}</p>
-                            <p class="is-size-6 author-ellipsis">{{ item.book.genre_name }}</p>
+                            <p class="subtitle is-6 mb-2">(Author) {{ item.book.author_names }}</p>
+                            <p class="subtitle is-6 mb-4 author-ellipsis">{{ item.book.genre_name }}</p>
                         </div>
                         <div>
-                            <p class="card-price has-text-danger is-size-6 pb-3">€{{ item.book.price }}</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            <p class="card-price has-text-danger is-size-6 pb-3">
+                                €{{ item.book.price | calc_subtotal:item.quantity }}</p>
 
 
                             <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
@@ -148,23 +127,44 @@
                 </div>
 
                 <div class="pt-4">
-                    <a class="button is-link is-outlined mt-3 is-fullwidth" href="{% url 'home' %}">continue
+                    <a class="button is-link is-outlined mt-3 is-fullwidth" href="{% url 'home' %}">Continue
                         shopping</a>
-                    <a class="button is-link mt-3 is-fullwidth" href="{% url 'checkout' %}">checkout</a>
+                    <a class="button is-link mt-3 is-fullwidth" href="{% url 'checkout' %}">
+                        <!-- <svg class="cart-dropdown-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" transform:
+                            ;msFilter:;">
+                            <path
+                                d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z">
+                            </path>
+                        </svg> -->
+                        <span class="pl-2">Checkout</span>
+                    </a>
                 </div>
                 {% else %}
-                <p class="is-size-5">Your cart is empty...</p>
-                <a class="button shopping-btn is-link is-outlined mt-4" href="{% url 'home' %}">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" transform:
-                            ;msFilter:;">
-                            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-                        </svg>
-                    </span>
-                    <span>
-                        Continue Shopping
-                    </span>
-                </a>
+
+
+
+                <div class="column">
+                    <p class="is-size-5">Your cart is empty...</p>
+                    <a class="button shopping-btn is-link is-outlined mt-4" href="{% url 'home' %}">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span>
+                            Continue Shopping
+                        </span>
+                    </a>
+                    <p class="pt-4">And don't forget we have <strong>Free delivery on orders over
+                            €{{ free_delivery_threshold }}</strong></p>
+                </div>
+
+
+
+
+
             </div>
         </div>
         {% endif %}

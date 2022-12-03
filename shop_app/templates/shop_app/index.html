@@ -1,7 +1,12 @@
-{% extends 'shop_app/base.html' %} {% load static %} {% block content %}
+{% extends 'shop_app/base.html' %} {% load static %}
+{% block title %}home{% endblock %}
+
+
+
+{% block content %}
+
 
 <section class="search-section">
-  <!-- <input class="input is-medium" type="text" placeholder="Medium input"> -->
   <form class="search-form field has-addons" action="{% url 'home' %}" method="GET">
     <div class="control is-expanded">
       <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN..." />

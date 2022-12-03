@@ -9,8 +9,6 @@
 
 <!-- {% load crispy_forms_tags %} -->
 
-<link rel="stylesheet" href="{% static 'shop_app/css/forms.css' %}" />
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'shop_app/css/checkout.css' %}" />
 {% endblock extra_css %}
@@ -20,33 +18,42 @@
 {% block content %}
 
 <section>
-    <h2 class="is-size-2">Checkout</h2>
+    <div class="columns">
+        <div class="column">
+            <h2 class="is-size-2">Checkout</h2>
+        </div>
+    </div>
     <div class="columns is-multiline reverse-columns">
         <div class="column is-12-tablet is-6-desktop orders-column">
             <h3 class="subtitle is-4">Your Order</h3>
-            {% for item in cart_items %}
-            <div class="order-card">
-                <div class="">
-                    <a href="{% url 'book_detail' item.book.id %}">
-                        {% if item.book.image %}
-                        <figure class="cover-figure">
-                            <img class="cover-img cover-small" src="{{ item.book.image.image.url }}"
-                                alt="{{ book.name }}">
-                        </figure>
-                        {% else %}
-                        <figure class="cover-figure">
-                            <img class="cover-img cover-small" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
-                        </figure>
-                        {% endif %}
-                    </a>
+
+
+            <div class="orders-column-books">
+                {% for item in cart_items %}
+                <div class="order-card">
+                    <div class="">
+                        <a href="{% url 'book_detail' item.book.id %}">
+                            {% if item.book.image %}
+                            <figure class="cover-figure">
+                                <img class="cover-img cover-small" src="{{ item.book.image.image.url }}"
+                                    alt="{{ book.name }}">
+                            </figure>
+                            {% else %}
+                            <figure class="cover-figure">
+                                <img class="cover-img cover-small" src="{{ MEDIA_URL }}noimage.png"
+                                    alt="{{ book.name }}">
+                            </figure>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="order-card-text">
+                        <p class=""><strong>{{ item.book }}</strong></p>
+                        <p class="">Quaintly: {{ item.quantity }}</p>
+                        <p class="">€{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                    </div>
                 </div>
-                <div class="order-card-text">
-                    <p class=""><strong>{{ item.book }}</strong></p>
-                    <p class="">Quaintly: {{ item.quantity }}</p>
-                    <p class="">€{{ item.book.price | calc_subtotal:item.quantity }}</p>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
             <!-- <button class="button is-link">button</button> -->
 
 

@@ -10,8 +10,8 @@ from django.urls import reverse
 
 class Author(models.Model):
     """Author with first and last name so you can search by either name"""
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
 
     def __str__(self):
         return u'%s %s' % (self.first_name, self.last_name)
