@@ -24,10 +24,16 @@
                 <div class="column">
                     <div class="">
                         <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
+                            {% if item.book.image %}
                             <figure class="cover-figure">
-                                <img src="{{ item.book.image.image.url }}" class="cover-img cover-medium "
+                                <img class="cover-img cover-medium" src="{{ item.book.image.image.url }}"
                                     alt="book cover">
                             </figure>
+                            {% else %}
+                            <figure class="cover-figure">
+                                <img class="cover-img cover-medium" src="{{ MEDIA_URL }}no_cover.png" alt="book cover">
+                            </figure>
+                            {% endif %}
                         </a>
                     </div>
                 </div>

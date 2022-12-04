@@ -9,31 +9,33 @@
 
 {% block content %}
 
-<section class="">
-  <div class="columns">
-    <h2 class="is-size-2 pl-2">My Profile</h2>
-    <p class="is-capitalized">{{ profile }}</p>
-  </div>
-  <div class="columns">
-    <div class="column is-half-tablet">
-      <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="button is-link mt-4">Update Info</button>
-      </form>
+<section>
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <h2 class="is-size-2 pl-2">My Profile</h2>
+      <p class="is-capitalized">{{ profile }}</p>
     </div>
-    <div class="column order-history-container is-half-tablet">
-      <h3 class="subtitle is-3">Order History</h3>
-
-      {% for order in orders %}
-      <div class="order-history pb-2">
-        <a class="pr-2" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-          <strong>{{ order.order_number|truncatechars:8 }}</strong>
-        </a>
-        <p class="pr-2">{{ order.date }}</p>
-        <p><strong>Total:</strong> €{{ order.grand_total }}</p>
+    <div class="columns">
+      <div class="column is-half-tablet">
+        <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class="button is-link mt-4">Update Info</button>
+        </form>
       </div>
-      {% endfor %}
+      <div class="column order-history-container is-half-tablet">
+        <h3 class="subtitle is-3">Order History</h3>
+
+        {% for order in orders %}
+        <div class="order-history pb-2">
+          <a class="pr-2" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+            <strong>{{ order.order_number|truncatechars:8 }}</strong>
+          </a>
+          <p class="pr-2">{{ order.date }}</p>
+          <p><strong>Total:</strong> €{{ order.grand_total }}</p>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>

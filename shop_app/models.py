@@ -28,7 +28,7 @@ class Publisher(models.Model):
 
 class Image(models.Model):
     """Takes in the image from the import_book.py and adds it to the database."""
-    image = models.ImageField(default='default.png',
+    image = models.ImageField(default='no_cover.png',
                               upload_to='book_covers/')
 
     def __str__(self):
@@ -56,14 +56,15 @@ class Book(models.Model):
     title = models.CharField(
         max_length=255, help_text="The title of the book.")
     authors = models.ManyToManyField(Author)
-    rating = models.DecimalField(decimal_places=1, blank=True, max_digits=2)
+    rating = models.DecimalField(
+        decimal_places=1, blank=True, max_digits=2, help_text="Between 1 and 10")
     description = models.TextField(blank=True)
     isbn = models.CharField(max_length=20,
                             verbose_name="ISBN number of the book.")
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     publication_date = models.DateField(
-        verbose_name="Date the book was published.", null=True)
-    pages = models.IntegerField()
+        verbose_name="Date the book was published.", null=True, help_text="e.g. 2022-10-29")
+    pages = models.PositiveIntegerField()
     image = models.ForeignKey(
         Image, blank=True, null=True, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=4, decimal_places=2)
@@ -87,7 +88,6 @@ class Book(models.Model):
 
 
 # to combine the authers name for e.g. admin panal
-
 
     def author_names(self):
         all = []

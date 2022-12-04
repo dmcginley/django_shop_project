@@ -27,9 +27,17 @@
   <div class="card index-card">
     <div class="card-image">
       <a class="cover" href="{% url 'book_detail' book.id %}">
+
+        {% if book.image %}
         <figure class="cover-figure pb-4">
           <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
         </figure>
+        {% else %}
+        <figure class="cover-figure pb-4">
+          <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover" />
+        </figure>
+        {% endif %}
+
       </a>
       <div class="card-text">
         <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>

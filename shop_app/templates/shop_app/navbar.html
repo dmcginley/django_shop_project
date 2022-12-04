@@ -26,9 +26,11 @@
                     Genre
                 </span>
                 <div class="navbar-dropdown is-boxed">
-                    {% for g in genres %}
-                    <a class="navbar-item" href="/{{ g }}">{{ g.name }}</a>
+
+                    {% for g in genre %}
+                    <a class="navbar-item" href="{{ g.slug }}">{{ g.name }}</a>
                     {% endfor %}
+
                 </div>
             </div>
 

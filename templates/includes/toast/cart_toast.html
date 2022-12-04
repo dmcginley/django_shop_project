@@ -15,7 +15,13 @@
         <div class="cart-toast-item-container py-2">
             {% for item in cart_items %}
             <div class="cart-book-container py-2 px-5">
-                <img class="cart-book-cover" src="{{ item.book.image.image.url }}">
+
+                {% if item.book.image %}
+                <img class="cart-book-cover" src="{{ item.book.image.image.url }}" alt="{{ book.name }}">
+                {% else %}
+                <img class="cart-book-cover" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
+                {% endif %}
+
                 <div class="cart-book-text">
                     <p><strong>{{ item.book.title }}</strong></p>
 

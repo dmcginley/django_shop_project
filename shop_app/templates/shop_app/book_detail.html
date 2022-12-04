@@ -7,9 +7,22 @@
     <div class="columns">
         <div class="column">
             <div class="cover">
+                {% if book.image %}
                 <figure class="image detail-cover">
                     <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
                 </figure>
+                {% else %}
+                <figure class="image detail-cover">
+                    <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover">
+                </figure>
+                {% endif %}
+
+
+
+
+
+
+
             </div>
         </div>
         <div class="column">

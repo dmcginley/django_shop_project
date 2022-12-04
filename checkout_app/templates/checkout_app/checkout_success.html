@@ -4,17 +4,17 @@
 {% block content %}
 <section class="section">
     <div class="container">
-        <div class="columns">
-            <div class="column is-12">
-                <div class="pb-4">
-                    <h2 class="subtitle is-2">Success!!</h2>
-                    <p>Your order information is below.</p>
-                </div>
-            </div>
+        <!-- <div class="columns">
+            <div class="column is-12"> -->
+        <div class="pb-4">
+            <h2 class="subtitle is-size-2 is-size-3-mobile">Success!!</h2>
+            <p>Your order information is below.</p>
         </div>
+        <!-- </div> -->
+        <!-- </div> -->
 
         <div class="pb-4">
-            <h3 class="is-size-3">Order info</h3>
+            <h3 class="subtitle is-size-2 is-size-3-mobile">Order info</h3>
             <p>Order number: <strong>{{ order.order_number }}</strong></p>
             <p>{{ order.date }}</p>
         </div>
@@ -42,10 +42,17 @@
                 <p></p>{{ order.country }}</p>
             </div>
             <div class="pb-4">
-                <h4 class="is-size-4">Cost</h4>
-                <p>Order Total: <span>€{{ order.order_total }}</span></p>
-                <p>Delivery: <span>€{{ order.delivery_cost }}</span></p>
-                <p>Total: <span>€{{ order.grand_total }}</span></p>
+                <h2 class="is-size-4">Order total</h2>
+                <div>
+                    <p><strong>Total:</strong>
+                        €{{ order.order_total|floatformat:2 }}
+                    </p>
+                    <p><strong>Delivery:</strong>
+                        €{{ order.delivery_cost|floatformat:2 }}
+                    </p>
+                    <p class=""><strong>Order Total:</strong>
+                        €{{ order.grand_total|floatformat:2 }}</p>
+                </div>
             </div>
         </div>
         <p>A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
