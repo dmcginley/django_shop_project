@@ -1,0 +1,51 @@
+{% extends 'shop_app/base.html' %}
+{% load static %}
+{% load cart_tools %}
+{% comment "" %}
+<!-- {% load formsetify %} -->
+<!-- {% render_form form "bulma" %} -->
+{% endcomment %}
+
+
+<!-- {% load crispy_forms_tags %} -->
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'shop_app/css/checkout.css' %}" />
+{% endblock extra_css %}
+
+
+
+{% block content %}
+
+<section>
+    <div class="container is-max-widescreen">
+        <div class="columns">
+            <div class="column">
+                <h2 class="is-size-2">Book management</h2>
+                <h5 class="is-size-5 mb-5">Edit a book</h5>
+                <figure class="image detail-cover">
+                    <img class="cover-img" src="{{ book.image.image.url }}" alt="">
+                </figure>
+            </div>
+            <div class="column">
+                <form action="{% url 'edit_book' book.id %}" method="POST" enctype="multipart/form-data"'>
+                {% csrf_token %}
+                <fieldset class="mt-4">
+                    <legend class="subtitle">Details</legend>
+                    <div class="field">
+                        <div class="control">
+                            
+                            {{ form | crispy }}
+
+                            <a class="related-widget-wrapper-link add-related" id="add_id_genres" data-popup="yes" href="/admin/shop_app/genre/add/?_to_field=id&amp;_popup=1" title="Add another genre"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
+                            <a class="button is-link is-outlined mt-4" href="{% url 'home' %}">Cancel</a>
+                            <button class="button button-pl is-link mt-4" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

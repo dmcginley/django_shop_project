@@ -51,8 +51,11 @@
                                 <p class="subtitle is-6 mb-4 author-ellipsis">{{ item.book.genre_name }}</p>
                             </div>
                             <div>
-                                <p class="card-price has-text-danger is-size-6 pb-3">
-                                    €{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                                <p class="card-price is-size-6 pb-3">
+                                    <strong>
+                                        €{{ item.book.price | calc_subtotal:item.quantity }}
+                                    </strong>
+                                </p>
                                 <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
                                     {% csrf_token %}
                                     <div class="field has-addons input-group">

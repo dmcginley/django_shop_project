@@ -3,12 +3,27 @@
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
     --body-gray: rgb(248, 248, 248);
+
     --red: #dc3545;
+    --danger: #f65269;
+    --dark-svg: #4a4a4a;
+    --light-svg: var(--has-text-white-ter);
+
 }
 
 /* ----------------------------------------- */
 /* main css */
 /* ----------------------------------------- */
+
+.dark-svg {
+    fill: var(--dark-svg);
+}
+
+.light-svg {
+    fill: var(--light-svg);
+}
+
+
 
 div .columns {
     grid-column: 2/4;
@@ -66,7 +81,6 @@ section,
 }
 
 
-
 .genre-navbar {
     grid-column: 2/-2;
     display: flex;
@@ -92,17 +106,8 @@ section,
 /* ----------------------------------------- */
 /* nav area css */
 /* ----------------------------------------- */
-.navbar-end {
-    /* background-color: #f7c7cb; */
-    /* margin-top: 0 !important; */
-    /* padding-top: 0 !; */
-
-}
-
 
 .menu-btn {
-    /* margin: .4rem; */
-    /* background-color: #3ac6d9 !important; */
     width: 100%;
 }
 
@@ -170,7 +175,6 @@ section,
 #cart {
     display: flex;
     /* position: sticky; */
-    /* background-color: var(--hero-color) !important; */
     width: max-content;
     right: 1em;
     margin-left: auto;
@@ -182,7 +186,7 @@ section,
 
 .cart-dropdown-svg,
 #cart svg {
-    fill: var(--has-text-white-ter);
+    fill: var(--light-svg);
 }
 
 .cart-dropdown-svg {
@@ -190,11 +194,18 @@ section,
     height: 24px;
 }
 
+
+.cart-button {
+    background-color: #3ac6d9 !important;
+    width: 100%;
+}
+
+
+
 .cart-svg-container {
     position: relative;
 
 }
-
 
 .cart-toast {
     box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
@@ -226,9 +237,6 @@ section,
 
 
 
-/* -------------------------------------- */
-/* search bar */
-/* -------------------------------------- */
 
 
 
@@ -252,6 +260,17 @@ section,
 
 .card-text {
     padding: 0 2rem;
+}
+
+
+.card-price * {
+    color: var(--danger);
+}
+
+.card-text-edit-del {
+    display: flex;
+    align-items: baseline;
+    /* justify-content: space-between; */
 }
 
 .title-ellipsis,
@@ -393,7 +412,6 @@ input[type=number] {
 /* ----------------------------------------------------- */
 .order-card {
     display: flex;
-
     margin: 1em 0;
 }
 
@@ -532,6 +550,7 @@ footer {
         width: clamp(200px, 60%, 500px);
     }
 
+
 }
 
 
@@ -563,7 +582,17 @@ footer {
 /* bulma's desktop: from 1024px */
 @media only screen and (min-width: 1024px) {
 
+    /* -------------------------------------- */
+    /* search bar */
+    /* -------------------------------------- */
+    .search-bar-container {
+        width: 44%;
 
+    }
+
+    .search-bar-container form {
+        width: 100%;
+    }
 
     .orders-column {
         padding-left: 6vw;

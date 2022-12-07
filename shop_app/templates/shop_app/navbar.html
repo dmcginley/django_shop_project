@@ -1,13 +1,10 @@
-<nav class="navbar is-transparent is-fixed-top">
-    <div class="navbar-brand">
+{% load static %}
+
+<nav class="navbar is-transparent  is-mobile is-fixed-top">
+    <div class="navbar-brand pl-2">
         <a class="navbar-item" href="{% url 'home' %}">
-            <svg class="nav-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                viewBox="0 0 24 24" transform: ;msFilter:;">
-                <path
-                    d="M18 2H6c-1.103 0-2 .897-2 2v18l8-4.572L20 22V4c0-1.103-.897-2-2-2zm0 16.553-6-3.428-6 3.428V4h12v14.553z">
-                </path>
-            </svg>
-            <span class="pl-2">Book<strong>Shop</strong>
+            <img src="{% static 'shop_app/images/book_logo.svg' %}"" alt="">
+            <span class=" pl-2">Book<strong>Shop</strong>
             </span>
         </a>
         <div class="navbar-burger" data-target="navbarExampleTransparentExample">
@@ -39,10 +36,6 @@
                         High)</a>
                     <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=desc">Price (High to
                         Low)</a>
-                    <!-- <hr class="navbar-divider">
-                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                            Overview
-                        </a> -->
                 </div>
             </div>
         </div>
@@ -65,8 +58,8 @@
         <div class="navbar-end">
 
             <div class="navbar-item">
-                <div class="buttons">
-                    <a href="{% url 'view_cart' %}" class="button nav-btn">
+                <div class="">
+                    <a href="{% url 'view_cart' %}" class="button cart-button nav-btn">
                         <div class="cart-svg-container">
                             <svg class="nav-icon cart-icon nav-icon-mr" xmlns="http://www.w3.org/2000/svg" width="28"
                                 height="28" viewBox="0 0 24 24" transform: ;msFilter:;">
@@ -94,30 +87,42 @@
                 </div>
             </div>
 
-            <div class="navbar-item">
-                {% if user.is_superuser %}
-                <a class="button menu-btn is-warning" href="{% url 'add_book' %}">
-                    Add book
-                </a>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <a class="navbar-item" href="{% url 'profile' %}">
-                    Profile
-                </a>
-                <a class="navbar-item" href="{% url 'account_logout' %}">
-                    Sign out
-                </a>
-                {% else %}
-                <a class="navbar-item" href="{% url 'account_login' %}">
-                    Sign in
-                </a>
-                <a class="navbar-item" href="{% url 'account_signup' %}">
-                    Register
-                </a>
-                {% endif %}
 
+            <div class="navbar-item has-dropdown is-hoverable pr-2">
+                <span class="navbar-link">
+                    <svg class="dark-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                        transform: ;msFilter:;">
+                        <path
+                            d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z">
+                        </path>
+                    </svg>
+                </span>
+                <div class="navbar-dropdown is-right is-boxed mr-4">
+
+                    {% if user.is_superuser %}
+                    <a class="navbar-item" href="{% url 'profile' %}">
+                        Profile
+                    </a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <a class="navbar-item has-text-danger" href="{% url 'add_book' %}">
+                        Add book
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a class="navbar-item" href="{% url 'account_logout' %}">
+                        Sign out
+                    </a>
+                    {% else %}
+                    <a class="navbar-item" href="{% url 'account_login' %}">
+                        Sign in
+                    </a>
+                    <a class="navbar-item" href="{% url 'account_signup' %}">
+                        Register
+                    </a>
+                    {% endif %}
+
+                </div>
             </div>
-
 
 
         </div>

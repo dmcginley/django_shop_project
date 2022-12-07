@@ -22,7 +22,9 @@
         <div class="columns">
             <div class="column">
                 <h2 class="is-size-2">Book management</h2>
-                <h5 class="is-size-5">Add a book</h5>
+                <h5 class="is-size-5 mb-5">Add a book</h5>
+                <!-- <img src="{{ book.image.image.url }}" alt=""> -->
+
             </div>
             <div class="column">
                 <form action="{% url 'add_book' %}" method="POST" enctype="multipart/form-data"'>
@@ -33,7 +35,6 @@
                         <div class="control">
                             
                             {{ form | crispy }}
-
 
                             <a class="related-widget-wrapper-link add-related" id="add_id_genres" data-popup="yes" href="/admin/shop_app/genre/add/?_to_field=id&amp;_popup=1" title="Add another genre"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
                             <a class="button is-link is-outlined mt-4" href="{% url 'home' %}">Cancel</a>

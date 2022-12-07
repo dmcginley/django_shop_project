@@ -1,6 +1,4 @@
 {% extends 'shop_app/base.html' %} {% load static %}
-{% block title %}home{% endblock %}
-
 
 
 {% block content %}
@@ -13,37 +11,43 @@
 
   <div class="card index-card">
     <div>
-
       {% if book.image %}
       <figure class="image-cover-index mb-4">
         <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
           <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
-
-
-
         </a>
       </figure>
       {% else %}
       <figure class="image-cover-index mb-4">
         <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
           <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover" />
-
-
-
-
-
         </a>
       </figure>
       {% endif %}
-
-
-
 
       <div class="card-text">
         <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
         <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.author_names }}</h6>
         <!-- <p class="mb-4">{{ book.rating }}</p> -->
-        <p class="card-price is-warning pb-5">€{{ book.price }}</p>
+        <div class="card-text-edit-del">
+          <p class="card-price pb-5">
+            <strong>
+              €{{ book.price }}
+            </strong>
+          </p>
+          <div class="ml-2">
+            {% if user.is_superuser %}
+            <a class=" mr-1" href="{% url 'edit_book' book.id %}"">
+              Edit
+            </a>
+            <a class=" has-text-danger" href="{% url 'delete_book' book.id %}">
+              Delete
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+
       </div>
     </div>
     <div class="index-content">

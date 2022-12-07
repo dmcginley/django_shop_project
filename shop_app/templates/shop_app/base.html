@@ -32,17 +32,23 @@
 
     {% block extra_css %}
     {% endblock %}
-    <title>Shop app{% if title %} - {{ title }}{% endif %}</title>
+
+
+    {# favicon generated using favicon.io #}
+    {% include 'shop_app/favicon.html' %}
+
+
+    {% if title %}
+    <title>BookShop - {{ title }}</title>
+    {% else %}
+    <title>BookShop</title>
+    {% endif %}
   </head>
 
   <body class="has-navbar-fixed-top">
-
-
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
-
-
       {% with message.level as level %}
       {% if level == 50 %} {# cart #}
       {% include 'includes/toast/cart_toast.html' %}
@@ -54,13 +60,11 @@
       {% include 'includes/toast/success.html' %}
       {% else %}
       {% include 'includes/toast/info.html' %}
-
       {% endif %}
       {% endwith %}
       {% endfor %}
     </div>
     {% endif %}
-
 
     {% include 'shop_app/navbar.html' %}
     <div class="wrapper">
@@ -70,10 +74,8 @@
     </div>
     {% include 'shop_app/footer.html' %}
 
-
     {% block postloadjs %}
     {% endblock postloadjs %}
-
     <!-- script -->
     {% include 'includes/navbar_toast_scripts.html' %}
 

@@ -1,24 +1,14 @@
 from unicodedata import category
 from django.shortcuts import redirect, render, reverse, get_object_or_404
-import secrets
-from django.http import HttpResponse
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
 
-# from email import message
 from django.db.models import Q
-
-
 from django.views.generic import ListView, DetailView
-from django.views import generic
 
-# from shop_app.models import Product
 from .models import Book, Author, Genre
 from .forms import BookForm
-
-# from .models import Book, Author
 
 
 def home(request):
@@ -164,47 +154,47 @@ def add_book(request):
     return render(request, template, context)
 
 
-# @login_required
-# def edit_product(request, product_id):
-#     """ Edit a product in the store """
-#     if not request.user.is_superuser:
-#         messages.error(request, 'Sorry, only store owners can do that.')
-#         return redirect(reverse('home'))
+@login_required
+def edit_book(request, book_id):
+    """ Edit a book in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
-#     product = get_object_or_404(Product, pk=product_id)
-#     if request.method == 'POST':
-#         form = ProductForm(request.POST, request.FILES, instance=product)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Successfully updated product!')
-#             return redirect(reverse('product_detail', args=[product.id]))
-#         else:
-#             messages.error(
-#                 request, 'Failed to update product. Please ensure the form is valid.')
-#     else:
-#         form = ProductForm(instance=product)
-#         messages.info(request, f'You are editing {product.name}')
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book.image)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated book')
+            return redirect(reverse('book_detail', args=[book.id]))
+        else:
+            messages.error(
+                request, 'Failed to update book. Please ensure the form is valid.')
+    else:
+        form = BookForm(instance=book)
+        messages.info(request, f'You are editing {book.title}')
 
-#     template = 'products/edit_product.html'
-#     context = {
-#         'form': form,
-#         'product': product,
-#     }
+    template = 'shop_app/edit_book.html'
+    context = {
+        'form': form,
+        'book': book,
+    }
 
-#     return render(request, template, context)
+    return render(request, template, context)
 
 
-# @login_required
-# def delete_product(request, product_id):
-#     """ Delete a product from the store """
-#     if not request.user.is_superuser:
-#         messages.error(request, 'Sorry, only store owners can do that.')
-#         return redirect(reverse('home'))
+@login_required
+def delete_book(request, book_id):
+    """ Delete a book from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
 
-#     product = get_object_or_404(Product, pk=product_id)
-#     product.delete()
-#     messages.success(request, 'Product deleted!')
-#     return redirect(reverse('products'))
+    book = get_object_or_404(Book, pk=book_id)
+    book.delete()
+    messages.success(request, 'Book deleted!')
+    return redirect(reverse('home'))
 
 
 # ------------------------------

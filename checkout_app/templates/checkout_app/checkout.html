@@ -51,7 +51,11 @@
                         <div class="order-card-text">
                             <p class=""><strong>{{ item.book }}</strong></p>
                             <p class="">Quaintly: {{ item.quantity }}</p>
-                            <p class="">€{{ item.book.price | calc_subtotal:item.quantity }}</p>
+                            <p class="card-price">
+                                <strong>
+                                    €{{ item.book.price | calc_subtotal:item.quantity }}
+                                </strong>
+                            </p>
                         </div>
                     </div>
                     {% endfor %}

@@ -9,8 +9,15 @@
             <p class="">{{ message }}</p>
         </div>
         <div class="pl-5 pb-2">
-            {% if grand_total and not on_profile_page %}
+
+            {% if grand_total %}
+
+            {% if book_count < 2 %}
+            <p class="">({{ book_count }}) book in cart</p>
+            {% else %}
             <p class="">({{ book_count }}) books in cart</p>
+            {% endif %}
+
         </div>
         <div class="cart-toast-item-container py-2">
             {% for item in cart_items %}
@@ -24,14 +31,11 @@
 
                 <div class="cart-book-text">
                     <p><strong>{{ item.book.title }}</strong></p>
-
                     {% if item.quantity < 2 %}
                     <p>{{ item.quantity }} book</p>
                     {% else %}
                     <p>{{ item.quantity }} books</p>
-
                     {% endif %}
-
                 </div>
             </div>
             {% endfor %}
@@ -40,11 +44,11 @@
         <div class="px-5 pt-2">
             <p class="">
                 <strong>Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
-                    <span class="">€{{ total|floatformat:2 }}</span></strong>
+                    <span class="">
+                        €{{ total|floatformat:2 }}
+                    </span>
+                </strong>
             </p>
-
-
-
             {% if free_delivery_delta > 0 %}
             <p class="has-text-danger">
                 Spend <strong>€{{ free_delivery_delta }}</strong> more to get free next day delivery!

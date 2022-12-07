@@ -1,6 +1,7 @@
 from django import forms
 from .models import Author
 from .models import Book, Image
+from .widgets import CustomClearableFileInput
 
 
 class BookChangeListForm(forms.ModelForm):
@@ -18,8 +19,8 @@ class BookForm(forms.ModelForm):
 
         # fields = ('title',)
 
-    # image = forms.ImageField(
-    #     label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -32,7 +33,7 @@ class BookForm(forms.ModelForm):
 
         # self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'label p-2'
+            self.fields[field].widget.attrs['class'] = 'input'
 
         # for field in self.fields.values():
         #     field.widget.attrs.update({'class': 'form-control'})

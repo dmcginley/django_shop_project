@@ -1,0 +1,50 @@
+{% if widget.is_initial %}
+<p>{{ widget.initial_text }}:</p>
+
+<a href="{{ widget.value.url }}">
+    <img src="{{ widget.value.url }}" height="86" width="49 " alt="" aria-label="new-image">
+</a>
+
+
+{% if not widget.required %}
+<div>
+    <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}"
+        {% if widget.attrs.disabled %} disabled{% endif %}>
+    <label class="has-text-danger" for="{{ widget.checkbox_id }}">{{ widget.clear_checkbox_label }}</label>
+</div>
+{% endif %}
+<br>{{ widget.input_text }}:
+{% endif %}
+
+<span class="img-upload-span">
+    <div class="image-upload-mobile">
+        <div class="file">
+            <label class="file-label">
+                <input class="file-input" id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"
+                    {% include "django/forms/widgets/attrs.html" %}>
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <svg class="dark-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                            viewBox="0 0 24 24" transform: ;msFilter:;">
+                            <path d="M11 15h2V9h3l-4-5-4 5h3z"></path>
+                            <path d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z"></path>
+                        </svg>
+                    </span>
+                    <span class="file-label">
+                        Choose a file…
+                    </span>
+                </span>
+            </label>
+        </div>
+        <p class="has-text-danger mt-2" id="filename"></p>
+    </div>
+</span>
+
+
+{{ block.super }}
+<script type="text/javascript">
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(`${file.name}`);
+    });
+</script>

@@ -19,7 +19,18 @@
     <link rel="stylesheet" href="{% static 'shop_app/css/profile.css' %}" />
     {% block extra_css %}{% endblock extra_css %}
 
-    <title>BookShop {% block title %}{% endblock %}</title>
+    {# favicon generated using favicon.io #}
+    {% include 'shop_app/favicon.html' %}
+
+    {% if title %}
+    <title>BookShop - {{ title }}</title>
+    {% else %}
+    <title>BookShop</title>
+    {% endif %}
+
+
+
+
     {% block extra_head %}{% endblock %}
   </head>
 
