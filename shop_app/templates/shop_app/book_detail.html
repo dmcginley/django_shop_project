@@ -4,93 +4,91 @@
 
 
 <section class="">
-    <div class="columns">
-        <div class="column">
-            <div class="cover">
-                {% if book.image %}
-                <figure class="image detail-cover">
-                    <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
-                </figure>
-                {% else %}
-                <figure class="image detail-cover">
-                    <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover">
-                </figure>
-                {% endif %}
+    <div class="container is-max-widescreen">
+        <div class="columns">
+            <div class="column">
+                <div class="cover">
+                    {% if book.image %}
+                    <figure class="image detail-cover">
+                        <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover">
+                    </figure>
+                    {% else %}
+                    <figure class="image detail-cover">
+                        <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover">
+                    </figure>
+                    {% endif %}
 
+                </div>
+            </div>
+            <div class="column">
+                <h4 class="title is-5 pb-2">{{ book.title }}</h4>
+                <p class="subtitle is-6 mb-2">(Author) {{ book.author_names }}</p>
+                <p class="subtitle is-6 mb-4 author-ellipsis">{{ book.genre_name }}</p>
 
+                <!-- <p class="card-price pb-3">{{ book.number_in_stock }} in stock</p> -->
+                <p class="card-price has-text-danger is-size-5  pb-3">€{{ book.price }}</p>
+                <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                    {% csrf_token %}
+                    <label>Quantity</label>
 
-
-
-
-
+                    <div class="field has-addons input-group pt-1">
+                        <span class="control input-group-prepend">
+                            <button class="button quantity-btn is-small is-info decrement-qty"
+                                data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                                <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" transform: ;msFilter:;">
+                                    <path d="M5 11h14v2H5z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                        <div class="control">
+                            <input class="input qty_input is-small" type="number" name="quantity" value="1" min="1"
+                                max="99" data-item_id="{{ book.id }}" id="id_qty_{{ book.id }}">
+                        </div>
+                        <span class="control input-group-append">
+                            <button class="button quantity-btn is-small is-info increment-qty"
+                                data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                                <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" transform: ;msFilter:;">
+                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                </svg>
+                            </button>
+                        </span>
+                    </div>
+                    <div>
+                        <input type="submit" class="button is-link is-fullwidth mt-4" value="Add to Cart">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="column">
-            <h4 class="title is-5 pb-2">{{ book.title }}</h4>
-            <p class="subtitle is-6 mb-2">(Author) {{ book.author_names }}</p>
-            <p class="subtitle is-6 mb-4 author-ellipsis">{{ book.genre_name }}</p>
 
-            <!-- <p class="card-price pb-3">{{ book.number_in_stock }} in stock</p> -->
-            <p class="card-price has-text-danger is-size-5  pb-3">€{{ book.price }}</p>
-            <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
-                {% csrf_token %}
-                <label>Quantity</label>
+        <div class="columns is-multiline pt-5">
+            <div class="column is-12 is-6-desktop">
 
-                <div class="field has-addons input-group pt-1">
-                    <span class="control input-group-prepend">
-                        <button class="button quantity-btn is-small is-info decrement-qty" data-item_id="{{ book.id }}"
-                            id="decrement-qty_{{ book.id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                transform: ;msFilter:;">
-                                <path d="M5 11h14v2H5z"></path>
-                            </svg>
-                        </button>
-                    </span>
-                    <div class="control">
-                        <input class="input qty_input is-small" type="number" name="quantity" value="1" min="1" max="99"
-                            data-item_id="{{ book.id }}" id="id_qty_{{ book.id }}">
+                <article class="message">
+                    <div class="message-header">
+                        <p>Book Description</p>
+                        <!-- <button class="delete" aria-label="delete"></button> -->
                     </div>
-                    <span class="control input-group-append">
-                        <button class="button quantity-btn is-small is-info increment-qty" data-item_id="{{ book.id }}"
-                            id="increment-qty_{{ book.id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                transform: ;msFilter:;">
-                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                            </svg>
-                        </button>
-                    </span>
-                </div>
-                <div>
-                    <input type="submit" class="button is-link is-fullwidth mt-4" value="Add to Cart">
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                </div>
-            </form>
-        </div>
-    </div>
+                    <div class="message-body">
+                        <p>{{ object.description }}</p>
+                    </div>
+                </article>
+            </div>
+            <div class="column">
+                <h2 class="subtitle is-2">Book Details</h2>
+                <!-- <h3>Product details</h3> -->
+                <p><strong>Number fo Page:</strong> {{ object.pages }}</p>
+                <p><strong>Publisher:</strong> {{ object.publisher }}</p>
+                <p><strong>Publication date:</strong> {{ object.publication_date }}</p>
+                {% if object.isbn %}
+                <p><strong>ISBN:</strong> {{ object.isbn }}</p>
 
-    <div class="columns is-multiline pt-5">
-        <div class="column is-12 is-6-desktop">
-
-            <article class="message">
-                <div class="message-header">
-                    <p>Book Description</p>
-                    <!-- <button class="delete" aria-label="delete"></button> -->
-                </div>
-                <div class="message-body">
-                    <p>{{ object.description }}</p>
-                </div>
-            </article>
-        </div>
-        <div class="column">
-            <h2 class="subtitle is-2">Book Details</h2>
-            <!-- <h3>Product details</h3> -->
-            <p><strong>Publisher:</strong> {{ object.publisher }}</p>
-            <p><strong>Publication date:</strong> {{ object.publication_date }}</p>
-            {% if object.isbn %}
-            <p><strong>ISBN:</strong> {{ object.isbn }}</p>
-            {% else %}
-            <p>no ISBN found</p>
-            {% endif %}
+                {% else %}
+                <p>No ISBN found</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>

@@ -63,9 +63,21 @@ def home(request):
 
             q2 = Q(first_name__icontains=query) | Q(last_name__icontains=query)
             authors = authors.filter(q2)
-            for a in authors:
-                print("found author>> ", str(a))
-                # print("Q2", q2)
+            # books = books.filter(q2)
+
+            print(q2)
+
+            # queries = Q(title__icontains=query) | Q(authors__first_name=query)
+            # # books = books.filter(queries)
+            # print('queries=', queries)
+
+            # for a in authors:
+            #     print("found author>> ", str(a))
+
+            # a = Author.objects.get(queries)
+            # b = a.book_set.all()
+            # print(b)
+            # print("Q2", q2)
 
             # TODO: find how Django does many-to-many search
             #  add matching books with found authors to list 'books'
@@ -87,7 +99,7 @@ def home(request):
 
 class BookListView(ListView):
     model = Book
-    template_name = 'books/index.html'
+    # template_name = 'books/index.html'
 
     context_object_name = 'books'
     # ordering = ['-date_posted']  # date posted in reverse order
@@ -97,16 +109,17 @@ class BookListView(ListView):
 class BookDetailView(DetailView):
     model = Book
 # TODO: fix book detail maybe using slug
-# def book_detail(request, slug):
-#     book = get_object_or_404(Book, slug=slug,)
 
-#     return render(request, 'shop_app/book_detail.html')
+    def book_detail(request):
+        #     book = get_object_or_404(Book, slug=slug,)
+
+        return render(request, 'shop_app/book_detail.html')
 
 
-def genre_list(request, slug):
+def genre_list(request, genre_slug):
 
-    genre = get_object_or_404(Genre, slug=slug)
-    book = Book.objects.filter(genre=genre)
+    genres = get_object_or_404(Genre, slug=genre_slug)
+    book = Book.objects.filter(genres=genres)
 
     context = {
         'genre': genre,
@@ -117,9 +130,9 @@ def genre_list(request, slug):
 
 
 def genre(request):
-
+    # TODO: should this be render request or just return
     return {
-        'genre': Genre.objects.all()
+        'genres': Genre.objects.all()
     }
 
 
@@ -135,11 +148,10 @@ def add_book(request):
         if form.is_valid():
             book = form.save()
             messages.success(request, 'Successfully added book!')
-            return redirect(reverse('BookDetailView', args=[book.id]))
+            return redirect(reverse('book_detail', args=[book.id]))
         else:
             messages.error(
                 request, 'Failed to add book. Please ensure the form is valid.')
-            return HttpResponse(status=500)
 
     else:
         form = BookForm()

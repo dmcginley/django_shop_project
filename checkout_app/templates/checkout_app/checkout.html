@@ -33,19 +33,20 @@
                     {% for item in cart_items %}
                     <div class="order-card">
                         <div class="">
-                            <a href="{% url 'book_detail' item.book.id %}">
-                                {% if item.book.image %}
-                                <figure class="cover-figure">
-                                    <img class="cover-img cover-small" src="{{ item.book.image.image.url }}"
+                            {% if item.book.image %}
+                            <figure class="cover-figure">
+                                <a href="{% url 'book_detail' item.book.id %}">
+                                    <img class="cover-small" src="{{ item.book.image.image.url }}"
                                         alt="{{ book.name }}">
-                                </figure>
-                                {% else %}
-                                <figure class="cover-figure">
-                                    <img class="cover-img cover-small" src="{{ MEDIA_URL }}no_cover.png"
-                                        alt="{{ book.name }}">
-                                </figure>
-                                {% endif %}
-                            </a>
+                                </a>
+                            </figure>
+                            {% else %}
+                            <figure class="cover-figure">
+                                <a href="{% url 'book_detail' item.book.id %}">
+                                    <img class="cover-small" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
+                                </a>
+                            </figure>
+                            {% endif %}
                         </div>
                         <div class="order-card-text">
                             <p class=""><strong>{{ item.book }}</strong></p>

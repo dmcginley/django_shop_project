@@ -66,6 +66,21 @@ section,
 }
 
 
+
+.genre-navbar {
+    grid-column: 2/-2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    /* background-color: #485fc7; */
+}
+
+.genre-navbar .dropdown .button {
+    background-color: transparent;
+    border: none;
+}
+
 .books-section {
     grid-template-rows: 2;
     margin: auto;
@@ -211,6 +226,12 @@ section,
 
 
 
+/* -------------------------------------- */
+/* search bar */
+/* -------------------------------------- */
+
+
+
 /* ----------------------------------------- */
 /* card css */
 /* ----------------------------------------- */
@@ -228,9 +249,6 @@ section,
     margin: 1em 0;
 }
 
-.index-card img {
-    width: 100%;
-}
 
 .card-text {
     padding: 0 2rem;
@@ -253,9 +271,6 @@ section,
 .author-ellipsis {
     -webkit-line-clamp: 1;
 }
-
-
-.card-price {}
 
 
 .hero-color {
@@ -303,41 +318,52 @@ section,
     background-color: coral;
 }
 
-
-
-
-.cover-figure {
-    display: flex;
-    justify-content: center;
-    /* background-color: #3ac6d9; */
-    max-height: 300px;
+.cover-index-link {
+    height: 200px;
+    background-color: #3ac6d9;
+    margin: auto;
 }
 
+
+
 .cover-img {
-    /* max-height: 300px; */
-    border-radius: .25rem;
     object-fit: contain;
+    height: 200px;
 }
 
 .detail-cover {
     max-width: 300px;
+    margin: auto;
 }
 
 
-.search-section {
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    background-color: #333633;
 
-}
+
 
 /* ------------------------------- */
 /* forms */
 /* ------------------------------- */
-.search-form {
-    width: 600px
+
+/* button decrement-qty/increment-qty svg color */
+
+
+.btn-svg-white {
+    fill: #fefefb;
 }
+
+/* Remove Arrows/Spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 
 .shopping-btn svg {
     left: -20px;
@@ -347,6 +373,7 @@ section,
 .shopping-btn:hover svg {
     fill: #fefefb;
 }
+
 
 
 
@@ -366,9 +393,7 @@ section,
 /* ----------------------------------------------------- */
 .order-card {
     display: flex;
-    /* background-color: #3ac6d9; */
-    /* height: 100px; */
-    /* width: 100%; */
+
     margin: 1em 0;
 }
 
@@ -381,18 +406,14 @@ section,
     width: 120px;
 }
 
+.image-cover-index {
+    margin: auto;
+    display: flex;
+}
+
 .order-card-text {
     padding-left: 1em;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -404,15 +425,22 @@ footer {
     box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
 }
 
+
 .cart_toast-container,
 .toast-container {
     position: fixed;
     padding: 1em;
-    top: 0;
     right: 0;
     z-index: 100;
     width: 100%;
+}
 
+.cart_toast-container {
+    top: 0;
+}
+
+.toast-container {
+    top: 3rem;
 }
 
 .toast {
@@ -420,7 +448,7 @@ footer {
     margin-left: auto;
 }
 
-
+.notification.visibility,
 .cart_toast-container.visibility,
 .toast-container.visibility {
     display: none;
@@ -465,9 +493,14 @@ footer {
     .button {
         width: max-content;
     }
+
+
+
 }
 
 @media only screen and (min-width: 668px) {
+
+
     .books-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -478,12 +511,13 @@ footer {
 
     }
 
+
     .index-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        max-width: 30ch;
-        height: 520px;
+        width: 220px;
+        height: 420px;
         margin: auto;
     }
 
@@ -503,6 +537,7 @@ footer {
 
 
 
+/* bulma's tablet: from 769px */
 @media only screen and (min-width: 769px) {
     #cart {
         display: none;
@@ -511,6 +546,8 @@ footer {
     .order-history-container {
         padding-left: 2vw;
     }
+
+
 
 }
 
@@ -523,7 +560,10 @@ footer {
 
 }
 
+/* bulma's desktop: from 1024px */
 @media only screen and (min-width: 1024px) {
+
+
 
     .orders-column {
         padding-left: 6vw;
@@ -554,10 +594,12 @@ footer {
         /* background-color: #dc3545; */
     }
 
-
 }
 
 
+
+/* bulma's widescreen: from 1216px */
+@media only screen and (min-width: 1216px) {}
 
 
 /* -------------------------------------------------------- */

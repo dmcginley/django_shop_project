@@ -5,43 +5,44 @@
 
 {% block content %}
 
-
-<section class="search-section">
-  <form class="search-form field has-addons" action="{% url 'home' %}" method="GET">
-    <div class="control is-expanded">
-      <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN..." />
-    </div>
-    <div class="control">
-      <button class="button is-info" type="submit">Search</button>
-    </div>
-  </form>
-</section>
-
 {% include 'shop_app/hero.html' %}
 
 <section class="section books-section">
-  <h2 class="section-title subtitle is-2">Best Pick</h2>
 
   {% for book in books %}
 
   <div class="card index-card">
-    <div class="card-image">
-      <a class="cover" href="{% url 'book_detail' book.id %}">
+    <div>
 
-        {% if book.image %}
-        <figure class="cover-figure pb-4">
+      {% if book.image %}
+      <figure class="image-cover-index mb-4">
+        <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
           <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
-        </figure>
-        {% else %}
-        <figure class="cover-figure pb-4">
-          <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover" />
-        </figure>
-        {% endif %}
 
-      </a>
+
+
+        </a>
+      </figure>
+      {% else %}
+      <figure class="image-cover-index mb-4">
+        <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
+          <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover" />
+
+
+
+
+
+        </a>
+      </figure>
+      {% endif %}
+
+
+
+
       <div class="card-text">
         <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
-        <h6 class="subtitle is-6 author-ellipsis">{{ book.author_names }}</h6>
+        <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.author_names }}</h6>
+        <!-- <p class="mb-4">{{ book.rating }}</p> -->
         <p class="card-price is-warning pb-5">€{{ book.price }}</p>
       </div>
     </div>
@@ -66,5 +67,6 @@
   </div>
   {% endfor %}
 </section>
+
 
 {% endblock content %}

@@ -43,7 +43,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ['title', 'author_names',
                     'genre_name', 'isbn']
 
-    list_filter = ('title', 'authors', 'genre')
+    list_filter = ('title', 'authors', 'genres')
 
 
 @admin.register(Image)

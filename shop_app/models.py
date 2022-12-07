@@ -10,8 +10,8 @@ from django.urls import reverse
 
 class Author(models.Model):
     """Author with first and last name so you can search by either name"""
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
 
     def __str__(self):
         return u'%s %s' % (self.first_name, self.last_name)
@@ -37,8 +37,7 @@ class Image(models.Model):
 
 class Genre(models.Model):
     """Genre with slug field so that you can search by genre on the website"""
-    name = models.CharField(
-        max_length=255, db_index=True)
+    name = models.CharField(max_length=255, db_index=True)
     slug = models.SlugField(max_length=255, unique=True)
 
     def get_absolute_url(self):
@@ -69,7 +68,7 @@ class Book(models.Model):
         Image, blank=True, null=True, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
-    genre = models.ManyToManyField(
+    genres = models.ManyToManyField(
         Genre, related_name='book', help_text="Select a genre for this book")
     # slug = models.SlugField(max_length=255, unique=True)
 
@@ -97,7 +96,7 @@ class Book(models.Model):
 
     def genre_name(self):
         all = []
-        for a in self.genre.all():
+        for a in self.genres.all():
             all.append(str(a))
         return "; ".join(all)
 

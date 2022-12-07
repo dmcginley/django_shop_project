@@ -18,39 +18,52 @@
     </div>
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
-        <div class="navbar-start">
 
-            <div class="navbar-item has-dropdown is-hoverable" {% if request.path != '/' %} style="display: none;"
-                {% endif %}>
+        <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
                 <span class="navbar-link">
                     Genre
                 </span>
                 <div class="navbar-dropdown is-boxed">
-
-                    {% for g in genre %}
-                    <a class="navbar-item" href="{{ g.slug }}">{{ g.name }}</a>
+                    {% for g in genres %}
+                    <a class="navbar-item" href="/search/{{ g.slug }}">{{ g.name|title }}</a>
                     {% endfor %}
-
                 </div>
             </div>
-
-            <div class="navbar-item has-dropdown is-hoverable" {% if request.path != '/' %} style="display: none;"
-                {% endif %}>
+            <div class="navbar-item has-dropdown is-hoverable">
                 <span class="navbar-link">
                     Sort by
                 </span>
                 <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=asc">Price (Low to High)</a>
-                    <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=desc">Price (High to Low)</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                        Overview
-                    </a>
+                    <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=asc">Price (Low to
+                        High)</a>
+                    <a class="navbar-item" href="{% url 'home' %}?sort=price&direction=desc">Price (High to
+                        Low)</a>
+                    <!-- <hr class="navbar-divider">
+                        <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+                            Overview
+                        </a> -->
                 </div>
             </div>
         </div>
 
+
+        <div class="navbar-item search-bar-container">
+            <form class="field has-addons search-bar" action="{% url 'home' %}" method="GET">
+                <div class="control is-expanded">
+                    <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN..." />
+                </div>
+                <div class="control">
+                    <button class="button is-info" type="submit">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
         <div class="navbar-end">
+
             <div class="navbar-item">
                 <div class="buttons">
                     <a href="{% url 'view_cart' %}" class="button nav-btn">
@@ -78,24 +91,37 @@
                             {% endif %}
                         </p>
                     </a>
-
-                    {% if user.is_authenticated %}
-                    <a class="button menu-btn is-light" href="{% url 'profile' %}">
-                        Profile
-                    </a>
-                    <a class="button menu-btn is-light" href="{% url 'account_logout' %}">
-                        Sign out
-                    </a>
-                    {% else %}
-                    <a class="button menu-btn is-light" href="{% url 'account_login' %}">
-                        Sign in
-                    </a>
-                    <a class="button menu-btn is-light" href="{% url 'account_signup' %}">
-                        Register
-                    </a>
-                    {% endif %}
                 </div>
             </div>
+
+            <div class="navbar-item">
+                {% if user.is_superuser %}
+                <a class="button menu-btn is-warning" href="{% url 'add_book' %}">
+                    Add book
+                </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a class="navbar-item" href="{% url 'profile' %}">
+                    Profile
+                </a>
+                <a class="navbar-item" href="{% url 'account_logout' %}">
+                    Sign out
+                </a>
+                {% else %}
+                <a class="navbar-item" href="{% url 'account_login' %}">
+                    Sign in
+                </a>
+                <a class="navbar-item" href="{% url 'account_signup' %}">
+                    Register
+                </a>
+                {% endif %}
+
+            </div>
+
+
+
         </div>
     </div>
+
+
 </nav>

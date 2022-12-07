@@ -1,7 +1,6 @@
 from django import forms
 from .models import Author
-# from .widgets import CustomClearableFileInput
-from .models import Book
+from .models import Book, Image
 
 
 class BookChangeListForm(forms.ModelForm):
@@ -15,6 +14,9 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
+        # TODO: fix form for add book plus beside input
+
+        # fields = ('title',)
 
     # image = forms.ImageField(
     #     label='Image', required=False, widget=CustomClearableFileInput)
@@ -25,13 +27,12 @@ class BookForm(forms.ModelForm):
         # categories = Category.objects.all()
         # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
-        # self.fields['category'].choices = friendly_names
-        # for field_name, field in self.fields.items():
-        #     field.widget.attrs['class'] = 'border-black rounded-0'
-
         # for field in self.fields.items():
         #     field.attrs['class'] = 'border-black rounded-0'
 
         # self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'label p-2'
+
+        # for field in self.fields.values():
+        #     field.widget.attrs.update({'class': 'form-control'})

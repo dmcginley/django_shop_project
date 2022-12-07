@@ -31,7 +31,7 @@ def run():
         genres = []
         for g in genre_str.split(','):
             g = g.strip()
-            slug = g.lower().replace(' ', '-')
+            slug = g.lower().replace(' ', '-').replace("'", '')
             genre_obj, genre_created = Genre.objects.get_or_create(
                 name=g, slug=slug)
             genres.append(genre_obj)
@@ -75,7 +75,7 @@ def run():
         book.image.image.save(f"{isbn}.jpg", File(open(out_file, "rb")))
 
         book.authors.add(author)
-        book.genre.set(genres)
+        book.genres.set(genres)
         if book_created:
             author_report = ""
             if author_created:

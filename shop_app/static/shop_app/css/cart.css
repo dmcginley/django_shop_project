@@ -16,15 +16,18 @@
 
 
 
-.cart-text-grid {
-    display: grid;
-    grid-template-columns: 1fr minmax(0, 40ch) 1fr;
-    padding: 0;
+.cart-cover-container {
+    display: flex;
+    justify-content: center;
+    /* margin: auto; */
 }
+
 
 .cart-text-container {
     grid-column: 2;
     padding: 0;
+    width: 260px;
+    margin: auto;
 }
 
 .cart-contents {}
@@ -46,31 +49,6 @@
     fill: aliceblue;
 }
 
-button svg {
-    fill: aliceblue;
-}
-
-
-.qty_input {
-    width: 80px;
-    border: #3ac6d9 2px solid;
-
-}
-
-
-
-/* Remove Arrows/Spinners */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
 
 
 
@@ -125,7 +103,6 @@ input[type=number] {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* background-color: rgb(17, 182, 182); */
     }
 
 
