@@ -1,8 +1,8 @@
-# from audioop import reverse
 from django.http import HttpResponse
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from requests import request
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
+
 from shop_app.models import Book
 
 

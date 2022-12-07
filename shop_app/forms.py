@@ -1,6 +1,6 @@
 from django import forms
 from .models import Author
-from .models import Book, Image
+from .models import Book
 from .widgets import CustomClearableFileInput
 
 
@@ -25,15 +25,5 @@ class BookForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # categories = Category.objects.all()
-        # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
-
-        # for field in self.fields.items():
-        #     field.attrs['class'] = 'border-black rounded-0'
-
-        # self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'input'
-
-        # for field in self.fields.values():
-        #     field.widget.attrs.update({'class': 'form-control'})

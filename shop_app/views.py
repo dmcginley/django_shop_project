@@ -1,5 +1,5 @@
-from unicodedata import category
-from django.shortcuts import redirect, render, reverse, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
@@ -20,7 +20,6 @@ def home(request):
     sort = None
     direction = None
     # TODO: Queries and Categories, one of two ways
-    # genre = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -141,8 +140,8 @@ def add_book(request):
             return redirect(reverse('book_detail', args=[book.id]))
         else:
             messages.error(
-                request, 'Failed to add book. Please ensure the form is valid.')
-
+                request,
+                'Failed to add book. Please ensure the form is valid.')
     else:
         form = BookForm()
 
@@ -170,7 +169,8 @@ def edit_book(request, book_id):
             return redirect(reverse('book_detail', args=[book.id]))
         else:
             messages.error(
-                request, 'Failed to update book. Please ensure the form is valid.')
+                request,
+                'Failed to update book. Please ensure the form is valid.')
     else:
         form = BookForm(instance=book)
         messages.info(request, f'You are editing {book.title}')

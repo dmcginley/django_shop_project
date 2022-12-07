@@ -1,5 +1,9 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
+from django.urls import reverse
+
 from django.contrib import messages
 from django.conf import settings
 
@@ -54,12 +58,10 @@ def checkout(request):
             order = order_form.save(commit=False)
 
             client_secret = None
-            # find client_secret parameter, it's not called 'client_secret' any more
+            # find client_secret parameter it's not called 'client_secret'
             for key, value in request.POST.items():
                 if value.find("_secret") != -1:
                     client_secret = value
-                    print(
-                        f"found client_secret {client_secret} - key name was {key}")
                     break
             pid = client_secret.split('_secret')[0]
             order.stripe_pid = pid
@@ -78,14 +80,16 @@ def checkout(request):
 
                 except Book.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
+                        "One of the books in your cart"
+                        "wasn't found in our database."
                         "Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse
+                            ('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')

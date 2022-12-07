@@ -1,10 +1,4 @@
-from email.policy import default
-from enum import unique
-from tokenize import blank_re
-from unicodedata import decimal
 from django.db import models
-from PIL import Image
-from django.forms import model_to_dict
 from django.urls import reverse
 
 
@@ -27,7 +21,10 @@ class Publisher(models.Model):
 
 
 class Image(models.Model):
-    """Takes in the image from the import_book.py and adds it to the database."""
+    """
+    Takes in the image from the import_book.py
+    and adds it to the database.
+    """
     image = models.ImageField(default='no_cover.png',
                               upload_to='book_covers/')
 
@@ -47,47 +44,34 @@ class Genre(models.Model):
         return self.name
 
 
-# -----------------------------------------------------------------
-
-
 class Book(models.Model):
     """A published book."""
     title = models.CharField(
         max_length=255, help_text="The title of the book.")
     authors = models.ManyToManyField(Author)
     rating = models.DecimalField(
-        decimal_places=1, blank=True, max_digits=2, help_text="Between 1 and 10")
+        decimal_places=1, blank=True, max_digits=2,
+        help_text="Between 1 and 10")
     description = models.TextField(blank=True)
     isbn = models.CharField(max_length=20,
                             verbose_name="ISBN number of the book.")
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     publication_date = models.DateField(
-        verbose_name="Date the book was published.", null=True, help_text="e.g. 2022-10-29")
-    pages = models.PositiveIntegerField()
+        verbose_name="Date the book was published.",
+        null=True, help_text="e.g. 2022-10-29")
+
+    pages = models.PositiveIntegerField(null=True)
     image = models.ForeignKey(
         Image, blank=True, null=True, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
     genres = models.ManyToManyField(
         Genre, related_name='book', help_text="Select a genre for this book")
-    # slug = models.SlugField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.title
 
-    # TODO: BUG: ValueError: Model shop_app.Book can't have more than one auto-generated field.
-    # in_stock = models.BigAutoField(default=True)
-    # created = models.DateTimeField(auto_now=True)
-
-    # class Meta:
-    #     ordering = ('-created',)
-
-    # def get_absolute_url(self):
-    #     return reverse('shop_app:genre_list', args=[self.slug])
-
-
 # to combine the authers name for e.g. admin panal
-
     def author_names(self):
         all = []
         for a in self.authors.all():
