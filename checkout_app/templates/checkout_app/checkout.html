@@ -1,4 +1,6 @@
 {% extends 'shop_app/base.html' %}
+{% block title %}- Checkout{% endblock %}
+
 {% load static %}
 {% load cart_tools %}
 {% comment "" %}
@@ -22,56 +24,11 @@
         <div class="columns">
             <div class="column">
                 <h2 class="is-size-2">Checkout</h2>
+                <p class="order-summary-text">Your order summary can be found below</p>
             </div>
         </div>
-        <div class="columns is-multiline reverse-columns">
-            <div class="column is-12-tablet is-6-desktop orders-column">
-                <h3 class="subtitle is-4">Your Order</h3>
+        <div class="columns is-multiline">
 
-
-                <div class="orders-column-books">
-                    {% for item in cart_items %}
-                    <div class="order-card">
-                        <div class="">
-                            {% if item.book.image %}
-                            <figure class="cover-figure">
-                                <a href="{% url 'book_detail' item.book.id %}">
-                                    <img class="cover-small" src="{{ item.book.image.image.url }}"
-                                        alt="{{ book.name }}">
-                                </a>
-                            </figure>
-                            {% else %}
-                            <figure class="cover-figure">
-                                <a href="{% url 'book_detail' item.book.id %}">
-                                    <img class="cover-small" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
-                                </a>
-                            </figure>
-                            {% endif %}
-                        </div>
-                        <div class="order-card-text">
-                            <p class=""><strong>{{ item.book }}</strong></p>
-                            <p class="">Quaintly: {{ item.quantity }}</p>
-                            <p class="card-price">
-                                <strong>
-                                    €{{ item.book.price | calc_subtotal:item.quantity }}
-                                </strong>
-                            </p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <!-- <button class="button is-link">button</button> -->
-
-
-                <h2 class="subtitle is-size-3 is-size-4-mobile">Order total</h2>
-                <div>
-                    <p class="is-size-6-mobile is-size-5"><strong>Total:</strong> €{{ total|floatformat:2 }}</p>
-                    <p class="is-size-6-mobile is-size-5"><strong>Delivery:</strong> €{{ delivery|floatformat:2 }}
-                    </p>
-                    <p class="is-size-6-mobile is-size-5"><strong>Order Total:</strong>
-                        €{{ grand_total|floatformat:2 }}</p>
-                </div>
-            </div>
 
 
 
@@ -143,13 +100,66 @@
                                 Cart
                             </a>
                             <button id="submit-button" class="button button-pl is-link mt-4">Complete Order</button>
-                            <p class="pt-1">
-                                <span>icon</span>
-                                <span>Your card will be charged
-                                    <strong>€{{ grand_total | floatformat:2 }}</strong></span>
-                            </p>
+
+                            <div class="pt-1 flex">
+                                <svg class="dark-svg mr-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" transform: ;msFilter:;">
+                                    <path
+                                        d="M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z">
+                                    </path>
+                                </svg>
+                                <p>Your card will be charged<strong>€{{ grand_total | floatformat:2 }}</strong></span>
+                                </p>
+                            </div>
                         </form>
                     </div>
+                </div>
+            </div>
+            <div class="column is-12-tablet is-6-desktop orders-column">
+
+
+                <div class="orders-column-books">
+                    {% for item in cart_items %}
+                    <h3 class="subtitle is-4">Your Order</h3>
+                    <div class="order-card">
+                        <div class="">
+                            {% if item.book.image %}
+                            <figure class="cover-figure">
+                                <a href="{% url 'book_detail' item.book.id %}">
+                                    <img class="cover-small" src="{{ item.book.image.image.url }}"
+                                        alt="{{ book.name }}">
+                                </a>
+                            </figure>
+                            {% else %}
+                            <figure class="cover-figure">
+                                <a href="{% url 'book_detail' item.book.id %}">
+                                    <img class="cover-small" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
+                                </a>
+                            </figure>
+                            {% endif %}
+                        </div>
+                        <div class="order-card-text">
+                            <p class=""><strong>{{ item.book }}</strong></p>
+                            <p class="">Quaintly: {{ item.quantity }}</p>
+                            <p class="card-price">
+                                <strong>
+                                    €{{ item.book.price | calc_subtotal:item.quantity }}
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- <button class="button is-link">button</button> -->
+
+
+                <h2 class="subtitle is-size-3 is-size-4-mobile">Order total</h2>
+                <div>
+                    <p class="is-size-6-mobile is-size-5"><strong>Total:</strong> €{{ total|floatformat:2 }}</p>
+                    <p class="is-size-6-mobile is-size-5"><strong>Delivery:</strong> €{{ delivery|floatformat:2 }}
+                    </p>
+                    <p class="is-size-6-mobile is-size-5"><strong>Order Total:</strong>
+                        €{{ grand_total|floatformat:2 }}</p>
                 </div>
             </div>
         </div>

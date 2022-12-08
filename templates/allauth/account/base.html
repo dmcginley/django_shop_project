@@ -22,14 +22,7 @@
     {# favicon generated using favicon.io #}
     {% include 'shop_app/favicon.html' %}
 
-    {% if title %}
-    <title>BookShop - {{ title }}</title>
-    {% else %}
-    <title>BookShop</title>
-    {% endif %}
-
-
-
+    <title>BookShop {% block title %}{% endblock %}</title>
 
     {% block extra_head %}{% endblock %}
   </head>

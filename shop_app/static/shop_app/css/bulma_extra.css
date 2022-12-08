@@ -23,7 +23,10 @@
     fill: var(--light-svg);
 }
 
-
+.flex {
+    display: flex;
+    align-items: center;
+}
 
 div .columns {
     grid-column: 2/4;
@@ -51,7 +54,7 @@ div .columns {
 
 .sub-grid {
     display: grid;
-    grid-template-columns: 1fr minmax(100px, 200ch) 1fr;
+    grid-template-columns: 1fr minmax(100px, 146ch) 1fr;
 }
 
 .hero {
@@ -196,7 +199,6 @@ section,
 
 
 .cart-button {
-    background-color: #3ac6d9 !important;
     width: 100%;
 }
 
@@ -291,15 +293,47 @@ section,
     -webkit-line-clamp: 1;
 }
 
+/* ----------------------------------------- */
+/* hero section */
+/* ----------------------------------------- */
+
+
+.hero-content {
+    margin: auto;
+}
 
 .hero-color {
     color: aliceblue;
-    background-color: #3ac6d9;
+    background-color: #0dbbd6;
 }
 
 .hero * {
     color: whitesmoke;
 }
+
+.hero-button-desktop {
+    display: none;
+}
+
+
+
+.best-seller-book-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.best-seller-book-image {
+    margin-top: 2em;
+    width: 180px;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0px 8px 20px -5px #03373f5e;
+    /* transform: translateY(-2px); */
+
+}
+
 
 
 .banner {
@@ -325,17 +359,6 @@ section,
     width: 100%;
 }
 
-.hero-content {
-    margin: auto;
-}
-
-.book {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    background-color: coral;
-}
 
 .cover-index-link {
     height: 200px;
@@ -556,6 +579,7 @@ footer {
 
 
 
+
 /* bulma's tablet: from 769px */
 @media only screen and (min-width: 769px) {
     #cart {
@@ -566,18 +590,30 @@ footer {
         padding-left: 2vw;
     }
 
+    .best-seller-book-image {
+        margin-top: 0;
+        width: 220px;
+        height: 100%;
+    }
 
+    .hero-button-mobile {
+        display: none;
+    }
 
-}
-
-@media only screen and (min-width: 960px) {
-
-    /* .reverse-columns {
+    .hero-button-desktop {
         display: block;
-    } */
+    }
+
+    .best-seller-book-container {
+        justify-content: end;
+
+    }
+
 
 
 }
+
+@media only screen and (min-width: 960px) {}
 
 /* bulma's desktop: from 1024px */
 @media only screen and (min-width: 1024px) {

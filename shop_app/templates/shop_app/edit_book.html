@@ -1,4 +1,6 @@
 {% extends 'shop_app/base.html' %}
+{% block title %}- Edit Book{% endblock %}
+
 {% load static %}
 {% load cart_tools %}
 {% comment "" %}
@@ -39,7 +41,7 @@
 
                             <a class="related-widget-wrapper-link add-related" id="add_id_genres" data-popup="yes" href="/admin/shop_app/genre/add/?_to_field=id&amp;_popup=1" title="Add another genre"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>
                             <a class="button is-link is-outlined mt-4" href="{% url 'home' %}">Cancel</a>
-                            <button class="button button-pl is-link mt-4" type="submit">Submit</button>
+                            <button class="button button-pl is-link mt-4" type="submit">Submit Changes</button>
                         </div>
                     </div>
                 </fieldset>

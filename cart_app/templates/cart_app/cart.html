@@ -1,4 +1,6 @@
 {% extends 'shop_app/base.html' %}
+{% block title %}- Cart{% endblock %}
+
 {% load static %}
 {% load cart_tools %}
 
@@ -11,172 +13,172 @@
 {% block content %}
 
 <section class="">
-    <div class="container is-max-widescreen">
-        <div class="columns">
-            <div class="column">
+
+    <div class="container is-widescreen">
+
+
+        <div class="columns is-multiline">
+            <div class="column is-12">
                 <h2 class="subtitle is-2">Shopping Cart</h2>
             </div>
-        </div>
-
-        {% if cart_items %}
-        <div class="columns is-12">
-            <div class="column">
-                {% for item in cart_items %}
-                <div class="columns">
-                    <div class="column">
-                        <div class="cart-cover-container">
-                            {% if item.book.image %}
-                            <figure class="cover-figure">
-                                <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
-                                    <img class="cover-img cover-medium" src="{{ item.book.image.image.url }}"
-                                        alt="book cover">
-                                </a>
-                            </figure>
-                            {% else %}
-                            <figure class="cover-figure">
-
-                                <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
-                                    <img class="cover-img cover-medium" src="{{ MEDIA_URL }}no_cover.png"
-                                        alt="book cover">
-                                </a>
-                            </figure>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="cart-text-container">
-                            <div>
-                                <p class="title is-4">{{ item.book.title }}</p>
-                                <p class="subtitle is-6 mb-2">(Author) {{ item.book.author_names }}</p>
-                                <p class="subtitle is-6 mb-4 author-ellipsis">{{ item.book.genre_name }}</p>
-                            </div>
-                            <div>
-                                <p class="card-price is-size-6 pb-3">
-                                    <strong>
-                                        €{{ item.book.price | calc_subtotal:item.quantity }}
-                                    </strong>
-                                </p>
-                                <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
-                                    {% csrf_token %}
-                                    <div class="field has-addons input-group">
-                                        <div class="control input-group-prepend">
-                                            <button class="button quantity-btn is-small is-info decrement-qty"
-                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" transform: ;msFilter:;">
-                                                    <path d="M5 11h14v2H5z"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="control">
-                                            <input class="input qty_input is-small" type="number" name="quantity"
-                                                value="{{ item.quantity }}" min="1" max="99"
-                                                data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
-                                        </div>
-                                        <div class="control input-group-append">
-                                            <button class="button quantity-btn is-small is-info increment-qty"
-                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" transform: ;msFilter:;">
-                                                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-
-
-                                <a class="update-link mt-2">update</a>
-                                <a class="remove-item pl-2" id="remove_{{ item.item_id }}">remove</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-
-
-
-
-
-            <div class="column is-4">
-                <div class="cart-total">
-                    <h2 class="subtitle is-size-3 is-size-4-mobile">Cart total</h2>
-                    <div>
-                        <p class="is-size-6-mobile is-size-5"><strong>Total:</strong> €{{ total|floatformat:2 }}</p>
-                        <p class="is-size-6-mobile is-size-5"><strong>Delivery:</strong> €{{ delivery|floatformat:2 }}
-                        </p>
-                        <p class="is-size-6-mobile is-size-5"><strong>Order Total:</strong>
-                            €{{ grand_total|floatformat:2 }}</p>
-                    </div>
-
-                    <div class="pt-4">
-                        <a class="button is-link is-outlined mt-3 is-fullwidth" href="{% url 'home' %}">Continue
-                            shopping</a>
-                        <a class="button is-link mt-3 is-fullwidth" href="{% url 'checkout' %}">
-                            <span class="pl-2">Checkout</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-            {% else %}
-            <div class="column">
-                <p class="is-size-5">Your cart is empty...</p>
-                <a class="button shopping-btn is-link is-outlined mt-4" href="{% url 'home' %}">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" transform:
-                            ;msFilter:;">
-                            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z">
-                            </path>
-                        </svg>
-                    </span>
-                    <span>
-                        Continue Shopping
-                    </span>
-                </a>
-                <p class="pt-4">And don't forget we have <strong>Free delivery on orders over
-                        €{{ free_delivery_threshold }}</strong></p>
-            </div>
-            {% endif %}
-
-
 
         </div>
+
+
+
     </div>
-</section>
+
+    {% if cart_items %}
+    <div class="columns reverse-columns-cart">
+        <div class="column is-4">
+            <div class="cart-total">
+                <!-- <h2 class="subtitle is-size-3 is-size-4-mobile">Cart total</h2> -->
+                <div>
+                    <p class="is-size-6-mobile is-size-5"><strong>Total:</strong> €{{ total|floatformat:2 }}</p>
+                    <p class="is-size-6-mobile is-size-5"><strong>Delivery:</strong> €{{ delivery|floatformat:2 }}
+                    </p>
+                    <p class="is-size-6-mobile is-size-5"><strong>Order Total:</strong>
+                        €{{ grand_total|floatformat:2 }}</p>
+                </div>
+
+                <div class="pt-4">
+                    <a class="button is-link is-outlined mt-3 is-fullwidth" href="{% url 'home' %}">Continue
+                        shopping</a>
+                    <a class="button is-link mt-3 is-fullwidth" href="{% url 'checkout' %}">
+                        <span class="pl-2">Checkout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <!-- <div class="columns is-12 is-text-centered">
+                <h4 class="subtitle is-4">Cart summary</h4>
+            </div> -->
+            {% for item in cart_items %}
+            <div class="columns">
+                <div class="column">
+                    <div class="cart-cover-container">
+                        {% if item.book.image %}
+                        <figure class="cover-figure">
+                            <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
+                                <img class="cover-img cover-medium" src="{{ item.book.image.image.url }}"
+                                    alt="book cover">
+                            </a>
+                        </figure>
+                        {% else %}
+                        <figure class="cover-figure">
+
+                            <a class="cover cart-cover" href="{% url 'book_detail' item.book.id %}">
+                                <img class="cover-img cover-medium" src="{{ MEDIA_URL }}no_cover.png" alt="book cover">
+                            </a>
+                        </figure>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="cart-text-container">
+
+                        <div>
+                            <p class="title is-4">{{ item.book.title }}</p>
+                            <p class="subtitle is-6 mb-2">(Author) {{ item.book.author_names }}</p>
+                            <p class="subtitle is-6 mb-4 author-ellipsis">{{ item.book.genre_name }}</p>
+                        </div>
+                        <div>
+                            <p class="card-price is-size-6 pb-3">
+                                <strong>
+                                    €{{ item.book.price | calc_subtotal:item.quantity }}
+                                </strong>
+                            </p>
+                            <form class="update-form" action="{%  url 'adjust_cart' item.item_id %}" method="POST">
+                                {% csrf_token %}
+                                <div class="field has-addons input-group">
+                                    <div class="control input-group-prepend">
+                                        <button class="button quantity-btn is-small is-info decrement-qty"
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="24" viewBox="0 0 24 24" transform: ;msFilter:;">
+                                                <path d="M5 11h14v2H5z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="control">
+                                        <input class="input qty_input is-small" type="number" name="quantity"
+                                            value="{{ item.quantity }}" min="1" max="99"
+                                            data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                                    </div>
+                                    <div class="control input-group-append">
+                                        <button class="button quantity-btn is-small is-info increment-qty"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <svg class="btn-svg-white" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="24" viewBox="0 0 24 24" transform: ;msFilter:;">
+                                                <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <a class="update-link mt-2">update</a>
+                            <a class="remove-item pl-2" id="remove_{{ item.item_id }}">remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="container is-widescreen">
+            <section class="columns">
+                <div class="column">
+                    <p class="is-size-5">Your cart is empty...</p>
+                    <a class="button shopping-btn is-link is-outlined mt-4" href="{% url 'home' %}">
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                transform: ;msFilter:;">
+                                <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span>
+                            Continue Shopping
+                        </span>
+                    </a>
+                    <p class="pt-4">And don't forget we have <strong>Free delivery on orders over
+                            €{{ free_delivery_threshold }}</strong></p>
+                </div>
+            </section>
+        </div>
+        {% endif %}
+
+    </div>
+    </div>
 
 
 
-{{ block.super }}
-<script>
-    // update item in cart
-    $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
+    {{ block.super }}
+    <script>
+        // update item in cart
+        $('.update-link').click(function (e) {
+            var form = $(this).prev('.update-form');
+            form.submit();
+        })
 
-    // remove item in cart
-    $('.remove-item').click(function (e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/cart/remove/${itemId}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken }
+        // remove item in cart
+        $('.remove-item').click(function (e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var url = `/cart/remove/${itemId}/`;
+            var data = { 'csrfmiddlewaretoken': csrfToken }
 
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
-</script>
-
-
-{% include 'includes/quantity_input_script.html' %}
+            $.post(url, data)
+                .done(function () {
+                    location.reload();
+                });
+        })
+    </script>
 
 
-{% endblock content %}
+    {% include 'includes/quantity_input_script.html' %}
+
+
+    {% endblock content %}

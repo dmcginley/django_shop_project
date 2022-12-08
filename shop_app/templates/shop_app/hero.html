@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="hero hero-color is-halfheight">
     <div class="banner">
         <p>Free delivery on orders over €{{ free_delivery_threshold }}</p>
@@ -6,21 +8,24 @@
         <div class="hero-body">
 
             <div class="columns">
-                <div class="column">
+                <div class="column has-text-centered has-text-left-tablet">
                     <h1 class="title">
                         <span class="book-h1">Book</span>Shop
                     </h1>
                     <p class="subtitle">
-                        Discover your book for the summer
+                        Discover your book for the winter
                     </p>
 
-                    <a class="button is-link is-medium">Button</a>
+                    <a class="button is-link is-medium hero-button-desktop mt-6" href="">Order Today</a>
+
                 </div>
-                <div class="column">
-                    <div class="book">
-                        First column
+                <div class="column has-text-centered ">
+                    <div class="best-seller-book-container">
+                        <img class="best-seller-book-image" src="{{ MEDIA_URL }}book_no_1.jpg" alt="">
                     </div>
+                    <a class="button is-link is-medium mt-6 hero-button-mobile">Order Today</a>
                 </div>
+
             </div>
         </div>
     </div>

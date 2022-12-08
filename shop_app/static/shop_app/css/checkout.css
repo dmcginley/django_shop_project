@@ -67,7 +67,9 @@ sup {
     margin: 0;
 } */
 
-
+.order-summary-text {
+    display: block;
+}
 
 
 /* ---------------------------------------- */
@@ -157,4 +159,14 @@ select option[value=""] {
         stroke-dashoffset: 280;
         transform: rotate(360deg);
     }
+}
+
+
+@media only screen and (min-width: 1024px) {
+
+
+    .order-summary-text {
+        display: none;
+    }
+
 }
