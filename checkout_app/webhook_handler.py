@@ -117,6 +117,8 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            print(
+                f"CONFIRMATION EMAIL after FINDING order {order.order_number}")
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received:{event["type"]} | SUCCESS: Verified order already in database',
@@ -146,14 +148,20 @@ class StripeWH_Handler:
                         quantity=item_data,
                     )
                     order_line_item.save()
-
+                print(
+                    f"CONFIRMATION EMAIL after CREATING order {order.order_number}")
+                self._send_confirmation_email(order)
             except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        self._send_confirmation_email(order)
+        # self._send_confirmation_email(order)
+        if order:
+            print("order_number is", order.order_number)
+        else:
+            print("order not found")
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
