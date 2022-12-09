@@ -10,9 +10,10 @@
 
   {% for book in books %}
 
+
   <div class="card index-card">
     <div>
-      {% if book.image %}
+      {% if book.image.image %}
       <figure class="image-cover-index mb-4">
         <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
           <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
@@ -71,6 +72,36 @@
     </div>
   </div>
   {% endfor %}
+</section>
+
+{# pagination #}
+<section class="p-6">
+  {% if is_paginated %}
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" href="?page=1">First Page</a>
+    <ul class="pagination-list">
+      {% if page_obj.has_previous %}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+
+      {% endif %}
+      {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+
+
+      <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
+
+
+      {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %}
+      <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+      {% endif %}
+    </ul>
+    <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+  </nav>
+  {% endif %}
 </section>
 
 

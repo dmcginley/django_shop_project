@@ -1,5 +1,6 @@
 :root {
     --hero-color: #3ac6d9;
+    --cart-button-blue: #485fc7;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
     --body-gray: rgb(248, 248, 248);
@@ -155,8 +156,17 @@ section,
 
 .nav-btn {
     border: 0;
-    width: 100%;
     margin: auto;
+    width: 100% !important;
+    /* background-color: #baf0f8; */
+    /* max-width: fit-content;
+    max-width: -moz-fit-content */
+}
+
+.nav-btn:hover {
+    /* background-color: #485fc7; */
+    fill: var(--cart-button-blue);
+    color: var(--cart-button-blue);
 }
 
 .nav-btn:focus {
@@ -197,10 +207,6 @@ section,
     height: 24px;
 }
 
-
-.cart-button {
-    width: 100%;
-}
 
 
 

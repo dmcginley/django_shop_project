@@ -1,0 +1,68 @@
+{% extends 'shop_app/base.html' %} {% load static %}
+{% block title %}- Home{% endblock %}
+
+
+{% block content %}
+
+<!-- {% include 'shop_app/hero.html' %} -->
+
+<section class="section books-section">
+
+  {% if searching %}
+  {% for book in results %}
+  {{book.title}} - {{book.isbn}} <br>
+  {% endfor %}
+  {% else %}
+  <h2>Search for books by title, author name, or ISBN</h2>
+  {% endif %}
+
+  {% if result_count < 1 %}
+  <h2>No results found</h2>
+  <p>Search for books by title, author name, or ISBN</p>
+  {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+{# pagination #}
+<section class="p-6">
+  {% if is_paginated %}
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" href="?page=1">First Page</a>
+    <ul class="pagination-list">
+      {% if page_obj.has_previous %}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+
+      {% endif %}
+      {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+
+
+      <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
+
+
+      {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %}
+      <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+      {% endif %}
+    </ul>
+    <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+  </nav>
+  {% endif %}
+
+  {% endblock content %}

@@ -8,10 +8,10 @@
 
 <section class="section books-section">
 
-    <!-- TODO: fix get book genre name at the top -->
-    <h2 class="section-title subtitle is-2">{{ book.genre_name }}</h2>
-
     {% for book in book %}
+    {% if forloop.first %}
+    <h2 class="section-title subtitle is-2 has-text-centered has-text-left-tablet">{{ book.genre_name }}</h2>
+    {% endif %}
     <div class="card index-card">
         <div>
             {% if book.image %}
