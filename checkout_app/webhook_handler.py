@@ -97,6 +97,7 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
+                time.sleep(5)
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
@@ -115,7 +116,7 @@ class StripeWH_Handler:
                 break
             except Order.DoesNotExist:
                 attempt += 1
-                time.sleep(1)
+
         if order_exists:
             print(
                 f"CONFIRMATION EMAIL after FINDING order {order.order_number}")
