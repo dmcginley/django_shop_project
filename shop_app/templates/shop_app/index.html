@@ -30,7 +30,6 @@
       <div class="card-text">
         <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
         <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.author_names }}</h6>
-        <!-- <p class="mb-4">{{ book.rating }}</p> -->
         <div class="card-text-edit-del">
           <p class="card-price pb-5">
             <strong>
@@ -48,8 +47,6 @@
             {% endif %}
           </div>
         </div>
-
-
       </div>
     </div>
     <div class="index-content">
@@ -78,31 +75,31 @@
 <section class="p-6">
   {% if is_paginated %}
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    {% if page_obj.has_previous %}
     <a class="pagination-previous" href="?page=1">First Page</a>
     <ul class="pagination-list">
-      {% if page_obj.has_previous %}
       <li><span class="pagination-ellipsis">&hellip;</span></li>
-
-      {% endif %}
-      {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-
-
-      <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
-
-
-      {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %}
-      <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
-      {% endif %}
-      {% endfor %}
-      {% if page_obj.has_next %}
-      <li><span class="pagination-ellipsis">&hellip;</span></li>
-      {% endif %}
+      {% else %}
+      <a class="pagination-previous is-disabled" disabled href="?page=1">First Page</a>
+      <ul class="pagination-list">
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
+        {% elif num > page_obj.number|add:'-4' and num < page_obj.number|add:'4' %}
+        <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+      </ul>
+      <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+      {% else %}
     </ul>
-    <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+    <a class="pagination-next is-disabled" disabled href="?page={{ books.paginator.num_pages }}">Last page</a>
+    {% endif %}
   </nav>
   {% endif %}
 </section>
-
 
 {% endblock content %}

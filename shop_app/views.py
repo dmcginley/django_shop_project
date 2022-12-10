@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.views.generic import ListView, DetailView
 
@@ -100,24 +100,35 @@ class BookReverseOrderView(ListView):
     context_object_name = 'books'
 
 
-def genre_list(request, genre_slug):
-
-    genres = get_object_or_404(Genre, slug=genre_slug)
-    book = Book.objects.filter(genres=genres)
-
-    context = {
-        'genre': genre,
-        'book': book,
-    }
-
-    return render(request, 'shop_app/genre.html', context)
-
-
 def genre(request):
     # TODO: should this be render request or just return
     return {
         'genres': Genre.objects.all()
     }
+
+
+def genre_list(request, genre_slug):
+
+    genres = get_object_or_404(Genre, slug=genre_slug)
+    book = Book.objects.filter(genres=genres)
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(book, 8)
+
+    try:
+        books = paginator.page(page)
+    except PageNotAnInteger:
+        books = paginator.page(1)
+    except EmptyPage:
+        books = paginator.page(paginator.num_pages)
+
+    context = {
+        # 'genre': genre,
+        # 'book': book,
+        'books': books,
+    }
+
+    return render(request, 'shop_app/genre.html', context)
 
 
 # class GenreListView(ListView):

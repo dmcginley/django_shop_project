@@ -16,6 +16,12 @@
 /* main css */
 /* ----------------------------------------- */
 
+a[disabled] {
+    pointer-events: none;
+    cursor: none;
+}
+
+
 .dark-svg {
     fill: var(--dark-svg);
 }

@@ -81,21 +81,17 @@
   <div class="container is-widescreen">
     <section class="columns">
       <div class="column">
+
         <h2 class="subtitle is-2">Search for books by title, author name, or ISBN</h2>
-      </div>
-    </section>
-  </div>
-  {% endif %}
+
+        {% endif %}
 
 
 
+        {% if result_count < 1 %}
 
-  {% if result_count < 1 %}
-  <div class="container is-widescreen">
-    <section class="columns">
-      <div class="column">
         <h2 class="subtitle is-2">No results found</h2>
-        <p>Search for books by title, author name, or ISBN</p>
+        <!-- <p>Search for books by title, author name, or ISBN</p> -->
       </div>
     </section>
   </div>
