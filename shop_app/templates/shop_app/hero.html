@@ -16,14 +16,16 @@
                         Discover your book for the winter
                     </p>
 
-                    <a class="button is-link is-medium hero-button-desktop mt-6" href="">Order Today</a>
+                    <a class="button is-link is-medium hero-button-desktop mt-6" href="{% url 'book_detail' 3 %}">Order
+                        Today</a>
 
                 </div>
                 <div class="column has-text-centered ">
                     <div class="best-seller-book-container">
                         <img class="best-seller-book-image" src="{{ MEDIA_URL }}book_no_1.jpg" alt="">
                     </div>
-                    <a class="button is-link is-medium mt-6 hero-button-mobile">Order Today</a>
+                    <a class="button is-link is-medium mt-6 hero-button-mobile" href="{% url 'book_detail' 3 %}">Order
+                        Today</a>
                 </div>
 
             </div>

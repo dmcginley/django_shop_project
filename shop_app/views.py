@@ -2,100 +2,17 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models.functions import Lower
-# from django.core.paginator import Paginator
 from django.db.models import Q
-import django_filters
-from django.db.models import Value as V
-from django.db.models.functions import Concat
-
+from django.core.paginator import Paginator
 
 from django.views.generic import ListView, DetailView
 
-from .models import Book, Author, Genre
+from .models import Book, Genre
 from .forms import BookForm
 
 
-# from django.db.models import Q
-
-# def home(request):
-
-#     books = Book.objects.all()
-#     authors = Author.objects.all()
-
-#     query = None
-#     sort = None
-#     direction = None
-#     # TODO: Queries and Categories, one of two ways
-
-#     if request.GET:
-#         if 'sort' in request.GET:
-#             sortkey = request.GET['sort']
-#             sort = sortkey
-#             if sortkey == 'title':
-#                 sortkey = 'lower_title'
-#                 # TODO: error lower not defined
-#                 books = books.annotate(lower_title=Lower('title'))
-
-#             if 'direction' in request.GET:
-#                 direction = request.GET['direction']
-#                 if direction == 'desc':
-#                     sortkey = f'-{sortkey}'
-#             books = books.order_by(sortkey)
-
-#         if 'genre' in request.GET:
-#             genre = request.GET['genre'].split(',')
-#             books = books.filter(genre__name__in=genre)
-#             genre = Genre.objects.filter(genre__name__in=genre)
-
-#         if 'q' in request.GET:
-#             query = request.GET['q']
-#             if not query:
-#                 messages.error(request, "Hi, you didn't enter a search")
-#                 return redirect(reverse('home'))
-#             queries = Q(title__icontains=query) | Q(
-#                 isbn__icontains=query)
-#             books = books.filter(queries)
-
-#             q2 = Q(first_name__icontains=query) | Q(last_name__icontains=query)
-#             authors = authors.filter(q2)
-#             # books = books.filter(q2)
-
-#             print(q2)
-
-#             # queries = Q(title__icontains=query) | Q(authors__first_name=query)
-#             # # books = books.filter(queries)
-#             # print('queries=', queries)
-
-#             # for a in authors:
-#             #     print("found author>> ", str(a))
-
-#             # a = Author.objects.get(queries)
-#             # b = a.book_set.all()
-#             # print(b)
-#             # print("Q2", q2)
-
-#             # TODO: find how Django does many-to-many search
-#             #  add matching books with found authors to list 'books'
-#     else:
-#         print("can't find author>> ")
-
-#     current_sorting = f'{sort}_{direction}'
-
-#     context = {
-#         # 'books': Book.objects.all(),
-#         'books': books,
-#         'search_term': query,
-#         # 'current_genres': genre,
-#         'current_sorting': current_sorting
-#     }
-
-#     return render(request, 'shop_app/index.html', context)
-
-##############################################################
-
 class BookListView(ListView):
-    """ class view to list book with pagination """
+    """ Home page - class based view to list book with pagination """
     paginate_by = 16
     model = Book
 
@@ -106,7 +23,6 @@ class BookListView(ListView):
 def book_search(request):
     """ GET method search view for authors names, isbn, and title """
     searching = request.GET.get('searching')
-
     unique_book_isbns = []
     results = []
 
@@ -137,10 +53,15 @@ def book_search(request):
         add_new_books(matching_authors)
         print(f"total books {len(results)}")
 
+    # paginator = Paginator(results, 3)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
+
     context = {
         'searching': searching,
         'results': results,
-        'result_count': len(results)
+        'result_count': len(results),
+        # 'page_obj': page_obj,
     }
 
     if len(searching.strip()) == 0:
@@ -148,90 +69,7 @@ def book_search(request):
     return render(request,
                   'shop_app/book_search.html', context)
 
-# TODO: fix order by price
 
-
-def book_order_view(request):
-    books = Book.objects.all().order_by('price').values()
-    authors = Author.objects.all()
-
-    context = {
-        'books': books,
-        'authors': authors
-    }
-    return render(request,
-                  'shop_app/index.html', context)
-
-##############################################################
-
-# --------------------------------------------------
-
-
-# def book_list(request):
-#     books = Book.objects.all()
-#     authors = Author.objects.all()
-
-#     query = None
-#     sort = None
-#     direction = None
-#     # TODO: Queries and Categories, one of two ways
-
-#     if request.GET:
-#         if 'sort' in request.GET:
-#             sortkey = request.GET['sort']
-#             sort = sortkey
-#             if sortkey == 'title':
-#                 sortkey = 'lower_title'
-#                 # TODO: error lower not defined
-#                 books = books.annotate(lower_title=Lower('title'))
-
-#             if 'direction' in request.GET:
-#                 direction = request.GET['direction']
-#                 if direction == 'desc':
-#                     sortkey = f'-{sortkey}'
-#             books = books.order_by(sortkey)
-
-#         if 'genre' in request.GET:
-#             genre = request.GET['genre'].split(',')
-#             books = books.filter(genre__name__in=genre)
-#             genre = Genre.objects.filter(genre__name__in=genre)
-
-#         if 'q' in request.GET:
-#             query = request.GET['q']
-#             if not query:
-#                 messages.error(request, "Hi, you didn't enter a search")
-#                 return redirect(reverse('home'))
-#             queries = Q(title__icontains=query) | Q(
-#                 isbn__icontains=query)
-#             books = books.filter(queries)
-
-#             q2 = Q(first_name__icontains=query) | Q(
-#                 last_name__icontains=query)
-#             authors = authors.filter(q2)
-#             # books = books.filter(q2)
-
-#             print(q2)
-
-#     else:
-#         print("can't find author>> ")
-
-#     current_sorting = f'{sort}_{direction}'
-
-#     context = {
-#         # 'books': Book.objects.all(),
-#         'books': books,
-#         'search_term': query,
-#         # 'current_genres': genre,
-#         'current_sorting': current_sorting
-#     }
-
-#     return render(request, 'shop_app/index.html', context)
-
-
-#     context_object_name = 'books'
-    # ordering = ['-date_posted']  # date posted in reverse order
-
-##############################################################
 class BookDetailView(DetailView):
     model = Book
 # TODO: fix book detail maybe using slug
@@ -240,6 +78,26 @@ class BookDetailView(DetailView):
         #     book = get_object_or_404(Book, slug=slug,)
 
         return render(request, 'shop_app/book_detail.html')
+
+
+class BookOrderView(ListView):
+    """ class view to list book by price low to high with pagination """
+    paginate_by = 16
+    model = Book
+
+    ordering = ['price']
+    template_name = 'shop_app/index.html'
+    context_object_name = 'books'
+
+
+class BookReverseOrderView(ListView):
+    """ class view to list book by price high to low with pagination """
+    paginate_by = 16
+    model = Book
+
+    ordering = ['-price']
+    template_name = 'shop_app/index.html'
+    context_object_name = 'books'
 
 
 def genre_list(request, genre_slug):
@@ -260,6 +118,27 @@ def genre(request):
     return {
         'genres': Genre.objects.all()
     }
+
+
+# class GenreListView(ListView):
+#     """ Home page - class based view to list book with pagination """
+#     paginate_by = 16
+#     model = Book
+
+#     def genre_list(request, genre_slug):
+
+#         genres = get_object_or_404(Genre, slug=genre_slug)
+#         book = Book.objects.filter(genres=genres)
+
+#         context = {
+#             'genres': genres,
+#             'book': book,
+#         }
+#         return render(request, 'shop_app/genre.html', context)
+
+#     template_name = 'shop_app/genre.html'
+#     context_object_name = 'context'
+
 
 ##############################################################
 
