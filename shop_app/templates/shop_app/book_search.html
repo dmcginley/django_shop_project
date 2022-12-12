@@ -9,6 +9,14 @@
 <section class="section books-section">
 
   {% if searching %}
+
+
+  {% if result_count == 0 %}
+  <h2 class="subtitle is-2">No results found</h2>
+  {% endif %}
+
+
+
   {% for book in results %}
 
   <div class="card index-card">
@@ -77,24 +85,17 @@
 
 
 
-  {% else %}
-  <div class="container is-widescreen">
+  {% else  %}
+  <div class="container is-widescreen code-inst">
     <section class="columns">
       <div class="column">
 
         <h2 class="subtitle is-2">Search for books by title, author name, or ISBN</h2>
 
-        {% endif %}
-
-
-
-        {% if result_count < 1 %}
-
-        <h2 class="subtitle is-2">No results found</h2>
-        <!-- <p>Search for books by title, author name, or ISBN</p> -->
       </div>
     </section>
   </div>
+
   {% endif %}
 
 

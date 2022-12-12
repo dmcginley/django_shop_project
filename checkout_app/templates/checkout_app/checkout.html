@@ -5,11 +5,11 @@
 {% load cart_tools %}
 {% comment "" %}
 <!-- {% load formsetify %} -->
+
 <!-- {% render_form form "bulma" %} -->
 {% endcomment %}
 
 
-<!-- {% load crispy_forms_tags %} -->
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'shop_app/css/checkout.css' %}" />
@@ -179,6 +179,8 @@
 
 {% block postloadjs %}
 {{ block.super }}
+{% include 'includes/bulma_validator_start_script.html' %}
+
 
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}

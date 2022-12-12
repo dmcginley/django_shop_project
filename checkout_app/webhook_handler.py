@@ -83,7 +83,10 @@ class StripeWH_Handler:
         username = intent.metadata.username
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
+            print("SAVEPROF", profile)
             if save_info:
+                print("SAVEPROF save_info=True", shipping_details)
+                ## profile.default_full_name = shipping_details.full_name
                 profile.default_phone_number = shipping_details.phone
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
@@ -92,6 +95,8 @@ class StripeWH_Handler:
                 profile.default_street_address2 = shipping_details.address.line2
                 profile.default_county = shipping_details.address.state
                 profile.save()
+            else:
+                print("SAVEPROF save_info=False")
 
         order_exists = False
         attempt = 1

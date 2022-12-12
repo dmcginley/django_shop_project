@@ -75,7 +75,7 @@
                 {% for num in books.paginator.page_range %}
                 {% if books.number == num %}
                 <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
-                {% elif num > books.number|add:'-4' and num < books.number|add:'4' %}
+                {% elif num > books.number|add:'-3' and num < books.number|add:'3' %}
                 <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
                 {% endif %}
                 {% endfor %}

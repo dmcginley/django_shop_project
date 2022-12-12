@@ -15,13 +15,13 @@ class UserProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
-            'full_name': 'e.g Alex Smith',
-            'email': 'e.g. alexsmith@gmail.com',
-            'default_phone_number': '+353 083 555 ...',
-            'default_street_address1': '42 Street',
-            'default_street_address2': 'Street',
+            'default_full_name': 'e.g Alex Smith',
+            'email': 'e.g. alexsmith@example.com',
+            'default_phone_number': '+353 083 5551234',
+            'default_street_address1': '123 Main Street',
+            'default_street_address2': 'Apt 12',
             'default_town_or_city': 'Letterkenny',
-            'default_postcode': 'F92 RV1F',
+            'default_postcode': 'F92 AABB',
             'default_county': 'Donegal',
             'default_country': 'Ireland',
 

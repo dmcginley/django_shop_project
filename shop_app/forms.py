@@ -17,8 +17,6 @@ class BookForm(forms.ModelForm):
         fields = '__all__'
         # TODO: fix form for add book plus beside input
 
-        # fields = ('title',)
-
     image = forms.ImageField(
         label='Image', required=False, widget=CustomClearableFileInput)
 

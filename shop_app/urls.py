@@ -21,7 +21,4 @@ urlpatterns = [
     path('delete/<int:book_id>/', views.delete_book, name='delete_book'),
 
 
-    # path('book_order_view/', views.book_order_view, name='book_order_view'),
-    # path('genres/', GenreListView.as_view(), name='genres'),
-    # path('book_search/', BookSearchView.as_view(), name='book_search'),
 ]

@@ -19,13 +19,13 @@ class OrderForm(forms.ModelForm):
 
         placeholders = {
             'full_name': 'e.g Alex Smith',
-            'email': 'e.g. alexsmith@gmail.com',
-            'phone_number': '+353 083 555 ...',
-            'street_address1': '42 Street',
-            'street_address2': 'Street',
+            'email': 'e.g. alexsmith@example.com',
+            'phone_number': '+353 083 5551234',
+            'street_address1': '123 Main St.',
+            'street_address2': 'Apt 12',
             'town_or_city': 'Letterkenny',
-            'postcode': 'Donegal',
-            'county': 'Ireland',
+            'postcode': 'F92 AABB',
+            'county': 'Donegal',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True

@@ -53,15 +53,10 @@ def book_search(request):
         add_new_books(matching_authors)
         print(f"total books {len(results)}")
 
-    # paginator = Paginator(results, 3)
-    # page_number = request.GET.get('page')
-    # page_obj = paginator.get_page(page_number)
-
     context = {
-        'searching': searching,
+        'searching': searching.strip(),
         'results': results,
         'result_count': len(results),
-        # 'page_obj': page_obj,
     }
 
     if len(searching.strip()) == 0:
@@ -75,7 +70,6 @@ class BookDetailView(DetailView):
 # TODO: fix book detail maybe using slug
 
     def book_detail(request):
-        #     book = get_object_or_404(Book, slug=slug,)
 
         return render(request, 'shop_app/book_detail.html')
 
@@ -129,29 +123,6 @@ def genre_list(request, genre_slug):
     }
 
     return render(request, 'shop_app/genre.html', context)
-
-
-# class GenreListView(ListView):
-#     """ Home page - class based view to list book with pagination """
-#     paginate_by = 16
-#     model = Book
-
-#     def genre_list(request, genre_slug):
-
-#         genres = get_object_or_404(Genre, slug=genre_slug)
-#         book = Book.objects.filter(genres=genres)
-
-#         context = {
-#             'genres': genres,
-#             'book': book,
-#         }
-#         return render(request, 'shop_app/genre.html', context)
-
-#     template_name = 'shop_app/genre.html'
-#     context_object_name = 'context'
-
-
-##############################################################
 
 
 @ login_required

@@ -6,6 +6,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 from checkout_app.models import Order
+# from shop_app.models import Book
 
 
 @login_required
@@ -47,10 +48,22 @@ def order_history(request, order_number):
         'A confirmation email was sent on the order date.'
     ))
 
-    # template = 'checkout_app/checkout_success.html'
     template = 'profiles_app/order_history.html'
     context = {
         'order': order,
     }
 
     return render(request, template, context)
+
+
+# @login_required
+# def user_wishlist(request):
+#     wishlist = Wishlist.object.filter(user=request.user)
+
+#     template = 'profiles_app/wishlist.html'
+
+#     context = {
+#         "wishlist": wishlist
+#     }
+
+#     return render(request, template, context)

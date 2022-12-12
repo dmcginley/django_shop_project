@@ -19,6 +19,11 @@
     {# stripe #}
     <script src="https://js.stripe.com/v3/"></script>
 
+    {# bulma-validator.js #}
+    <script src="{% static 'shop_app/js/bulma-validator.js' %}"></script>
+
+
+    <!-- <script type="module" src="{% static 'formset/js/django-formset.min.js' %}"></script> -->
 
     {% endblock corejs %}
 
@@ -73,6 +78,17 @@
     {% endblock postloadjs %}
     <!-- script -->
     {% include 'includes/navbar_toast_scripts.html' %}
+
+    <!-- <script>
+      // bulma validator js start
+      $(function () {
+        $("form").BulmaValidator({
+          name: "BulmaValidator"
+        });
+
+      });
+    </script> -->
+
 
   </body>
 
