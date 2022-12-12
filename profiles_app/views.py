@@ -28,7 +28,8 @@ def profile(request):
                 request, 'Failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
+    orders = list(profile.orders.all())
+    orders.reverse()
 
     template = 'profiles_app/profile.html'
     context = {
