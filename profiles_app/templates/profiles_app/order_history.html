@@ -39,7 +39,6 @@
                         {% endif %}
                         <p></p>{{ order.country }}</p>
                     </div>
-
                     <h2 class="is-size-4">Order total</h2>
                     <div>
                         <p><strong>Total:</strong>
@@ -81,8 +80,6 @@
                             ({{ item.quantity }} books)
                             {% endif %}
                         </p>
-
-                        <!-- <p class="">Quaintly: {{ item.quantity }}</p> -->
                         <p class="card-price pt-2">
                             <strong>
                                 €{{ item.book.price | calc_subtotal:item.quantity }}

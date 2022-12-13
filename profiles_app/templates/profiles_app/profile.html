@@ -4,11 +4,6 @@
 {% load static %}
 <!-- {% load cart_tools %} -->
 
-{# {% load formsetify %} #}
-{# {% render_form form "bulma" %} #}
-
-<!-- {% load crispy_forms_tags %} -->
-
 {% block content %}
 
 <section>
@@ -27,7 +22,6 @@
       </div>
       <div class="column order-history-container is-half-tablet">
         <h3 class="subtitle is-3">Order History</h3>
-
         {% for order in orders %}
         <div class="order-history pb-2">
           <a class="pr-2" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">

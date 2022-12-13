@@ -29,7 +29,6 @@ RAILWAY_DEPLOYMENT = os.environ.get("RAILWAY_DEPLOYMENT") == "True"
 DEBUG = False
 # DEBUG = True
 
-# ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ['https://railway.app/',
                  'web-production-7efa.up.railway.app', '127.0.0.1']
 
@@ -48,7 +47,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "storages",
-    # "django.contrib.sites",
     "django_countries",
     "allauth",
     "allauth.account",
@@ -57,7 +55,6 @@ INSTALLED_APPS = [
     "cart_app.apps.CartAppConfig",
     "checkout_app.apps.CheckoutAppConfig",
     "profiles_app.apps.ProfilesAppConfig",
-    # "formset",
     "crispy_forms",
     "crispy_bulma",
 ]

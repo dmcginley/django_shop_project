@@ -4,7 +4,6 @@
 {% load static %}
 {% block content %}
 
-
 <section class="">
     <div class="container is-max-widescreen">
         <div class="columns">
@@ -26,7 +25,6 @@
                 <h4 class="title is-5 pb-2">{{ book.title }}</h4>
                 <p class="subtitle is-6 mb-2">(Author) {{ book.author_names }}</p>
                 <p class="subtitle is-6 mb-4 author-ellipsis">{{ book.genre_name }}</p>
-
                 <div class="card-text-edit-del">
                     <p class="card-price has-text-danger is-size-5 pb-5">
                         <strong>
@@ -44,9 +42,6 @@
                         {% endif %}
                     </div>
                 </div>
-
-
-
                 <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
                     {% csrf_token %}
                     <label>Quantity</label>
@@ -82,10 +77,8 @@
                 </form>
             </div>
         </div>
-
         <div class="columns is-multiline pt-5">
             <div class="column is-12 is-6-desktop">
-
                 <article class="message">
                     <div class="message-header">
                         <p>Book Description</p>
@@ -104,7 +97,6 @@
                 <p><strong>Publication date:</strong> {{ object.publication_date }}</p>
                 {% if object.isbn %}
                 <p><strong>ISBN:</strong> {{ object.isbn }}</p>
-
                 {% else %}
                 <p>No ISBN found</p>
                 {% endif %}
@@ -112,8 +104,6 @@
         </div>
     </div>
 </section>
-
-
 
 {{ block.super }}
 <script>

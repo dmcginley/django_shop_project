@@ -38,7 +38,8 @@ def run():
 
         slug = f"{isbn}-{title.replace(' ', '-')}"
         author, author_created = Author.objects.get_or_create(
-            first_name=row["author_first_name"], last_name=row["author_last_name"])
+            first_name=row["author_first_name"],
+            last_name=row["author_last_name"])
 
         publisher, publisher_create = Publisher.objects.get_or_create(
             name=publisher_name
