@@ -31,7 +31,7 @@ class Image(models.Model):
     Takes in the image from the import_book.py
     and adds it to the database.
     """
-    image = models.ImageField(default='no_cover.png',
+    image = models.ImageField(default='default_covers/no_cover.png',
                               upload_to='book_covers/')
 
     def __str__(self):

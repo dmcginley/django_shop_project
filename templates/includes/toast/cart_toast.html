@@ -26,7 +26,7 @@
                 {% if item.book.image %}
                 <img class="cart-book-cover" src="{{ item.book.image.image.url }}" alt="{{ book.name }}">
                 {% else %}
-                <img class="cart-book-cover" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
+                <img class="cart-book-cover" src="{{ MEDIA_URL }}default_covers/no_cover.png" alt="{{ book.name }}">
                 {% endif %}
 
                 <div class="cart-book-text">

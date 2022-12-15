@@ -133,7 +133,8 @@
                             {% else %}
                             <figure class="cover-figure">
                                 <a href="{% url 'book_detail' item.book.id %}">
-                                    <img class="cover-small" src="{{ MEDIA_URL }}no_cover.png" alt="{{ book.name }}">
+                                    <img class="cover-small" src="{{ MEDIA_URL }}default_covers/no_cover.png"
+                                        alt="{{ book.name }}">
                                 </a>
                             </figure>
                             {% endif %}
