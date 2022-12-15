@@ -217,6 +217,18 @@ if RAILWAY_DEPLOYMENT:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+
+else:
+    print("email dev mode...")
+    EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+    DEFAULT_FORM_EMAIL = "bookshop@example.com"
 
 # stripe
 STRIPE_CURRENCY = "eur"
@@ -225,15 +237,15 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 
 # for email
-if RAILWAY_DEPLOYMENT:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USE_TLS = True
-    EMAIL_PORT = 587
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
-    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-else:
-    print("email dev mode...")
-    EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-    DEFAULT_FORM_EMAIL = "bookshop@example.com"
+# if RAILWAY_DEPLOYMENT:
+#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#     EMAIL_USE_TLS = True
+#     EMAIL_PORT = 587
+#     EMAIL_HOST = 'smtp.gmail.com'
+#     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+#     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+#     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
+# else:
+#     print("email dev mode...")
+#     EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+#     DEFAULT_FORM_EMAIL = "bookshop@example.com"

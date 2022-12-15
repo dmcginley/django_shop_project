@@ -5,11 +5,11 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        # exclude = ('user',)
-        fields = ('default_name', 'default_phone_number',
-                  'default_street_address1', 'default_street_address2',
-                  'default_town_or_city', 'default_county', 'default_postcode',
-                  'default_country')
+        exclude = ('user',)
+        # fields = ('default_name', 'default_phone_number',
+        #           'default_street_address1', 'default_street_address2',
+        #           'default_town_or_city', 'default_county', 'default_postcode',
+        #           'default_country')
 
     def __init__(self, *args, **kwargs):
         """
@@ -20,7 +20,7 @@ class UserProfileForm(forms.ModelForm):
 
         placeholders = {
 
-            'default_name': 'e.g Alex Smith',
+            # 'default_name': 'e.g Alex Smith',
             'email': 'e.g. alexsmith@example.com',
             'default_phone_number': '+353 083 5551234',
             'default_street_address1': '123 Main Street',
