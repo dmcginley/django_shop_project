@@ -6,7 +6,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Donnchadh Mc Ginley" />
+    <!-- meta include -->
+    {% include 'shop_app/meta.html' %}
+
     {# jQuery CDN #}
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -29,12 +31,10 @@
 
   <body class="has-navbar-fixed-top">
     {% block body %}
-
     {% if messages %}
     <div class="message-container">
       {% for message in messages %}
       {% with message.level as level %}
-
       {% if level == 40 %} {# warning #}
       {% include 'includes/toast/warning.html' %}
       {% elif level == 30 %} {# danger #}
@@ -43,7 +43,6 @@
       {% include 'includes/toast/success.html' %}
       {% else %}
       {% include 'includes/toast/info.html' %}
-
       {% endif %}
       {% endwith %}
       {% endfor %}
@@ -51,15 +50,11 @@
     {% endif %}
 
     {% include 'shop_app/navbar.html' %}
-
-
     <div class="wrapper">
       <main class="main-grid">
         {% block content %}{% endblock content%}
       </main>
     </div>
-
-
     {% block extra_body %}{% endblock extra_body%}
     {% endblock body%}
 

@@ -1,7 +1,7 @@
 Your order is on its way to you.
 
 
-Hello {{ order.full_name}},
+Hello {{ order.name}},
 
 This is a confirmation of your order at BookShop. Your order information is below:
 

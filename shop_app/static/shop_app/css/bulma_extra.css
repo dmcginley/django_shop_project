@@ -1,5 +1,5 @@
 :root {
-    --hero-color: #3ac6d9;
+    --hero-color: #007a8e;
     --cart-button-blue: #485fc7;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
@@ -80,7 +80,7 @@ section,
 
 
 .hero-container {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     padding: 1em;
     height: 100px;
     grid-column: 1/-1;
@@ -251,7 +251,10 @@ section,
 
 
 
-
+.empty-book-search {
+    max-width: 20ch;
+    margin: auto;
+}
 
 
 /* ----------------------------------------- */
@@ -316,11 +319,15 @@ section,
 
 .hero-color {
     color: aliceblue;
-    background-color: #0dbbd6;
+    background-color: var(--hero-color);
 }
 
 .hero * {
     color: whitesmoke;
+}
+
+.hero-button {
+    color: var(--hero-color) !important;
 }
 
 .hero-button-desktop {
@@ -328,17 +335,22 @@ section,
 }
 
 
-
 .best-seller-book-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: right; */
+    text-align: center;
     margin: auto;
 }
 
+/* .best-seller-book-container p {
+    width: 220px;
+    text-align: center;
+} */
+
 .best-seller-book-image {
-    margin-top: 2em;
-    width: 180px;
+    /* width: 180px; */
     height: 100%;
     border-radius: 4px;
     box-shadow: 0px 8px 20px -5px #03373f5e;
@@ -386,7 +398,7 @@ section,
 }
 
 .detail-cover {
-    max-width: 300px;
+    max-width: 200px;
     margin: auto;
 }
 
@@ -622,6 +634,11 @@ footer {
     }
 
 
+    .detail-cover {
+        max-width: 300px;
+    }
+
+
 
 }
 
@@ -647,8 +664,6 @@ footer {
 
         /* width: 55%; */
     }
-
-
 
 
     .reverse-columns {

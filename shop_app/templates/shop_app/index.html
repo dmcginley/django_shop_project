@@ -1,12 +1,27 @@
 {% extends 'shop_app/base.html' %} {% load static %}
-{% block title %}- Home{% endblock %}
+{% block title %}- {{ page_title }}{% endblock %}
 
 
 {% block content %}
 
+
+{% if on_home_page %}
 {% include 'shop_app/hero.html' %}
+{% endif %}
 
 <section class="section books-section">
+
+  {% if page_title and not on_home_page %}
+  <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
+    {{ page_title }}
+  </h2>
+  {% endif %}
+
+  {% if  page_header%}
+  <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
+    {{ page_header }}
+  </h2>
+  {% endif %}
 
   {% for book in books %}
 
@@ -29,7 +44,7 @@
 
       <div class="card-text">
         <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
-        <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.author_names }}</h6>
+        <h6 class="subtitle is-6 author-ellipsis mb-1 has-text-grey-dark">{{ book.author_names }}</h6>
         <div class="card-text-edit-del">
           <p class="card-price pb-5">
             <strong>

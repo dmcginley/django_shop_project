@@ -1,11 +1,13 @@
 from django import forms
 from .models import Order
+from django.contrib.auth.models import User
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('full_name', 'email', 'phone_number',
+        # name = User.username
+        fields = ('name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'county', 'postcode',
                   'country')
@@ -18,7 +20,7 @@ class OrderForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
-            'full_name': 'e.g Alex Smith',
+            'name': 'e.g Alex Smith',
             'email': 'e.g. alexsmith@example.com',
             'phone_number': '+353 083 5551234',
             'street_address1': '123 Main St.',
@@ -28,7 +30,7 @@ class OrderForm(forms.ModelForm):
             'county': 'Donegal',
         }
 
-        self.fields['full_name'].widget.attrs['autofocus'] = True
+        self.fields['name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'country':
                 if self.fields[field].required:

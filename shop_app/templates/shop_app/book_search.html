@@ -7,8 +7,16 @@
 
   {% if searching %}
 
+
+
+
+
+
   {% if result_count == 0 %}
-  <h2 class="subtitle is-2">No results found</h2>
+  <h2 class="section-title has-text-centered mt-6 subtitle is-2">No results found</h2>
+  {% endif %}
+  {% if result_count > 0 %}
+  <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">Search results</h2>
   {% endif %}
 
   {% for book in results %}
@@ -71,13 +79,9 @@
   </div>
   {% endfor %}
   {% else  %}
-  <div class="container is-widescreen code-inst">
-    <section class="columns">
-      <div class="column">
-        <h2 class="subtitle is-2">Search for books by title, author name, or ISBN</h2>
-      </div>
-    </section>
-  </div>
+  <h2 class="section-title has-text-centered mt-6 subtitle is-2 empty-book-search">Search for books by title, author
+    name, or ISBN
+  </h2>
   {% endif %}
 </section>
 

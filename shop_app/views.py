@@ -13,11 +13,30 @@ from .forms import BookForm
 
 class BookListView(ListView):
     """ Home page - class based view to list book with pagination """
+    page_title = 'Home'
+    page_header = 'Newly Added Books'
     paginate_by = 16
     model = Book
-
     template_name = 'shop_app/index.html'
+    extra_context = {
+        'page_title': page_title,
+        'page_header': page_header,
+
+        'on_home_page': True
+    }
     context_object_name = 'books'
+
+
+def get_random(request):
+    random = Book.objects.order_by("?").first()
+    books = Book.objects.all()
+
+    context = {
+        'books': books,
+        'random': random,
+    }
+
+    return render(request, 'shop_app/genre.html', context)
 
 
 def book_search(request):
@@ -76,21 +95,30 @@ class BookDetailView(DetailView):
 
 class BookOrderView(ListView):
     """ class view to list book by price low to high with pagination """
+    page_title = 'Price (Low to High)'
     paginate_by = 16
     model = Book
 
     ordering = ['price']
     template_name = 'shop_app/index.html'
+    extra_context = {
+        'page_title': page_title
+    }
     context_object_name = 'books'
 
 
 class BookReverseOrderView(ListView):
     """ class view to list book by price high to low with pagination """
+    page_title = 'Price (High to Low)'
     paginate_by = 16
     model = Book
 
     ordering = ['-price']
     template_name = 'shop_app/index.html'
+    extra_context = {
+        'page_title': page_title
+
+    }
     context_object_name = 'books'
 
 
@@ -106,6 +134,9 @@ def genre_list(request, genre_slug):
     genres = get_object_or_404(Genre, slug=genre_slug)
     book = Book.objects.filter(genres=genres)
 
+    page_title = genres
+
+    print('genre:', genres)
     page = request.GET.get('page', 1)
     paginator = Paginator(book, 8)
 
@@ -117,9 +148,8 @@ def genre_list(request, genre_slug):
         books = paginator.page(paginator.num_pages)
 
     context = {
-        # 'genre': genre,
-        # 'book': book,
         'books': books,
+        'page_title': page_title,
     }
 
     return render(request, 'shop_app/genre.html', context)

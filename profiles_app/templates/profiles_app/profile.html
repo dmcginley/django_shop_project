@@ -6,11 +6,15 @@
 
 {% block content %}
 
-<section>
+<section class="mt-4">
   <div class="container is-max-widescreen">
     <div class="columns">
-      <h2 class="is-size-2 pl-2">My Profile</h2>
-      <p class="is-capitalized">{{ profile }}</p>
+      <div class="px-3">
+        <h2 class="is-size-2">My Profile</h2>
+        <p class="pt-2">Logged in as: <strong>{{ user.username  }}</strong></p>
+        <p>Email: <strong>{{ user.email  }}</strong></p>
+
+      </div>
     </div>
     <div class="columns">
       <div class="column is-half-tablet">
@@ -22,6 +26,10 @@
       </div>
       <div class="column order-history-container is-half-tablet">
         <h3 class="subtitle is-3">Order History</h3>
+        {% if orders %}
+
+
+
         {% for order in orders %}
         <div class="order-history pb-2">
           <a class="pr-2" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
@@ -31,6 +39,10 @@
           <p><strong>Total:</strong> €{{ order.grand_total }}</p>
         </div>
         {% endfor %}
+        {% else %}
+        <h5 class="subtitle is-5 has-text-grey-dark">No orders yet</h5>
+
+        {% endif %}
       </div>
     </div>
   </div>

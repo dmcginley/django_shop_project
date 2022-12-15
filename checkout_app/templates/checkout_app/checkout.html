@@ -20,11 +20,11 @@
 {% block content %}
 
 <section>
-    <div class="container is-max-widescreen">
+    <div class="container is-max-widescreen mt-4">
         <div class="columns">
             <div class="column">
                 <h2 class="is-size-2">Checkout</h2>
-                <p class="order-summary-text">Your order summary can be found below</p>
+                <p class="order-summary-text mt-2">Your order summary can be found below</p>
             </div>
         </div>
         <div class="columns is-multiline">
@@ -41,7 +41,7 @@
                                 <legend class="subtitle">Details</legend>
                                 <div class="field">
                                     <div class="control">
-                                        {{ order_form.full_name | as_crispy_field }}
+                                        {{ order_form.name | as_crispy_field }}
                                     </div>
                                 </div>
                                 <div class="field">
@@ -108,7 +108,7 @@
                                         d="M20 12c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5S7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z">
                                     </path>
                                 </svg>
-                                <p>Your card will be charged<strong>€{{ grand_total | floatformat:2 }}</strong></span>
+                                <p>Your card will be charged <strong>€{{ grand_total | floatformat:2 }}</strong></span>
                                 </p>
                             </div>
                         </form>

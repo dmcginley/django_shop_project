@@ -16,16 +16,31 @@
                         Discover your book for the winter
                     </p>
 
-                    <a class="button is-link is-medium hero-button-desktop mt-6" href="{% url 'book_detail' 3 %}">Order
+                    <a class="button is-white is-medium hero-button hero-button-desktop mt-6"
+                        href="{% url 'book_detail' 15 %}">Order
                         Today</a>
 
                 </div>
-                <div class="column has-text-centered ">
+                <div class="column has-text-centered">
                     <div class="best-seller-book-container">
-                        <img class="best-seller-book-image" src="{{ MEDIA_URL }}book_no_1.jpg" alt="">
+
+                        <!-- {% for random in books %}
+        {% if forloop.first %}
+        <img class="cover-img" src="{{ random.image.image.url }}" alt="book cover">
+        {{ random.title }}
+        {% endif %}
+        {% endfor %} -->
+
+                        <figure class="">
+                            <img class="best-seller-book-image"
+                                src="http://127.0.0.1:8000/media/book_covers/9781400096893.jpg" alt="book cover">
+                        </figure>
+                        <a class="button is-white is-medium mt-6 hero-button hero-button-mobile"
+                            href="{% url 'book_detail' 15 %}">Order
+                            Today</a>
+                        <p class="pt-4"><strong>Book of the month,</strong> voted by out staff</p>
                     </div>
-                    <a class="button is-link is-medium mt-6 hero-button-mobile" href="{% url 'book_detail' 3 %}">Order
-                        Today</a>
+
                 </div>
 
             </div>

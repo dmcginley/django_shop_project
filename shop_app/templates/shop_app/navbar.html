@@ -15,7 +15,6 @@
     </div>
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
-
         <div class="navbar-start">
             <div class="navbar-item has-dropdown is-hoverable">
                 <span class="navbar-link">
@@ -40,28 +39,8 @@
             </div>
         </div>
 
-        {% comment %}
-        <!-- <div class="navbar-item search-bar-container">
-    <form class="field has-addons search-bar" action="{% url 'home' %}" method="GET">
-        <div class="control is-expanded">
-            <input class="input" type="text" name="q" placeholder="Find a book title, author, ISBN..." />
-        </div>
-        <div class="control">
-            <button class="button is-info" type="submit">
-                Search
-            </button>
-        </div>
-    </form> 
-</div> -->
-        {% endcomment %}
-
-
 
         <div class="navbar-item search-bar-container">
-
-
-
-
             <form class="field has-addons search-bar" action="{% url 'book_search' %}" method="GET">
                 {% csrf_token %}
                 <div class="control is-expanded">
@@ -74,14 +53,9 @@
                     </button>
                 </div>
             </form>
-
-
-
         </div>
 
-
         <div class="navbar-end">
-
             <div class="navbar-item">
                 <div class="">
                     <a href="{% url 'view_cart' %}" class="button nav-btn">
@@ -111,8 +85,6 @@
                     </a>
                 </div>
             </div>
-
-
             <div class="navbar-item has-dropdown is-hoverable pr-2">
                 <span class="navbar-link">
                     <svg class="dark-svg" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
@@ -131,7 +103,7 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                     <a class="navbar-item has-text-danger" href="{% url 'add_book' %}">
-                        Add book
+                        Add a book
                     </a>
                     <hr class="dropdown-divider">
                     <a class="navbar-item" href="{% url 'account_logout' %}">
@@ -148,10 +120,6 @@
 
                 </div>
             </div>
-
-
         </div>
     </div>
-
-
 </nav>

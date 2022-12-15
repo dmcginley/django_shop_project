@@ -1,6 +1,10 @@
 from django.db import models
 # from django.conf import settings
 from django.urls import reverse
+from datetime import datetime
+from django.utils import timezone
+
+
 # from profiles_app.models import UserProfile
 
 
@@ -69,6 +73,10 @@ class Book(models.Model):
     number_in_stock = models.PositiveIntegerField(blank=True, null=True)
     genres = models.ManyToManyField(
         Genre, related_name='book', help_text="Select a genre for this book")
+    date_added = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ('-date_added',)
 
     def __unicode__(self):
         return self.title
