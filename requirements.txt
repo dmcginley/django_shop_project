@@ -11,7 +11,8 @@ defusedxml==0.7.1
 Django==4.1.2
 django-allauth==0.51.0
 django-countries==7.4.2
-django-crispy-forms==1.14.0
+django-crispy-bulma==0.2
+django-crispy-forms==1.7.2
 django-extensions==3.2.1
 django-filter==22.1
 django-formset==0.10.3
