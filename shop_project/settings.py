@@ -202,9 +202,11 @@ SITE_ID = 2
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Delivery and Delivery Threshold
+FREE_DELIVERY_THRESHOLD = 40
+STANDARD_DELIVERY_PERCENTAGE = 10
 
-#  comment out all variables below to use local static files for testing
-
+# for AWS and storages
 if RAILWAY_DEPLOYMENT:
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -216,16 +218,13 @@ if RAILWAY_DEPLOYMENT:
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
-FREE_DELIVERY_THRESHOLD = 40
-STANDARD_DELIVERY_PERCENTAGE = 10
-
 # stripe
 STRIPE_CURRENCY = "eur"
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 
-
+# for email
 if RAILWAY_DEPLOYMENT:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
