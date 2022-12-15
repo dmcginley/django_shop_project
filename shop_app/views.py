@@ -8,6 +8,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 
 from .models import Book, Genre
+import random
+
 from .forms import BookForm
 
 
@@ -27,16 +29,17 @@ class BookListView(ListView):
     context_object_name = 'books'
 
 
-def get_random(request):
-    random = Book.objects.order_by("?").first()
-    books = Book.objects.all()
+# def get_random(request):
+#     books = Book.objects.all()
+#     random_book = Book.objects.order_by("?").first()
 
-    context = {
-        'books': books,
-        'random': random,
-    }
+#     context = {
+#         'books': books,
+#         'random_book': random_book,
+#     }
+#     print("book title::", books)
 
-    return render(request, 'shop_app/genre.html', context)
+    # return render(request, 'shop_app/genre.html', context)
 
 
 def book_search(request):

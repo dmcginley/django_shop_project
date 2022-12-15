@@ -8,7 +8,7 @@
         <div class="hero-body">
 
             <div class="columns">
-                <div class="column has-text-centered has-text-left-tablet">
+                <div class="column hero-text-area has-text-centered has-text-left-tablet">
                     <h1 class="title">
                         <span class="book-h1">Book</span>Shop
                     </h1>
@@ -24,16 +24,17 @@
                 <div class="column has-text-centered">
                     <div class="best-seller-book-container">
 
-                        <!-- {% for random in books %}
-        {% if forloop.first %}
-        <img class="cover-img" src="{{ random.image.image.url }}" alt="book cover">
-        {{ random.title }}
-        {% endif %}
-        {% endfor %} -->
+
+
+                        <!-- {% for random_book in random_book %}
+                        <img class="cover-img" src="{{ random_book.image.image.url }}" alt="book cover">
+                        {{ random_book.title }}
+                        {{random_book}}
+                        {% endfor %} -->
 
                         <figure class="">
-                            <img class="best-seller-book-image"
-                                src="http://127.0.0.1:8000/media/book_covers/9781400096893.jpg" alt="book cover">
+                            <img class="best-seller-book-image" src="{{ MEDIA_URL }}book_of_the_month.webp"
+                                alt="book cover">
                         </figure>
                         <a class="button is-white is-medium mt-6 hero-button hero-button-mobile"
                             href="{% url 'book_detail' 15 %}">Order

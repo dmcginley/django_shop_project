@@ -628,6 +628,11 @@ footer {
         display: block;
     }
 
+    .hero-text-area {
+        margin-top: 5em;
+    }
+
+
     .best-seller-book-container {
         justify-content: end;
 
