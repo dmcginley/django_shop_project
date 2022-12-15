@@ -25,9 +25,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG") == "True"
-RAILWAY_DEPLOYMENT = os.environ.get("RAILWAY_DEPLOYMENT") == "True"
-# DEBUG = False
-DEBUG = True
+# RAILWAY_DEPLOYMENT = os.environ.get("RAILWAY_DEPLOYMENT") == "True"
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['https://railway.app/',
                  'web-production-7efa.up.railway.app', '127.0.0.1']
@@ -193,8 +193,8 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
-SITE_ID = 1
-# SITE_ID = 2
+# SITE_ID = 1
+SITE_ID = 2
 
 
 # Default primary key field type
@@ -225,8 +225,9 @@ STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 
+
 if 'DEVELOPMENT' in os.environ:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
     DEFAULT_FORM_EMAIL = "bookshop@example.com"
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
