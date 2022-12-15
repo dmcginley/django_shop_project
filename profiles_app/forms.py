@@ -20,7 +20,7 @@ class UserProfileForm(forms.ModelForm):
 
         placeholders = {
 
-            # 'default_name': 'e.g Alex Smith',
+            'default_name': 'e.g Alex Smith',
             'email': 'e.g. alexsmith@example.com',
             'default_phone_number': '+353 083 5551234',
             'default_street_address1': '123 Main Street',
