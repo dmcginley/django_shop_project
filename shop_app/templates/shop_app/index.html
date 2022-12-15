@@ -31,13 +31,13 @@
       {% if book.image.image %}
       <figure class="image-cover-index mb-4">
         <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
-          <img class="cover-img" src="{{ book.image.image.url }}" alt="book cover" />
+          <img class="cover-img" src="{{ book.image.image.url }}" height="200" loading="lazy" alt="book cover" />
         </a>
       </figure>
       {% else %}
       <figure class="image-cover-index mb-4">
         <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
-          <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" alt="book cover" />
+          <img class="cover-img" src="{{ MEDIA_URL }}no_cover.png" height="200" loading="lazy" alt="no book cover" />
         </a>
       </figure>
       {% endif %}
