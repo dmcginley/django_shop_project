@@ -29,19 +29,6 @@ class BookListView(ListView):
     context_object_name = 'books'
 
 
-# def get_random(request):
-#     books = Book.objects.all()
-#     random_book = Book.objects.order_by("?").first()
-
-#     context = {
-#         'books': books,
-#         'random_book': random_book,
-#     }
-#     print("book title::", books)
-
-    # return render(request, 'shop_app/genre.html', context)
-
-
 def book_search(request):
     """ GET method search view for authors names, isbn, and title """
     searching = request.GET.get('searching')
@@ -89,7 +76,6 @@ def book_search(request):
 
 class BookDetailView(DetailView):
     model = Book
-# TODO: fix book detail maybe using slug
 
     def book_detail(request):
 
@@ -126,7 +112,7 @@ class BookReverseOrderView(ListView):
 
 
 def genre(request):
-    # TODO: should this be render request or just return
+
     return {
         'genres': Genre.objects.all()
     }

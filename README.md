@@ -2,6 +2,12 @@
 
 ## Table of contents
 
+## The Links
+
+[Link to site](https://web-production-7efa.up.railway.app/)
+[Link to github project](https://github.com/dmcginley/shop_project)
+[Facebook page](https://www.facebook.com/profile.php?id=100088574147985)
+
 ## About the Project
 
 An online e-commerce book Shop featuring so of the most well-known book.
@@ -78,8 +84,9 @@ People who would rely on searching books by title or author, not just by ISBN.
 
 - Ability to Register, Sign in and Sign out
 - Profile Page
-	- Change and update address details
-	- Order History, click on a past order and view the orders (similer to the confermation page but with the book desplayed to the side as thumbnales) 
+
+  - Change and update address details
+  - Order History, click on a past order and view the orders (similer to the confermation page but with the book desplayed to the side as thumbnales)
 
 - Books on the home page and Genre page are shown in reverse order so the last added will be at the top of the page, using in the Book model
 
@@ -99,12 +106,13 @@ People who would rely on searching books by title or author, not just by ISBN.
 - When searching each search or book being viewed shows up in the title on the tab so you can clearly see what part of the site you are on if you click away from the website
 - Cart popup, each time you add a book to the cart it shows you a short summary of your cart contents with a button allowing you to go directly to the cart
 - Shopping Cart
-	- In the cart you can change the quantity of items or remove the book compltey from the cart
-	- Shows you a summary of total, delivery, and total price with a continue shopping button in case you forgot somthing, and checkout button below that
+
+  - In the cart you can change the quantity of items or remove the book compltey from the cart
+  - Shows you a summary of total, delivery, and total price with a continue shopping button in case you forgot somthing, and checkout button below that
 
 - Checkout
-	- Can bring in your current address details from the profile page and can save the details in the checkout to the profile page
-	- View an order summary with thumbnails of the books to be purchased and the order total price 
+  - Can bring in your current address details from the profile page and can save the details in the checkout to the profile page
+  - View an order summary with thumbnails of the books to be purchased and the order total price
 
 #### As an Admin
 
@@ -112,17 +120,17 @@ People who would rely on searching books by title or author, not just by ISBN.
 - Add a book to the database via the Profile dropdown in the navbar
 
 ## Site Layout
+
 ###### The general look and feel of the blog
 
 <<< TODO images of the site >>>
-
 
 ## Accessibility
 
 - Clean minimal design with the use of white space and small use of strong colors for text and links so it is clear to see where to go and what to do as some book sites can be over cluttered
 - Contrasting colors e.g. a lighter buttons on the dark background with white text color on the Hero section of the home page
 - alternative text on images, buttons, and < a > tags, where appropriate.
-The navagation bar and all elements on the pages are tab friendly, mostly through the use of Bulma.
+  The navagation bar and all elements on the pages are tab friendly, mostly through the use of Bulma.
 
 ## Testing
 
@@ -138,7 +146,7 @@ The navagation bar and all elements on the pages are tab friendly, mostly throug
 
 - Go to the Sign In page
 - Enter your username or email, & your password
-- Press the Sign In button after which you will be redirected to the home page, with a success message showing in the top right corner telling you you have successfuly signed in. 
+- Press the Sign In button after which you will be redirected to the home page, with a success message showing in the top right corner telling you you have successfuly signed in.
 
 **Create an account**
 
@@ -167,6 +175,7 @@ var postData = {
 ```
 
 ## Deployment
+
 From Visual Studio Code termnal
 
 - export RAILWAY_DEPLOYMENT=True
@@ -228,7 +237,7 @@ The version control is done using Git through [GitHub](https://github.com/).
 #### Django & Python
 
 - [Layouts, Fundamentals of crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html)
-- [stack*overflow*](https://stackoverflow.com/questions/61609953/is-there-a-way-to-hide-a-button-on-every-page-except-home-page-of-a-site-in-djan) - hiding button on every page except Home page in Django
+- [stack**overflow**](https://stackoverflow.com/questions/61609953/is-there-a-way-to-hide-a-button-on-every-page-except-home-page-of-a-site-in-djan) - hiding button on every page except Home page in Django
 - []()
 - []()
 - []()

@@ -15,11 +15,7 @@ input {
     font-weight: 400;
 }
 
-/* ::placeholder {
-    color: #aab7c4 !important;
-} */
-
-/* #payment-form .form-control, */
+/* payment-form .form-control, */
 #card-element {
     border: 1px solid #dcdcdc;
     border-radius: 2px;
@@ -60,13 +56,6 @@ sup {
     color: #aab7c4;
 }
 
-
-/* select #id_country option {
-    min-width: 100px !important;
-    background-color: #3ac6d9 !important;
-    margin: 0;
-} */
-
 .order-summary-text {
     display: block;
 }
@@ -99,24 +88,12 @@ sup {
     animation: 2s linear infinite svg-animation;
 }
 
-/* select,
-select option {
-    color: black;
-} */
-
 select:invalid,
 select option[value=""] {
     color: rgb(197, 197, 197) !important;
 }
 
-
-
-
-
-
-
-
-/* SVG animation. */
+/* SVG animation for overlay */
 @keyframes svg-animation {
     0% {
         transform: rotateZ(0deg);
@@ -163,9 +140,7 @@ select option[value=""] {
 
 @media only screen and (min-width: 1024px) {
 
-
     .order-summary-text {
         display: none;
     }
-
 }

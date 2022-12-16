@@ -1,6 +1,8 @@
 :root {
     --hero-color: #007a8e;
     --cart-button-blue: #485fc7;
+    --primary-color: #485fc7;
+    --primary-color-hover: #3c54c0;
     --banner-color: #333633;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
@@ -483,6 +485,7 @@ input[type=number] {
 .newsletter-section {
     /* background-color: var(--banner-color); */
     /* max-width: 600px; */
+    padding-bottom: .5em;
 }
 
 .newsletter-form {
@@ -491,8 +494,15 @@ input[type=number] {
     margin: auto;
 }
 
-footer {
+footer .footer {
     height: 180px;
+    /* padding-top: .5em !important; */
+    /* padding: 4em; */
+    /* padding: 1em 6em 6em 6em; */
+}
+
+footer {
+    padding-top: 2em !important;
 }
 
 .cart-toast {
