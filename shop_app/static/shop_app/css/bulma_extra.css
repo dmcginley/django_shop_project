@@ -1,6 +1,7 @@
 :root {
     --hero-color: #007a8e;
     --cart-button-blue: #485fc7;
+    --banner-color: #333633;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
     --body-gray: rgb(248, 248, 248);
@@ -350,18 +351,17 @@ section,
 } */
 
 .best-seller-book-image {
-    /* width: 180px; */
+    width: 180px;
     height: 100%;
     border-radius: 4px;
     box-shadow: 0px 8px 20px -5px #03373f5e;
     /* transform: translateY(-2px); */
-
 }
 
 
 
 .banner {
-    background-color: rgb(51, 54, 51);
+    background-color: var(--banner-color);
     /* width: 100%; */
     /* grid-column: 2/3; */
     padding: 1em;
@@ -480,7 +480,16 @@ input[type=number] {
     padding-left: 1em;
 }
 
+.newsletter-section {
+    /* background-color: var(--banner-color); */
+    /* max-width: 600px; */
+}
 
+.newsletter-form {
+    max-width: 740px;
+    /* background-color: #007a8e; */
+    margin: auto;
+}
 
 footer {
     height: 180px;
@@ -548,7 +557,11 @@ footer {
 
 
 @media only screen and (min-width: 480px) {
-
+    .best-seller-book-image {
+        margin-top: 0;
+        width: 200px;
+        height: 100%;
+    }
 
     .buttons .button {
         margin-left: .5rem !important;
@@ -616,7 +629,7 @@ footer {
 
     .best-seller-book-image {
         margin-top: 0;
-        width: 220px;
+        width: 240px;
         height: 100%;
     }
 
