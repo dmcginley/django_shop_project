@@ -15,10 +15,12 @@
 
 }
 
+/* ----------------------------------------- */
+/* extra css to style the newsletter form by mailchimp */
+/* ----------------------------------------- */
 #mc_embed_signup form {
     display: block;
     width: auto;
-    padding-left: 3% !important;
 }
 
 
@@ -36,20 +38,17 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
     padding: .5em !important;
-    /* width: 100% !important; */
-
+    width: 100% !important;
 }
 
 #mc_embed_signup input:focus {
     border: 1px solid #485fc7;
     outline: 2px #d1d7f1 solid;
-
 }
 
 #mc_embed_signup #mc-embedded-subscribe-form input.mce_inline_error {
     border: 1px solid #f14668;
     outline: 2px #fbd1d9 solid;
-
 }
 
 #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {
@@ -58,7 +57,6 @@
 
 #mc_embed_signup #mce-success-response {
     color: #4a4a4a;
-    ;
 }
 
 #mc_embed_signup .helper_text {
@@ -74,13 +72,16 @@
     box-sizing: border-box;
     background-color: var(--primary-color);
     font-size: 1.25rem;
-    /* padding-bottom: calc(.5em - 1px); */
-    /* padding-left: 2em !important; */
     padding: .4em 2em !important;
-    /* padding-right: 2em !important; */
-    /* padding-top: calc(.5em - 1px); */
-    /* width: 100%; */
     height: auto;
+}
+
+#mc_embed_signup .foot {
+    width: auto;
+}
+
+#mc_embed_signup .mc-field-group {
+    width: 100%;
 }
 
 #mc_embed_signup .button:hover {
@@ -89,4 +90,11 @@
 
 .clear {
     background-color: transparent !important;
+}
+
+@media only screen and (min-width: 401px) {
+    #mc_embed_signup .button {
+        width: -moz-fit-content;
+        width: fit-content !important;
+    }
 }

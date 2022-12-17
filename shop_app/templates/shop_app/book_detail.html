@@ -18,7 +18,6 @@
                         <img class="cover-img" src="{{ MEDIA_URL }}default_covers/no_cover.png" alt="book cover">
                     </figure>
                     {% endif %}
-
                 </div>
             </div>
             <div class="column">
@@ -45,7 +44,6 @@
                 <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
                     {% csrf_token %}
                     <label>Quantity</label>
-
                     <div class="field has-addons input-group pt-1">
                         <span class="control input-group-prepend">
                             <button class="button quantity-btn is-small is-info decrement-qty"
@@ -79,11 +77,9 @@
         </div>
         <div class="columns is-multiline pt-5">
             <div class="column is-12 is-6-desktop p-4">
-
                 <h3 class="subtitle is-3">Book Description</h3>
-                <!-- <button class="delete" aria-label="delete"></button> -->
+                {# <button class="delete" aria-label="delete"></button> #}
                 <p>{{ object.description }}</p>
-
             </div>
             <div class="column">
                 <h3 class="subtitle is-3">Details</h3>
@@ -120,18 +116,7 @@
                 location.reload();
             });
     })
-
 </script>
 {% include 'includes/quantity_input_script.html' %}
-
-
-
-
-
-
-
-
-
-
 
 {% endblock content %}

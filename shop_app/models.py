@@ -3,8 +3,6 @@ from django.db import models
 from django.urls import reverse
 # from datetime import datetime
 from django.utils import timezone
-
-
 # from profiles_app.models import UserProfile
 
 
@@ -81,8 +79,8 @@ class Book(models.Model):
     def __unicode__(self):
         return self.title
 
-# to combine the authers name for e.g. admin panal
     def author_names(self):
+        """ in order to combine the authors name for e.g. admin panel """
         all = []
         for a in self.authors.all():
             all.append(str(a))

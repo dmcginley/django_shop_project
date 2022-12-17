@@ -61,9 +61,9 @@ sup {
 }
 
 
-/* ---------------------------------------- */
+/* ----------------------------------------- */
 /* loading-overlay & spinner */
-/* ---------------------------------------- */
+/* ----------------------------------------- */
 #loading-overlay {
     /* grid-column: 1; */
     display: none;
@@ -93,7 +93,9 @@ select option[value=""] {
     color: rgb(197, 197, 197) !important;
 }
 
+/* ----------------------------------------- */
 /* SVG animation for overlay */
+/* ----------------------------------------- */
 @keyframes svg-animation {
     0% {
         transform: rotateZ(0deg);
@@ -137,9 +139,7 @@ select option[value=""] {
     }
 }
 
-
 @media only screen and (min-width: 1024px) {
-
     .order-summary-text {
         display: none;
     }

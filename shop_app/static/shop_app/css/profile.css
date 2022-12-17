@@ -11,8 +11,6 @@ form {
     z-index: 700;
 }
 
-
-
 input {
     font-weight: 400;
 }
@@ -20,7 +18,6 @@ input {
 ::placeholder {
     color: #aab7c4 !important;
 }
-
 
 .InputElement {
     padding-bottom: 2em !important;
@@ -34,45 +31,28 @@ input {
     /* max-width: 600px; */
 }
 
-section {
-    /* background-color: aquamarine; */
-    /* width: 700px; */
-}
-
-/* form .button,
-form a, */
 .button {
     width: 100%;
 }
 
 .button-pl {
     margin: .4rem .4rem .4rem 0;
-
 }
-
-
 
 .order-history {
     display: flex;
-    /* background-color: #dc3545; */
 }
 
 @media only screen and (min-width: 380px) {
-
     .container {
         /* background-color: rgb(26, 97, 163); */
         /* max-width: 600px; */
         width: clamp(100px, 90vw, 700px);
     }
-
-
 }
 
 @media only screen and (min-width: 480px) {
-
     .button {
         width: max-content;
     }
-
-
 }

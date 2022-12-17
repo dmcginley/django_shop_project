@@ -337,6 +337,10 @@ section,
     width: 600px
 }
 
+#nav-search-form {
+    background-color: #3ac6d9 !important;
+}
+
 .shopping-btn svg {
     left: -20px;
     fill: #485fc7;

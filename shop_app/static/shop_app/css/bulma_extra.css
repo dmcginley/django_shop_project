@@ -12,18 +12,15 @@
     --danger: #f65269;
     --dark-svg: #4a4a4a;
     --light-svg: var(--has-text-white-ter);
-
 }
 
 /* ----------------------------------------- */
 /* main css */
 /* ----------------------------------------- */
-
 a[disabled] {
     pointer-events: none;
     cursor: not-allowed;
 }
-
 
 .dark-svg {
     fill: var(--dark-svg);
@@ -47,14 +44,10 @@ div .columns {
 .wrapper {
     min-height: 100vh;
     min-height: calc(100vh - 236px);
-    /* footer + nav
-    /* background-color: blueviolet; */
 }
-
 
 .section-title {
     grid-column: 1/-1;
-    /* background-color: #3ac6d9; */
 }
 
 .main-grid {
@@ -69,7 +62,6 @@ div .columns {
 
 .hero {
     grid-column: 1/-1;
-    /* grid-row: 1; */
 }
 
 /* ----------------------------------------- */
@@ -81,9 +73,7 @@ section,
 
 }
 
-
 .hero-container {
-    /* background-color: blueviolet; */
     padding: 1em;
     height: 100px;
     grid-column: 1/-1;
@@ -93,14 +83,12 @@ section,
     grid-column: 1/-1;
 }
 
-
 .genre-navbar {
     grid-column: 2/-2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1em;
-    /* background-color: #485fc7; */
 }
 
 .genre-navbar .dropdown .button {
@@ -111,25 +99,23 @@ section,
 .books-section {
     grid-template-rows: 2;
     margin: auto;
-    /* background-color: #dc3545; */
 }
 
 
+#nav-search-form {
+    border-radius: 4px 0 0 4px !important;
+}
 
 /* ----------------------------------------- */
 /* nav area css */
 /* ----------------------------------------- */
-
 .menu-btn {
     width: 100%;
 }
 
 .buttons {
-    /* background-color: #c9e8ec; */
     margin-left: auto;
 }
-
-
 
 .buttons .button {
     margin-left: 0 !important;
@@ -142,10 +128,7 @@ section,
 
 .button-pl {
     margin: .4rem .4rem .4rem 0;
-
 }
-
-
 
 .book-counter {
     position: absolute;
@@ -162,18 +145,13 @@ section,
     font-size: .8rem;
 }
 
-
 .nav-btn {
     border: 0;
     margin: auto;
     width: 100% !important;
-    /* background-color: #baf0f8; */
-    /* max-width: fit-content;
-    max-width: -moz-fit-content */
 }
 
 .nav-btn:hover {
-    /* background-color: #485fc7; */
     fill: var(--cart-button-blue);
     color: var(--cart-button-blue);
 }
@@ -193,19 +171,16 @@ section,
     align-items: center;
 }
 
-
 #cart {
     display: flex;
-    /* position: sticky; */
     width: max-content;
     right: 1em;
     margin-left: auto;
 }
 
-/* -------------------------------------- */
+/* ----------------------------------------- */
 /* cart-toast dropdown */
-/* -------------------------------------- */
-
+/* ----------------------------------------- */
 .cart-dropdown-svg,
 #cart svg {
     fill: var(--light-svg);
@@ -216,12 +191,8 @@ section,
     height: 24px;
 }
 
-
-
-
 .cart-svg-container {
     position: relative;
-
 }
 
 .cart-toast {
@@ -245,20 +216,15 @@ section,
     border-radius: .25rem;
 }
 
-
-
 .cart-book-text {
     padding-left: 1em;
     height: 100px;
 }
 
-
-
 .empty-book-search {
     max-width: 20ch;
     margin: auto;
 }
-
 
 /* ----------------------------------------- */
 /* card css */
@@ -272,16 +238,13 @@ section,
     border-radius: 0;
     box-shadow: none;
     margin: auto;
-    /* background-color: rgb(211, 247, 247); */
     padding: 2em 0 0 0;
     margin: 1em 0;
 }
 
-
 .card-text {
     padding: 0 2rem;
 }
-
 
 .card-price * {
     color: var(--danger);
@@ -290,7 +253,6 @@ section,
 .card-text-edit-del {
     display: flex;
     align-items: baseline;
-    /* justify-content: space-between; */
 }
 
 .title-ellipsis,
@@ -314,8 +276,6 @@ section,
 /* ----------------------------------------- */
 /* hero section */
 /* ----------------------------------------- */
-
-
 .hero-content {
     margin: auto;
 }
@@ -337,39 +297,27 @@ section,
     display: none;
 }
 
-
 .best-seller-book-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: right; */
     text-align: center;
     margin: auto;
 }
-
-/* .best-seller-book-container p {
-    width: 220px;
-    text-align: center;
-} */
 
 .best-seller-book-image {
     width: 180px;
     height: 100%;
     border-radius: 4px;
     box-shadow: 0px 8px 20px -5px #03373f5e;
-    /* transform: translateY(-2px); */
 }
-
-
 
 .banner {
     background-color: var(--banner-color);
-    /* width: 100%; */
-    /* grid-column: 2/3; */
+
     padding: 1em;
     font-weight: 400;
     text-align: center;
-    /* margin: 0 2em 1em 2em; */
 }
 
 #cart-container {
@@ -379,20 +327,16 @@ section,
     width: 100%;
 }
 
-
 .columns {
     padding: 1em;
     width: 100%;
 }
-
 
 .cover-index-link {
     height: 200px;
     background-color: #3ac6d9;
     margin: auto;
 }
-
-
 
 .cover-img {
     object-fit: contain;
@@ -404,17 +348,10 @@ section,
     margin: auto;
 }
 
-
-
-
-
-/* ------------------------------- */
+/* ----------------------------------------- */
 /* forms */
-/* ------------------------------- */
-
+/* ----------------------------------------- */
 /* button decrement-qty/increment-qty svg color */
-
-
 .btn-svg-white {
     fill: #fefefb;
 }
@@ -432,7 +369,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-
 .shopping-btn svg {
     left: -20px;
     fill: #485fc7;
@@ -442,28 +378,22 @@ input[type=number] {
     fill: #fefefb;
 }
 
-
-
-
 /* placeholder text for every form */
 ::placeholder {
     color: #a3abb3 !important;
 }
 
-
-
 #id_country {
     width: 100% !important;
 }
 
-/* ----------------------------------------------------- */
+/* ----------------------------------------- */
 /* order & profile order history cart */
-/* ----------------------------------------------------- */
+/* ----------------------------------------- */
 .order-card {
     display: flex;
     margin: 1em 0;
 }
-
 
 .cover-small {
     width: 90px;
@@ -483,22 +413,16 @@ input[type=number] {
 }
 
 .newsletter-section {
-    /* background-color: var(--banner-color); */
-    /* max-width: 600px; */
     padding-bottom: .5em;
 }
 
 .newsletter-form {
     max-width: 740px;
-    /* background-color: #007a8e; */
     margin: auto;
 }
 
 footer .footer {
     height: 180px;
-    /* padding-top: .5em !important; */
-    /* padding: 4em; */
-    /* padding: 1em 6em 6em 6em; */
 }
 
 footer {
@@ -544,8 +468,6 @@ footer {
     overflow-y: scroll;
 }
 
-
-
 .message-body {
     display: flex;
     align-items: flex-end;
@@ -558,13 +480,8 @@ footer {
 
 .orders-column-books {
     max-height: 520px;
-    /* width: 200px; */
     overflow-y: scroll;
-    /* background-color: #3ac6d9; */
 }
-
-
-
 
 @media only screen and (min-width: 480px) {
     .best-seller-book-image {
@@ -581,24 +498,15 @@ footer {
     .button {
         width: max-content;
     }
-
-
-
 }
 
 @media only screen and (min-width: 668px) {
-
-
     .books-section {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2em;
         width: 90vw;
-
-        /* background-color: #7281c5; */
-
     }
-
 
     .index-card {
         display: flex;
@@ -609,23 +517,15 @@ footer {
         margin: auto;
     }
 
-
     .card-text {
         padding: 0;
     }
-
 
     .cart_toast-container,
     .toast-container {
         width: clamp(200px, 60%, 500px);
     }
-
-
 }
-
-
-
-
 
 /* bulma's tablet: from 769px */
 @media only screen and (min-width: 769px) {
@@ -655,19 +555,14 @@ footer {
         margin-top: 5em;
     }
 
-
     .best-seller-book-container {
         justify-content: end;
 
     }
 
-
     .detail-cover {
         max-width: 300px;
     }
-
-
-
 }
 
 @media only screen and (min-width: 960px) {}
@@ -675,12 +570,11 @@ footer {
 /* bulma's desktop: from 1024px */
 @media only screen and (min-width: 1024px) {
 
-    /* -------------------------------------- */
+    /* ----------------------------------------- */
     /* search bar */
-    /* -------------------------------------- */
+    /* ----------------------------------------- */
     .search-bar-container {
         width: 44%;
-
     }
 
     .search-bar-container form {
@@ -689,40 +583,25 @@ footer {
 
     .orders-column {
         padding-left: 6vw;
-
-        /* width: 55%; */
     }
-
 
     .reverse-columns {
         flex-direction: row-reverse;
-
     }
-
 }
 
-
-
-
-
 @media only screen and (min-width: 1068px) {
-
     .books-section {
         grid-template-rows: 2;
         width: 95%;
         grid-template-columns: repeat(4, 1fr);
-        /* background-color: #dc3545; */
     }
-
 }
-
-
 
 /* bulma's widescreen: from 1216px */
 @media only screen and (min-width: 1216px) {}
 
-
-/* -------------------------------------------------------- */
+/* ----------------------------------------- */
 /* Bulma mobile first breakpoints */
 /* tablet: from 769px */
 @media only screen and (min-width: 769px) {}

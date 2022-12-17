@@ -26,9 +26,9 @@
             <div class="card-text">
                 <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
                 <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.author_names }}</h6>
-                <!-- <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.date_added }}</h6> -->
+                {# <h6 class="subtitle is-6 author-ellipsis mb-1">{{ book.date_added }}</h6> #}
 
-                <!-- <p class="mb-4">{{ book.rating }}</p> -->
+                {# <p class="mb-4">{{ book.rating }}</p> #}
                 <p class="card-price is-warning pb-5">
                     <strong>
                         €{{ book.price }}
@@ -68,7 +68,7 @@
             {% else %}
             <a class="pagination-previous is-disabled" disabled href="?page=1">First Page</a>
             <ul class="pagination-list">
-                <!-- <li><span class="pagination-ellipsis">&hellip;</span></li> -->
+                {# <li><span class="pagination-ellipsis">&hellip;</span></li> #}
                 {% endif %}
                 {% for num in books.paginator.page_range %}
                 {% if books.number == num %}

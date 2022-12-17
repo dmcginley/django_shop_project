@@ -1,11 +1,8 @@
 {% if widget.is_initial %}
 <p>{{ widget.initial_text }}:</p>
-
 <a href="{{ widget.value.url }}">
     <img src="{{ widget.value.url }}" height="86" width="49 " alt="" aria-label="new-image">
 </a>
-
-
 {% if not widget.required %}
 <div>
     <input type="checkbox" name="{{ widget.checkbox_name }}" id="{{ widget.checkbox_id }}"
@@ -39,7 +36,6 @@
         <p class="has-text-danger mt-2" id="filename"></p>
     </div>
 </span>
-
 
 {{ block.super }}
 <script type="text/javascript">

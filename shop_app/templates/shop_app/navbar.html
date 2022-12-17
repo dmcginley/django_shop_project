@@ -13,7 +13,6 @@
             <span></span>
         </div>
     </div>
-
     <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
             <div class="navbar-item has-dropdown is-hoverable">
@@ -38,13 +37,11 @@
                 </div>
             </div>
         </div>
-
-
         <div class="navbar-item search-bar-container">
             <form class="field has-addons search-bar" action="{% url 'book_search' %}" method="GET">
                 {% csrf_token %}
                 <div class="control is-expanded">
-                    <input class="input" type="text" name="searching" value="{{ searching }}"
+                    <input id="nav-search-form" class="input" type="text" name="searching" value="{{ searching }}"
                         placeholder="Find a book title, author, ISBN..." />
                 </div>
                 <div class="control">
@@ -54,7 +51,6 @@
                 </div>
             </form>
         </div>
-
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="">
@@ -116,7 +112,6 @@
                         Register
                     </a>
                     {% endif %}
-
                 </div>
             </div>
         </div>

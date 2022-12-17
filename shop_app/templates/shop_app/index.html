@@ -1,9 +1,7 @@
 {% extends 'shop_app/base.html' %} {% load static %}
 {% block title %}- {{ page_title }}{% endblock %}
 
-
 {% block content %}
-
 
 {% if on_home_page %}
 {% include 'shop_app/hero.html' %}
@@ -11,111 +9,108 @@
 
 <section class="section books-section">
 
-  {% if page_title and not on_home_page %}
-  <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
-    {{ page_title }}
-  </h2>
-  {% endif %}
+    {% if page_title and not on_home_page %}
+    <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
+        {{ page_title }}
+    </h2>
+    {% endif %}
+    {% if  page_header%}
+    <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
+        {{ page_header }}
+    </h2>
+    {% endif %}
 
-  {% if  page_header%}
-  <h2 class="section-title subtitle is-3 has-text-centered has-text-left-tablet">
-    {{ page_header }}
-  </h2>
-  {% endif %}
-
-  {% for book in books %}
-
-
-  <div class="card index-card">
-    <div>
-      {% if book.image.image %}
-      <figure class="image-cover-index mb-4">
-        <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
-          <img class="cover-img" src="{{ book.image.image.url }}" height="200" loading="lazy" alt="book cover" />
-        </a>
-      </figure>
-      {% else %}
-      <figure class="image-cover-index mb-4">
-        <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
-          <img class="cover-img" src="{{ MEDIA_URL }}default_covers/no_cover.png" height="200" loading="lazy"
-            alt="no book cover" />
-        </a>
-      </figure>
-      {% endif %}
-
-      <div class="card-text">
-        <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
-        <h6 class="subtitle is-6 author-ellipsis mb-1 has-text-grey-dark">{{ book.author_names }}</h6>
-        <div class="card-text-edit-del">
-          <p class="card-price pb-5">
-            <strong>
-              €{{ book.price }}
-            </strong>
-          </p>
-          <div class="ml-2">
-            {% if user.is_superuser %}
-            <a class=" mr-1" href="{% url 'edit_book' book.id %}"">
+    {% for book in books %}
+    <div class="card index-card">
+        <div>
+            {% if book.image.image %}
+            <figure class="image-cover-index mb-4">
+                <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
+                    <img class="cover-img" src="{{ book.image.image.url }}" height="200" loading="lazy"
+                        alt="book cover" />
+                </a>
+            </figure>
+            {% else %}
+            <figure class="image-cover-index mb-4">
+                <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
+                    <img class="cover-img" src="{{ MEDIA_URL }}default_covers/no_cover.png" height="200" loading="lazy"
+                        alt="no book cover" />
+                </a>
+            </figure>
+            {% endif %}
+            <div class="card-text">
+                <h5 class="title is-5 title-ellipsis">{{ book.title }}</h5>
+                <h6 class="subtitle is-6 author-ellipsis mb-1 has-text-grey-dark">{{ book.author_names }}</h6>
+                <div class="card-text-edit-del">
+                    <p class="card-price pb-5">
+                        <strong>
+                            €{{ book.price }}
+                        </strong>
+                    </p>
+                    <div class="ml-2">
+                        {% if user.is_superuser %}
+                        <a class=" mr-1" href="{% url 'edit_book' book.id %}"">
               Edit
             </a>
             <a class=" has-text-danger" href="{% url 'delete_book' book.id %}">
-              Delete
-            </a>
-            {% endif %}
-          </div>
+                            Delete
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="index-content">
-      <div class="media">
-        <div class="media-content">
-          <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
-            {% csrf_token %}
+        <div class="index-content">
+            <div class="media">
+                <div class="media-content">
+                    <form class="form add-to-cart-form" action="{% url 'add_to_cart' book.id %}" method="POST">
+                        {% csrf_token %}
 
-            <div>
-              <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
-                id="id_qty{{ book.id }}" />
+                        <div>
+                            <input type="hidden" name="quantity" value="1" min="1" max="99" date-item_id="{{ book.id }}"
+                                id="id_qty{{ book.id }}" />
+                        </div>
+                        <div>
+                            <input type="submit" class="button is-link is-fullwidth" value="Add to Cart" />
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}" />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div>
-              <input type="submit" class="button is-link is-fullwidth" value="Add to Cart" />
-              <input type="hidden" name="redirect_url" value="{{ request.path }}" />
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
 </section>
 
 {# pagination #}
 <section class="p-6">
-  {% if is_paginated %}
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    {% if page_obj.has_previous %}
-    <a class="pagination-previous" href="?page=1">First Page</a>
-    <ul class="pagination-list">
-      <li><span class="pagination-ellipsis">&hellip;</span></li>
-      {% else %}
-      <a class="pagination-previous is-disabled" disabled href="?page=1">First Page</a>
-      <ul class="pagination-list">
+    {% if is_paginated %}
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        {% if page_obj.has_previous %}
+        <a class="pagination-previous" href="?page=1">First Page</a>
+        <ul class="pagination-list">
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+            {% else %}
+            <a class="pagination-previous is-disabled" disabled href="?page=1">First Page</a>
+            <ul class="pagination-list">
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+            </ul>
+            <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
+            {% else %}
+        </ul>
+        <a class="pagination-next is-disabled" disabled href="?page={{ books.paginator.num_pages }}">Last page</a>
         {% endif %}
-        {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-        <li><a class="pagination-link is-current" href="?page={{ num }}">{{ num }}</a></li>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <li><a class="pagination-link" href="?page={{ num }}">{{ num }}</a></li>
-        {% endif %}
-        {% endfor %}
-        {% if page_obj.has_next %}
-        <li><span class="pagination-ellipsis">&hellip;</span></li>
-      </ul>
-      <a class="pagination-next" href="?page={{ page_obj.paginator.num_pages }}">Last page</a>
-      {% else %}
-    </ul>
-    <a class="pagination-next is-disabled" disabled href="?page={{ books.paginator.num_pages }}">Last page</a>
+    </nav>
     {% endif %}
-  </nav>
-  {% endif %}
 </section>
 
 {% endblock content %}

@@ -5,34 +5,21 @@
     /* max-width: 600px; */
 }
 
-section {
-    /* background-color: aquamarine; */
-    /* width: 700px; */
-}
-
 .button {
     margin: .4rem .4rem .4rem 0;
     width: 100%;
 }
 
-
-
 @media only screen and (min-width: 380px) {
-
     .container {
         /* background-color: rgb(26, 97, 163); */
         /* max-width: 600px; */
         width: clamp(100px, 90vw, 700px);
     }
-
-
 }
 
 @media only screen and (min-width: 480px) {
-
     .button {
         width: max-content;
     }
-
-
 }
