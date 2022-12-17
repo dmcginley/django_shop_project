@@ -1,15 +1,18 @@
+
 from shop_app.models import Author, Book, Genre, Image, Publisher
+# from shop_app.models import Book
 from csv import DictReader
 import requests
 import os
 import shutil
 from django.core.files import File
 
+from django.db import models
+
 
 def run():
-    """ A script I created to import book date form a CSV file """
 
-    csv_file = open('scripts/bookdata_small.csv')
+    csv_file = open('scripts/bookdata_small3.csv')
     reader = DictReader(csv_file)
 
     for row in reader:
@@ -53,6 +56,8 @@ def run():
             image_response.raw.decode_content = True
             print("writing to ", out_file)
             shutil.copyfileobj(image_response.raw, f)
+        # image = Image.objects.get_or_create(
+        #     image=models.ImageField(filename=f"{isbn}.jpg"))
 
         book, book_created = Book.objects.get_or_create(
             title=title,
@@ -65,6 +70,7 @@ def run():
             image=Image.objects.create(),
             price=price,
             number_in_stock=number_in_stock,
+            # slug=slug + "-xx"  # TEMPORARY
         )
 
         book.image.image.save(f"{isbn}.jpg", File(open(out_file, "rb")))
@@ -75,3 +81,4 @@ def run():
             author_report = ""
             if author_created:
                 author_report = f" (created author {author})"
+        # print(f"Created book '{title}'{author_report}")

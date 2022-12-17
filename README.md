@@ -1,4 +1,4 @@
-# Project 5 - BookShop
+ # Project 5 - BookShop
 
 ## Table of contents
 
@@ -21,6 +21,15 @@ People searching for books who like a hassle-free experience while shopping.
 People who would rely on searching books by title or author, not just by ISBN.
 
 ## Wireframe
+Created in Figma
+
+###### *link to file:* [https://www.figma.com/file/j25NLKtS...](https://www.figma.com/file/j25NLKtS1bbWLyaCnHOa8U/Untitled?node-id=0%3A1)
+ ![Sign-in and register page](readme_images/mockup_1.png)
+
+![Main/home page](readme_images/mockup_2.png)
+
+![Shopping cart](readme_images/mockup_3.png)
+
 
 ## Agile development - kanban board
 
