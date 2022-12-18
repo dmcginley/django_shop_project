@@ -10,7 +10,7 @@
 
 ## About the Project
 
-An online e-commerce book Shop featuring so of the most well-known book.
+An online e-commerce book Shop featuring some of the most well-known book.
 In the store, you can go from searching for a book to reading a description about it to checking out in one flowing movement through.
 
 It has a simple to understand clean design while being based on the standard for e-commerce book sites out there e.g. Amazon or Book Depository.
@@ -42,6 +42,14 @@ Created in Figma
 ![Main/home page](readme_images/mockup_2.png)
 
 ![Shopping cart](readme_images/mockup_3.png)
+
+## Facebook Page
+
+This is the second attempt of a page created as my first account was deleted by face book, so I added a screenshot here incase the link doesn't work
+
+[Facebook BookShop Page](https://www.facebook.com/profile.php?id=100088733114158)
+
+![Image of Facebook page](readme_images/facebook_page.png)
 
 ## Agile development - kanban board
 
@@ -78,11 +86,11 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   1.  Given that I'm a user when I click on a book from the main page I am taken to the detail page of that book with further information and a description of that book.
 
-- "As a user I want to be able to search by genre of books so I can search by my favorite genre and types."
+- "As a user I want to be able to search by genre of books so I can search by my favourite genre and types."
 
   Acceptance criteria:
 
-  1. Given that I'm a user when I navigate to the navagation bar and click on the genres dropdown, I can see a list of genres to select from when I click on one of the links I am then taken to that genre page.
+  1. Given that I'm a user when I navigate to the navigation bar and click on the genres dropdown, I can see a list of genres to select from. When I click on one of the links I am then taken to that genre page.
 
 - "As a user I want to be able to search for a book by author, title, or by ISBN as with most sites, so that I can search in many different ways.
 
@@ -110,7 +118,8 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   2. Given that I'm a customer when updating my number of books from
      the cart page a success message shows up in the top right-hand corner.
-     Acceptance criteria:
+
+Acceptance criteria:
 
 - "As a customer I like to be able to add or delete the quantity of books for my cart in case I change my mind midway through purchasing items."
 
@@ -177,7 +186,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 6. Purchase from the book detail page
 7. View a description of the book Home Depot detail page along with
 8. View a short summary of the books to be purchased on the checkout page
-9. Free delivery over a cretin amount (€40), this is calculated by the backend.
+9. Free delivery over a certain amount (€40), this is calculated by the back-end.
 10. Pagination on the home page, genre page and book by price page
 11. Purchase books with a credit card or debit card using stripe
 

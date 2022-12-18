@@ -8,8 +8,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 
 from .models import Book, Genre
-import random
-
 from .forms import BookForm
 
 
@@ -168,7 +166,7 @@ def add_book(request):
     context = {
         'form': form,
     }
-
+    print('book updated')
     return render(request, template, context)
 
 
@@ -181,7 +179,7 @@ def edit_book(request, book_id):
 
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
-        form = BookForm(request.POST, request.FILES, instance=book.image)
+        form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated book')
@@ -199,6 +197,7 @@ def edit_book(request, book_id):
         'form': form,
         'book': book,
     }
+    print('book updated')
 
     return render(request, template, context)
 

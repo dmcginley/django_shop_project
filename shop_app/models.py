@@ -52,7 +52,10 @@ class Book(models.Model):
     """A published book."""
     title = models.CharField(
         max_length=255, help_text="The title of the book.")
+    # first_name= models.CharField(max_length=50)
+    # last_name = models.CharField(max_length=50)
     authors = models.ManyToManyField(Author)
+
     rating = models.DecimalField(
         decimal_places=1, blank=True, max_digits=2,
         help_text="Between 1 and 10")
