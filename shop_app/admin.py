@@ -25,6 +25,8 @@ class BookAdmin(admin.ModelAdmin):
 
     list_filter = ('title', 'authors', 'genres')
 
+    readonly_fields = ('date_added',)
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):

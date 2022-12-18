@@ -24,3 +24,4 @@ class BookForm(forms.ModelForm):
 
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'input'
+            # self.fields[field].widget.attrs['class'] = 'is-fullwidth'
