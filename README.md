@@ -1,4 +1,4 @@
- # Project 5 - BookShop
+# Project 5 - BookShop
 
 ## Table of contents
 
@@ -20,74 +20,112 @@ It has a simple to understand clean design while being based on the standard for
 People searching for books who like a hassle-free experience while shopping.
 People who would rely on searching books by title or author, not just by ISBN.
 
+- <mark>Present a clear rationale for the development of the project, addressing the user stories</mark>
+
+## E-commerce
+
+<mark>The requirements for an e-commerce business model:
+The necessity for the inclusion of an e-commerce business model, highlighting the purpose of the application as either B2B or B2C focused, and detailing the core business intents and marketing strategies for the application.</mark>
+
+- <mark>document the business model underlying the site</mark>
+
 ## Wireframe
+
 Created in Figma
 
-###### *link to file:* [https://www.figma.com/file/j25NLKtS...](https://www.figma.com/file/j25NLKtS1bbWLyaCnHOa8U/Untitled?node-id=0%3A1)
- ![Sign-in and register page](readme_images/mockup_1.png)
+- <mark>Document the UX design</mark>
+
+###### _link to file:_ [https://www.figma.com/file/j25NLKtS...](https://www.figma.com/file/j25NLKtS1bbWLyaCnHOa8U/Untitled?node-id=0%3A1)
+
+![Sign-in and register page](readme_images/mockup_1.png)
 
 ![Main/home page](readme_images/mockup_2.png)
 
 ![Shopping cart](readme_images/mockup_3.png)
 
-
 ## Agile development - kanban board
 
+![middle of the project](readme_images/kanban_1.png)
+
+![near the end of the project](readme_images/kanban_2.png)
+
 ## Epic
+
+Create an E-commerce Book shop that can have multiple users either signed in or not. They can search for books and add them to the cart easily and fluidly that allows for quick shopping.
 
 ## User Stories
 
 #### Admin
 
-- "As an... I want to be able to."
+- "As an admin, I want to be able to edit or delete a book from the main page or detailed page so it takes as little time as possible."
 
   Acceptance criteria:
 
-  1. Given that I'm the...
+  1. Given that I'm an admin when I click on the edit button below the book I get taken to a page where I can edit details on the book.
+  2. Given that I'm an admin when I click on the delete button below the book gets deleted from the shop.
 
-#### Unregistered user
+- Add a book to the database via the Profile dropdown in the navbar
 
-- "As an... I want to be able to."
-
-  Acceptance criteria:
-
-  1. Given that I'm the...
-
-#### Registered user
-
-- "As an... I want to be able to."
+- "As an admin I want to be able to add a book to the shop."
 
   Acceptance criteria:
 
-  1. Given that I'm the...
+  1. Given that I'm an admin when I navigate to the profile dropdown I can see the link for add a book, when I click the link it takes me to the page where I can then add the book.
 
-## Technologies Used
+#### User
 
-- [Visual Studio Code](https://code.visualstudio.com/) IDE I used for Bootstrap, JavaScript, & Django
-- [Amazon Web Services (AWS)](https://aws.amazon.com/) - for hosting the static files
-- [Railway](https://railway.app/) for deploying the site
+- "As a user, I want to be able to view each book in detail so I can see more information about the book."
 
-- [GitHub](https://github.com/) - the version control
-- [SQLite](https://www.sqlite.org/index.html) - database used in development
-- [PostgreSQL](https://www.postgresql.org/) - database for production
+  Acceptance criteria:
 
-### The Code
+  1.  Given that I'm a user when I click on a book from the main page I am taken to the detail page of that book with further information and a description of that book.
 
-- [Bulma](https://bulma.io/) - CSS framework that
-- [jQuery](https://jquery.com/)
-- [Django 4.1.2](https://www.djangoproject.com/)
-- [Python3](https://www.python.org/)
+- "As a user I want to be able to search by genre of books so I can search by my favorite genre and types."
 
-### Main libraries & applications used
+  Acceptance criteria:
 
-- [django-allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
-- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)
-- [crispy-bulma](https://github.com/ckrybus/crispy-bulma)
-- [django-countries](https://pypi.org/project/django-countries/)
-- []()
-- []()
+  1. Given that I'm a user when I navigate to the navagation bar and click on the genres dropdown, I can see a list of genres to select from when I click on one of the links I am then taken to that genre page.
 
-## Features
+- "As a user, I'd like to only have a few books per page so I don't have to be constantly scrolling through a large list of books.
+
+  Acceptance criteria:
+
+  1.  Given that I'm a user when I scroll to the bottom of the page I see a set of page numbers that I can easily navigate through pages or from the very first page to the very last.
+
+#### Customer
+
+- "As a customer, I want to be able to see feedback messages so I can see if I have placed an order successfully or not, or preformed a task correctly."
+
+  Acceptance criteria:
+
+  1. Given that I'm a customer when I add a book to my cart a message shows up in the corner with the cart detail showing that I have added the book to my cart.
+
+  2. Given that I'm a customer when updating my number of books from
+     the cart page a success message shows up in the top right-hand corner.
+     Acceptance criteria:
+
+- "As a customer I like to be able to add or delete the quantity of books for my cart in case I change my mind midway through purchasing items."
+
+  Acceptance criteria:
+
+  1. Given that I'm a customer when I navigate to the cart, under the price of the book I can either increase or reduce the quality of books in my cart.
+  2. Given that I'm a customer when I navigate to the cart, I can remove books complety from my cart.
+
+#### Registered customer
+
+- "As a registered customer, I want to be able to edit my profile address so I don't have to be typing it in each time I purchase an item."
+
+  Acceptance criteria:
+
+  1. Given that I'm a registered customer when I navagate to my profile page I see a form where I can fill out my address details.
+
+- "As a registered customer I want to be able to view my order history so that I can remember which books I purchased from the shop and at what prices."
+
+  Acceptance criteria:
+
+  1.  Given that I'm a registered user when I navigate to my profile page I can see a list of my orders, when I click on one of the order numbers, it then takes me to the order summary page where can see details about that order.
+
+---
 
 #### As a Customer
 
@@ -123,10 +161,42 @@ Created in Figma
   - Can bring in your current address details from the profile page and can save the details in the checkout to the profile page
   - View an order summary with thumbnails of the books to be purchased and the order total price
 
-#### As an Admin
+## Technologies Used
 
-- Edit or Delete a book from the home page or the book detail page
-- Add a book to the database via the Profile dropdown in the navbar
+- [Visual Studio Code](https://code.visualstudio.com/) IDE I used for Bootstrap, JavaScript, & Django
+- [Amazon Web Services (AWS)](https://aws.amazon.com/) - for hosting the static files
+- [Railway](https://railway.app/) for deploying the site
+
+- [GitHub](https://github.com/) - the version control
+- [SQLite](https://www.sqlite.org/index.html) - database used in development
+- [PostgreSQL](https://www.postgresql.org/) - database for production
+
+### The Code
+
+- [Bulma](https://bulma.io/) - CSS framework that
+- [jQuery](https://jquery.com/)
+- [Django 4.1.2](https://www.djangoproject.com/)
+- [Python3](https://www.python.org/)
+
+### Main libraries & applications used
+
+- [django-allauth](https://django-allauth.readthedocs.io/en/latest/overview.html)
+- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [crispy-bulma](https://github.com/ckrybus/crispy-bulma)
+- [django-countries](https://pypi.org/project/django-countries/)
+
+## Features
+
+1. Create an account & change profile address and view past orders.
+2. Search by Genre, Author (either name), or ISBN
+3. Add a book to the cart from the homepage
+4. Click on a book cover to be taken to the detail page of the book
+5. increase or reduce the quality of course you wish to cover
+6. purchase from the book detail page
+7. view a description of the book Home Depot detail page along with
+8. view a short summary of the books to be purchased on the checkout page
+9. Pagination on the home page, genre page and book by price page
+10. purchase books with a credit card or debit card using stripe
 
 ## Site Layout
 
@@ -187,10 +257,12 @@ var postData = {
 
 From Visual Studio Code termnal
 
-- export RAILWAY_DEPLOYMENT=True
-- python manage.py collectstatic
-- python manage.py makemigrations
-- python manage.py migrate
+```
+$ export RAILWAY_DEPLOYMENT=True
+$ python manage.py collectstatic
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
 
 #### prerequisite for deployment
 

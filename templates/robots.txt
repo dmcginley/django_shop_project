@@ -1,0 +1,17 @@
+# robots.txt file for bookshop
+#-----------------------------
+# Created in 2022 for my Project 5
+# sample of Disallow links should go through them at a later date
+
+
+User-agent: *
+
+Disallow: /admin/
+Disallow: /profile/
+Disallow: /add/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /checkout_success/
+Disallow: /profile/order_history/
+
+Sitemap: https://web-production-7efa.up.railway.app/sitemap.xml
