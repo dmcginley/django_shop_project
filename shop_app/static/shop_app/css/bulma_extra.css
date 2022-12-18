@@ -2,7 +2,8 @@
     --hero-color: #007a8e;
     --cart-button-blue: #485fc7;
     --primary-color: #485fc7;
-    --primary-color-hover: #3c54c0;
+    --primary-color-focus: #475dc2;
+    --primary-color-hover: #3a52bd;
     --banner-color: #333633;
     --has-text-white: hsl(0, 0%, 100%);
     --has-text-white-ter: hsl(0, 0%, 96%);
@@ -124,6 +125,7 @@ section,
 
 .button {
     width: 100%;
+    transition: 160ms !important;
 }
 
 .button-pl {
@@ -413,7 +415,13 @@ input[type=number] {
 }
 
 .newsletter-section {
+    /* display: none; */
     padding-bottom: .5em;
+    /* z-index: 100 !important; */
+}
+
+.newsletter-section * {
+    /* z-index: 100 !important; */
 }
 
 .newsletter-form {

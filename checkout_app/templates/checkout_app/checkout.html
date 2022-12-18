@@ -169,7 +169,7 @@
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle id="circle-spinner" cx="50" cy="50" r="45" />
         </svg>
-        <p class="pl-2">Processing order</p>
+        <p class="pl-2 has-text-white">Processing order</p>
     </div>
 </div>
 
@@ -181,4 +181,8 @@
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'shop_app/js/stripe_elements.js' %}"></script>
+
+
+
+
 {% endblock postloadjs %}

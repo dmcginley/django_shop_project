@@ -31,7 +31,6 @@ input {
 .StripeElement {
     border-radius: 4px !important;
     padding: .6rem !important;
-
 }
 
 .StripeElement--focus {
@@ -65,12 +64,15 @@ sup {
 /* loading-overlay & spinner */
 /* ----------------------------------------- */
 #loading-overlay {
-    /* grid-column: 1; */
     display: none;
     position: fixed;
+    margin-top: -64px;
     width: 100%;
-    height: 100vh;
-    background-color: #ffffffaf;
+    height: calc(100vh + 64px);
+    overflow: hidden;
+    background-color: var(--primary-color);
+    z-index: 900;
+    transition: 700ms;
 }
 
 #processing-order {
@@ -78,6 +80,7 @@ sup {
     height: 100%;
     align-items: center;
     justify-content: center;
+    padding-bottom: 2.6em;
 }
 
 #processing-order svg {
@@ -110,7 +113,7 @@ select option[value=""] {
 #circle-spinner {
     display: block;
     fill: transparent;
-    stroke: #666a6e;
+    stroke: #f8f8f8;
     stroke-linecap: round;
     stroke-dasharray: 283;
     stroke-dashoffset: 280;
