@@ -64,9 +64,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
   1. Given that I'm an admin when I click on the edit button below the book I get taken to a page where I can edit details on the book.
   2. Given that I'm an admin when I click on the delete button below the book gets deleted from the shop.
 
-- Add a book to the database via the Profile dropdown in the navbar
-
-- "As an admin I want to be able to add a book to the shop."
+- "As an admin I want to be able to add a book to the shop from the main website."
 
   Acceptance criteria:
 
@@ -85,6 +83,16 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
   Acceptance criteria:
 
   1. Given that I'm a user when I navigate to the navagation bar and click on the genres dropdown, I can see a list of genres to select from when I click on one of the links I am then taken to that genre page.
+
+- "As a user I want to be able to search for a book by author, title, or by ISBN as with most sites, so that I can search in many different ways.
+
+  Acceptance criteria:
+
+  1. Given that I'm a user, when I my enter details to the search bar and hit enter it returns the search queries if the search is a valid search term.
+
+  2. Given that I'm a user, when I enter no search terms it returns an error with a text prompt showing up on the screen prompting me to enter a search (by title, author name, or ISBN ).
+
+  3. Given that I'm a user, when I enter a title that is too short I am prompted that the site didn't find anything for that search term entered.
 
 - "As a user, I'd like to only have a few books per page so I don't have to be constantly scrolling through a large list of books.
 
@@ -108,8 +116,17 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   Acceptance criteria:
 
-  1. Given that I'm a customer when I navigate to the cart, under the price of the book I can either increase or reduce the quality of books in my cart.
-  2. Given that I'm a customer when I navigate to the cart, I can remove books complety from my cart.
+  1. Given that I'm a customer, when I navigate to the cart, under the price of the book I can either increase or reduce the quality of books in my cart.
+
+  2. Given that I'm a customer when I navigate to the cart, I can remove books completely from my cart.
+
+- "As a customer when I purchase over certain amount of books, I wish to be offered free delivery so that it gives me incentive to purchase over a certain amount."
+
+  Acceptance criteria:
+
+  1. Given that I'm a customer, when I add a book to the cart, in pop-up there is text at the bottom showing me how much I have to spend to receive free delivery.
+
+  2. Given that I'm a customer, when I spend more than €40, the cart dropdown pop-up shows that I can avail of free delivery.
 
 #### Registered customer
 
@@ -117,49 +134,13 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   Acceptance criteria:
 
-  1. Given that I'm a registered customer when I navagate to my profile page I see a form where I can fill out my address details.
+  1. Given that I'm a registered customer when I navigate to my profile page I see a form where I can fill out my address details.
 
 - "As a registered customer I want to be able to view my order history so that I can remember which books I purchased from the shop and at what prices."
 
   Acceptance criteria:
 
   1.  Given that I'm a registered user when I navigate to my profile page I can see a list of my orders, when I click on one of the order numbers, it then takes me to the order summary page where can see details about that order.
-
----
-
-#### As a Customer
-
-- Ability to Register, Sign in and Sign out
-- Profile Page
-
-  - Change and update address details
-  - Order History, click on a past order and view the orders (similer to the confermation page but with the book desplayed to the side as thumbnales)
-
-- Books on the home page and Genre page are shown in reverse order so the last added will be at the top of the page, using in the Book model
-
-  ```
-  ordering = ('-date_added',)
-  ```
-
-- Searching
-  - Search by Author, Title or ISBN in the search bar
-  - Search by Genre via the dropdown
-  - Search by Price (ascending or descending) via the dropdown
-- Add a book to the cart directly from the home page
-- Click on a book cover to view the book detail page, with a description and a larger cover image
-- Add a book to the cart from the book detail page, and increase or decrease the quantity from that page
-- Free delivery over €40 calculated by the backend
-- Pagination, so if there were to be a larger selection of books there wouldn't be just one big list of books on one page
-- When searching each search or book being viewed shows up in the title on the tab so you can clearly see what part of the site you are on if you click away from the website
-- Cart popup, each time you add a book to the cart it shows you a short summary of your cart contents with a button allowing you to go directly to the cart
-- Shopping Cart
-
-  - In the cart you can change the quantity of items or remove the book compltey from the cart
-  - Shows you a summary of total, delivery, and total price with a continue shopping button in case you forgot somthing, and checkout button below that
-
-- Checkout
-  - Can bring in your current address details from the profile page and can save the details in the checkout to the profile page
-  - View an order summary with thumbnails of the books to be purchased and the order total price
 
 ## Technologies Used
 
@@ -169,7 +150,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
 - [GitHub](https://github.com/) - the version control
 - [SQLite](https://www.sqlite.org/index.html) - database used in development
-- [PostgreSQL](https://www.postgresql.org/) - database for production
+- [PostgreSQL](https://www.postgresql.org/) - database for production -[mailchimp](https://mailchimp.com/landers/newsletters/?gclid=CjwKCAiA-dCcBhBQEiwAeWidtdvhJHs73l99kKDOGyTZcQ7NGVbrA0WUOZjT8kMVtaNnxWCQkgjshBoC-oIQAvD_BwE&gclsrc=aw.ds) - for the Newsletter
 
 ### The Code
 
@@ -184,6 +165,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 - [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/)
 - [crispy-bulma](https://github.com/ckrybus/crispy-bulma)
 - [django-countries](https://pypi.org/project/django-countries/)
+- [stripe](https://stripe.com/en-ie) - payments infrastructure
 
 ## Features
 
@@ -191,12 +173,13 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 2. Search by Genre, Author (either name), or ISBN
 3. Add a book to the cart from the homepage
 4. Click on a book cover to be taken to the detail page of the book
-5. increase or reduce the quality of course you wish to cover
-6. purchase from the book detail page
-7. view a description of the book Home Depot detail page along with
-8. view a short summary of the books to be purchased on the checkout page
-9. Pagination on the home page, genre page and book by price page
-10. purchase books with a credit card or debit card using stripe
+5. Increase or reduce the quality of course you wish to cover
+6. Purchase from the book detail page
+7. View a description of the book Home Depot detail page along with
+8. View a short summary of the books to be purchased on the checkout page
+9. Free delivery over a cretin amount (€40), this is calculated by the backend.
+10. Pagination on the home page, genre page and book by price page
+11. Purchase books with a credit card or debit card using stripe
 
 ## Site Layout
 
@@ -302,12 +285,14 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 **Sites content, media, and help with implementing code from tutorials & online help.**
 
-#### CSS, Images & Icons
+#### HTML, CSS, Images & Icons
 
 - [Boxicons](https://boxicons.com/?query=search)
 - [Css gradient](https://cssgradient.io/)- used for gradient on the search icon
 - [How To Shorten Text With CSS (ellipsis)](https://www.youtube.com/watch?v=lurEwLtdWMI)
 - []()
+
+-[XML-Sitemaps](https://www.xml-sitemaps.com/) - for generating the sitemap -[What is a robots.txt file?](https://moz.com/learn/seo/robotstxt)
 
 #### Bulma
 
@@ -319,7 +304,7 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 - [Layouts, Fundamentals of crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html)
 - [stack**overflow**](https://stackoverflow.com/questions/61609953/is-there-a-way-to-hide-a-button-on-every-page-except-home-page-of-a-site-in-djan) - hiding button on every page except Home page in Django
-- []()
+- [How to add a robots.txt to your Django site](https://adamj.eu/tech/2020/02/10/robots-txt/) - keeps the robots.txt file in a template and renders it at the URL.
 - []()
 - []()
 

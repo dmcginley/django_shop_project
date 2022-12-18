@@ -84,6 +84,10 @@ section,
     grid-column: 1/-1;
 }
 
+.banner * {
+    font-size: 1rem;
+}
+
 .genre-navbar {
     grid-column: 2/-2;
     display: flex;
@@ -537,6 +541,12 @@ footer {
 
 /* bulma's tablet: from 769px */
 @media only screen and (min-width: 769px) {
+    .banner * {
+        font-size: 1.2rem;
+    }
+
+
+
     #cart {
         display: none;
     }
@@ -561,6 +571,10 @@ footer {
 
     .hero-text-area {
         margin-top: 5em;
+    }
+
+    .hero-text-area h1 {
+        font-size: 2.6rem;
     }
 
     .best-seller-book-container {
