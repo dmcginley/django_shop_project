@@ -1,12 +1,59 @@
 # Project 5 - BookShop
 
-## Table of contents
+![navigation bar](readme_images/image_of%20_site.png)
 
 ## The Links
 
 [Link to site](https://web-production-7efa.up.railway.app/)
 [Link to github project](https://github.com/dmcginley/shop_project)
 [Facebook page](https://www.facebook.com/profile.php?id=100088574147985)
+
+# Table of contents
+
+- [Project 5 - BookShop](#project-5---bookshop)
+
+  - [Table of contents](#table-of-contents)
+  - [The Links](#the-links)
+  - [About the Project](#about-the-project)
+  - [Who is this website for](#who-is-this-website-for)
+  - [E-commerce](#e-commerce)
+  - [Wireframe](#wireframe)
+    - [UX design](#ux-design)
+  - [Facebook Page](#facebook-page)
+  - [Agile development - kanban board](#agile-development---kanban-board)
+  - [Epic](#epic)
+  - [User Stories](#user-stories)
+    - [Admin](#admin)
+    - [User](#user)
+    - [Customer](#customer)
+    - [Registered customer](#registered-customer)
+  - [Technologies Used](#technologies-used)
+    - [The Code](#the-code)
+    - [Main libraries & applications used](#main-libraries--applications-used)
+  - [Features](#features)
+  - [Site Layout](#site-layout)
+  - [Accessibility](#accessibility)
+  - [Testing](#testing)
+    - [Validator Testing](#validator-testing)
+    - [Errors](#errors)
+    - [User tests](#user-tests)
+  - [Error Handling](#error-handling)
+  - [Troubleshooting](#troubleshooting)
+  - [Deployment](#deployment)
+    - [prerequisite for deployment](#prerequisite-for-deployment)
+    - [Deploying](#deploying)
+  - [Version Control](#version-control)
+    - [How To Clone The Project](#how-to-clone-the-project)
+  - [Resources](#resources)
+    - [Django](#django)
+    - [Python](#python)
+  - [Credits](#credits)
+
+    - [HTML, CSS, Images & Icons](#html-css-images--icons)
+    - [Bulma](#bulma)
+    - [Django & Python](#django--python)
+
+    &nbsp;
 
 ## About the Project
 
@@ -17,17 +64,18 @@ It has a simple to understand clean design while being based on the standard for
 
 ## Who is this website for
 
-People searching for books who like a hassle-free experience while shopping.
+The site is for people searching for books who like a hassle-free experience while shopping.
 People who would rely on searching books by title or author, not just by ISBN.
-
-- <mark>Present a clear rationale for the development of the project, addressing the user stories</mark>
 
 ## E-commerce
 
-<mark>The requirements for an e-commerce business model:
-The necessity for the inclusion of an e-commerce business model, highlighting the purpose of the application as either B2B or B2C focused, and detailing the core business intents and marketing strategies for the application.</mark>
+As an e-commerce bookstore this is a b2c focused platform.
 
-- <mark>document the business model underlying the site</mark>
+The website would relay on the sale of books primarily as shipping these products can be quite cheap.
+
+With the ability for customers to login and edit and view their profile, or their order history, allows for customers to return to the site.
+We also have a newsletter for people to sign up too. The newsletter section which is present on each page as a gentle reminder if they haven't signed up that they can do so at any time.
+The idea with the newsletter is that we would offer discounts, early access two new titles and other promotions.
 
 ## Wireframe
 
@@ -77,6 +125,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   1. Given that I'm an admin when I click on the edit button below the book I get taken to a page where I can edit details on the book.
   2. Given that I'm an admin when I click on the delete button below the book gets deleted from the shop.
+     &nbsp;
 
 - "As an admin I want to be able to add a book to the shop from the main website."
 
@@ -91,12 +140,14 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
   Acceptance criteria:
 
   1.  Given that I'm a user when I click on a book from the main page I am taken to the detail page of that book with further information and a description of that book.
+      &nbsp;
 
 - "As a user I want to be able to search by genre of books so I can search by my favourite genre and types."
 
   Acceptance criteria:
 
   1. Given that I'm a user when I navigate to the navigation bar and click on the genres dropdown, I can see a list of genres to select from. When I click on one of the links I am then taken to that genre page.
+     &nbsp;
 
 - "As a user I want to be able to search for a book by author, title, or by ISBN as with most sites, so that I can search in many different ways.
 
@@ -107,6 +158,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
   2. Given that I'm a user, when I enter no search terms it returns an error with a text prompt showing up on the screen prompting me to enter a search (by title, author name, or ISBN ).
 
   3. Given that I'm a user, when I enter a title that is too short I am prompted that the site didn't find anything for that search term entered.
+     &nbsp;
 
 - "As a user, I'd like to only have a few books per page so I don't have to be constantly scrolling through a large list of books.
 
@@ -124,6 +176,7 @@ Create an E-commerce Book shop that can have multiple users either signed in or 
 
   2. Given that I'm a customer when updating my number of books from
      the cart page a success message shows up in the top right-hand corner.
+     &nbsp;
 
 Acceptance criteria:
 
@@ -134,6 +187,7 @@ Acceptance criteria:
   1. Given that I'm a customer, when I navigate to the cart, under the price of the book I can either increase or reduce the quality of books in my cart.
 
   2. Given that I'm a customer when I navigate to the cart, I can remove books completely from my cart.
+     &nbsp;
 
 - "As a customer when I purchase over certain amount of books, I wish to be offered free delivery so that it gives me incentive to purchase over a certain amount."
 
@@ -150,6 +204,7 @@ Acceptance criteria:
   Acceptance criteria:
 
   1. Given that I'm a registered customer when I navigate to my profile page I see a form where I can fill out my address details.
+     &nbsp;
 
 - "As a registered customer I want to be able to view my order history so that I can remember which books I purchased from the shop and at what prices."
 
@@ -200,14 +255,24 @@ Acceptance criteria:
 
 ###### The general look and feel of the shop
 
-<<< TODO images of the site >>>
+![navigation bar](readme_images/navbar.png)
+Navbar - I included the banner also as it's part of the visual aesthetic
+
+![navigation bar](readme_images/footer.png)
+Footer - a simple clean footer with a Newsletter section above it
+
+![navigation bar](readme_images/page.png)
+Pagination
+
+![navigation bar](readme_images/format.png)
+The book detail page as would be see on 3 sizes of devices
 
 ## Accessibility
 
 - Clean minimal design with the use of white space and small use of strong colors for text and links so it is clear to see where to go and what to do as some book sites can be over cluttered
 - Contrasting colors e.g. a lighter buttons on the dark background with white text color on the Hero section of the home page
 - alternative text on images, buttons, and < a > tags, where appropriate.
-  The navagation bar and all elements on the pages are tab friendly, mostly through the use of Bulma.
+  The navigation bar and all elements on the pages are tab friendly, mostly through the use of Bulma.
 
 ## Testing
 
@@ -222,7 +287,11 @@ All CSS passed with no errors, only a few warning because of vendor extension e.
 
 - **lighthouse**
 
-### Manual Testing
+### Errors
+
+All but a few lines in the python files passed the PEP8 online - (line length set at 79 ch) In settings.py the first NAME of the some in the settings.py I left longer, and in the webhook_handler I left longer so not to break the code as I still havening slight errors with it.
+
+There is an error sometime when placing an order the order number that gets emailed out is incorrect.
 
 ### User tests
 
@@ -240,7 +309,25 @@ All CSS passed with no errors, only a few warning because of vendor extension e.
 
 **Add an item to cart**
 
+- Navigate to The Book you wish to purchase
+- Click on the add to cart button, the cart dropdown will show on the top right hand corner
+- Showing the title of the books that you added to the cart, and a short summary of the items in your cart
+- Below this will be the total price and a button to allow you to check out immediately if you wish
+
 **Check order history**
+
+- If you're not logged in login in and go up to the right-hand corner or the menu with dropdown and you can click on profile
+- On the profile page you will see the order history in the right column, click on one of your past orders
+- This will take you to the orders history page, there you'll see a details of the order that was placed and to the right of that the
+- items That were purchased
+
+**Searching by genre**
+
+- Go to the navigation bar and click on the genres dark down
+
+- when you click on the dropdown you will see a list of genres of books
+
+- click on one of them and then you will be taken to the page with all the books from that genre
 
 ## Error Handling
 
