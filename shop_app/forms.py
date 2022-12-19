@@ -5,7 +5,7 @@ from .widgets import CustomClearableFileInput
 
 
 class BookChangeListForm(forms.ModelForm):
-    # here we only need to define the field we want to be editable
+    """ here we only need to define the field we want to be editable """
     authors = forms.ModelMultipleChoiceField(
         queryset=Author.objects.all(), required=False)
 
@@ -28,5 +28,8 @@ class BookForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'input'
+        # for field in self.fields:
+        #     self.fields[field].widget.attrs['class'] = 'input'
+
+        for field in self.fields.items():
+            field.widget.attrs['class'] = 'input'

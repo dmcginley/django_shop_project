@@ -138,8 +138,7 @@ class StripeWH_Handler:
                         quantity=item_data,
                     )
                     order_line_item.save()
-                print(
-                    f"CONFIRMATION EMAIL after CREATING order {order.order_number}")
+
                 self._send_confirmation_email(order)
             except Exception as e:
                 if order:
@@ -147,7 +146,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        self._send_confirmation_email(order)
+        # self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
