@@ -22,12 +22,9 @@
                 <div class="column has-text-centered">
                     <div class="best-seller-book-container">
                         <figure class="">
-                            <picture>
-                                <source type="image/webp" srcset="{{ MEDIA_URL }}default_covers/book_of_the_month.webp">
-                                <img class="best-seller-book-image"
-                                    src="{{ MEDIA_URL }}default_covers/book_of_the_month.jpg"
-                                    alt="book of the month book cover">
-                            </picture>
+                            <img class="best-seller-book-image"
+                                src="{{ MEDIA_URL }}default_covers/book_of_the_month.jpg"
+                                alt="book of the month book cover">
                         </figure>
                         <a class="button is-white is-medium mt-6 hero-button hero-button-mobile"
                             href="{% url 'book_detail' 169 %}">Order

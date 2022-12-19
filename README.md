@@ -284,18 +284,59 @@ var postData = {
 
 ## Deployment
 
-From Visual Studio Code termnal
+#### prerequisite for deployment
+
+#### Deploying
+
+**Step 1.**
+
+```
+$ pip install gunicorn
+```
+
+**Step 2.**
+
+```
+$ pip freeze
+$ pip freeze > requirements
+```
+
+**Step 3.**
+Create a Procfile in your root folder and save the following lines of codes in it
+web: gunicorn 'name-of-application.wsgi'
+Note: A Procfile has no file extension
+
+**Step 4.**
+Create runtime.txt
+
+**Step 5.**
+Adjust the settings.py file in the django app
+
+- Look for the line that has
+
+  ALLOWED_HOST = [ ]
+
+  and change it to
+
+  ALLOWED_HOST = ['*']
+
+**Step 6.**
+Push to Github
+
+In railway website Click + New
+
+- Select GitHub Repo, and then select which repo you wish to work from
+- In Settings tab, under domain click generate domain
+- A link to your deployed app is naw created.
+
+For my app I make sure to set RAILWAY_DEPLOYMENT=True to push all necessary files and folders to AWS.
+
+From Visual Studio Code terminal
 
 ```
 $ export RAILWAY_DEPLOYMENT=True
 $ python manage.py collectstatic
-$ python manage.py makemigrations
-$ python manage.py migrate
 ```
-
-#### prerequisite for deployment
-
-#### Deploying
 
 ## Version Control
 
@@ -303,7 +344,7 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 ### How To Clone The Project
 
-1. From the repository, https://github.com/.... navigate to **Code** button, and in the dropdown menu select the URL: (https://github.com/.....git).
+1. From the repository, https://github.com/dmcginley/shop_project navigate to ** <> Code** button, and in the dropdown menu select the URL: (https://github.com/dmcginley/shop_project.git).
 
 2. Open a Terminal on your computer.
 
@@ -317,7 +358,8 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 - [How to Write Good Commit Messages: A Practical Git Guide](https://www.freecodecamp.org/news/writing-good-commit-messages-a-practical-guide/)
 
-#### Bootstrap
+- [The Devops Handbook](https://www.goodreads.com/book/show/26083308-the-devops-handbook?from_search=true&from_srp=true&qid=LbEb3qbNpR&rank=1) - How to Create World-Class Agility, Reliability, & Security in Technology Organizations
+- [web.dev](https://web.dev/) - up to date information on web development
 
 #### Django
 
@@ -336,28 +378,27 @@ The version control is done using Git through [GitHub](https://github.com/).
 - [Boxicons](https://boxicons.com/?query=search)
 - [Css gradient](https://cssgradient.io/)- used for gradient on the search icon
 - [How To Shorten Text With CSS (ellipsis)](https://www.youtube.com/watch?v=lurEwLtdWMI)
-- []()
 
--[XML-Sitemaps](https://www.xml-sitemaps.com/) - for generating the sitemap -[What is a robots.txt file?](https://moz.com/learn/seo/robotstxt)
+- [XML-Sitemaps](https://www.xml-sitemaps.com/) - for generating the sitemap -[What is a robots.txt file?](https://moz.com/learn/seo/robotstxt)
 
 #### Bulma
 
 - [Bulma - Column sizes](https://bulma.io/documentation/columns/sizes/)
 - [BUG FIX: columns.is-variable overflow #1540](https://github.com/jgthms/bulma/issues/1540)
 - [Build a Django Front End With Bulma – Part 2](https://realpython.com/django-social-front-end-2/)
+- [Bulma Pagination Styles](https://www.geeksforgeeks.org/bulma-pagination-styles/)
 
 #### Django & Python
 
 - [Layouts, Fundamentals of crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/layouts.html)
 - [stack**overflow**](https://stackoverflow.com/questions/61609953/is-there-a-way-to-hide-a-button-on-every-page-except-home-page-of-a-site-in-djan) - hiding button on every page except Home page in Django
-- [How to add a robots.txt to your Django site](https://adamj.eu/tech/2020/02/10/robots-txt/) - keeps the robots.txt file in a template and renders it at the URL.
-- []()
-- []()
-
+- [How to Implement Pagination in Django With Function-Based Views](https://python.plainenglish.io/how-to-implement-pagination-in-django-with-function-based-views-8f6462554930)
 - [Chapter 10: Advanced Models](https://django-book.readthedocs.io/en/latest/chapter10.html) - help for creating the book model and related models
+- [Querying full name in Django](https://stackoverflow.com/questions/7681708/querying-full-name-in-django)
+- [How to add a robots.txt to your Django site](https://adamj.eu/tech/2020/02/10/robots-txt/) - keeps the robots.txt file in a template and renders it at the URL.
+- [Django-filter, how to make multiple fields search? (with django-filter!)](https://stackoverflow.com/questions/57270470/django-filter-how-to-make-multiple-fields-search-with-django-filter)
 
-#### PostgreSQL _- database_
+- [stripe Docs](https://stripe.com/docs)
 
-- []()
-- []()
-- []()
+- [CodeInstitute (Project - Boutique Ado)](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+EA101+2021_T1/courseware/eb05f06e62c64ac89823cc956fcd8191/48ac02aa8ecc4079be016c336231bee7/)
+- [Project - Boutique Ado (Stripe Part 14)](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+EA101+2021_T1/courseware/eb05f06e62c64ac89823cc956fcd8191/48ac02aa8ecc4079be016c336231bee7/) - save info and how to integrate stripe payment to a site
