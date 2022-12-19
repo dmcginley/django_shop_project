@@ -104,7 +104,7 @@ class StripeWH_Handler:
                 break
             except Order.DoesNotExist:
                 attempt += 1
-                time.sleep(2)
+                time.sleep(1)
         if order_exists:
             print(
                 f"CONFIRMATION EMAIL after FINDING order {order.order_number}")
