@@ -334,7 +334,6 @@ section,
 
 .cover-index-link {
     height: 200px;
-    background-color: #3ac6d9;
     margin: auto;
 }
 
@@ -427,6 +426,18 @@ footer .footer {
 
 footer {
     padding-top: 2em !important;
+}
+
+
+.footer-logos {
+    margin: 1rem;
+    margin-bottom: 0;
+    height: 36px;
+    transition: 100ms;
+}
+
+.footer-logos:hover {
+    filter: opacity(.7)
 }
 
 .cart-toast {

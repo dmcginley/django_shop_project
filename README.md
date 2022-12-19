@@ -224,27 +224,57 @@ All CSS passed with no errors, only a few warning because of vendor extension e.
 
 - Go to the Sign In page
 - Enter your username or email, & your password
-- Press the Sign In button after which you will be redirected to the home page, with a success message showing in the top right corner telling you you have successfuly signed in.
+- Press the Sign In button after which you will be redirected to the home page, with a success message showing in the top right corner telling you you have successfully signed in.
 
 **Create an account**
 
 - Go to the register page
 - Enter required details e.g. email, email again, username, password, and password again, and press the button "create your account"
-- You'll be redirected to the login page so that you'+ll be able to login to your new account
+- You'll be redirected to the login page so that you'll be able to login to your new account
 
 **Add an item to cart**
 
+**Check order history**
+
 ## Error Handling
+
+- Created 400, 403, 404 500 error pages
+
+- Catching errors and returning messages of the error
+
+- Catching errors in the search form for text, and number input (ISBN)
+
+- Returning, redirecting the user to the home page or login page where required, if the user isn't allowed to that section of the site.
 
 ## Troubleshooting
 
 **webhook_handler** error, couldn't locate the issue with:
 
-- missing "clientSecret"
-- forgot fields in models
-- missing code in strip_elements.js
+- missing code in minor indentation errors in the strip_elements.js file, sorted by going over the code again, testing and running print() statements
 
 ```
+    if order:
+            print("order_number is", order.order_number)
+        else:
+            print("order not found")
+```
+
+- generated print() statements through the project to catch spelling errors, or code that wasn't being run or overlooked issues with the code e.g. Two different order numbers were being sent one for the success page and order history, and a different order number to the users email.
+
+```
+            print(
+                f"CONFIRMATION EMAIL after FINDING order {order.order_number}")
+```
+
+working out what the order number was doing.
+
+- missing "clientSecret"
+- forgot fields in models
+
+```
+
+- Fixed an error in the clientSecret that was giving a 500 error on the stripe webpage when checking that the payment was working successfully.
+
 var postData = {
         ...
         'client_secret': clientSecret,

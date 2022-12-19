@@ -62,17 +62,6 @@ class StripeWH_Handler:
         shipping_details = intent.shipping
         grand_total = round(stripe_charge.amount / 100, 2)  # updated
 
-        # -------------------------------------------------------------
-        # intent = event.data.object
-        # pid = intent.id
-        # cart = intent.metadata.cart
-        # save_info = intent.metadata.save_info
-
-        # billing_details = intent.charges.data[0].billing_details
-        # shipping_details = intent.shipping
-        # grand_total = round(intent.charges.data[0].amount / 100, 2)
-        # -------------------------------------------------------------
-
         # Clean data in the shipping details
         for field, value in shipping_details.address.items():
             if value == "":
@@ -86,7 +75,6 @@ class StripeWH_Handler:
             print("SAVEPROF", profile)
             if save_info:
                 print("SAVEPROF save_info=True", shipping_details)
-                # profile.default_name = shipping_details.name
                 profile.default_phone_number = shipping_details.phone
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
@@ -126,8 +114,9 @@ class StripeWH_Handler:
             print(
                 f"CONFIRMATION EMAIL after FINDING order {order.order_number}")
             self._send_confirmation_email(order)
+
             return HttpResponse(
-                content=f'Webhook received:{event["type"]} | SUCCESS: Verified order already in database',
+                content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
             order = None
@@ -163,7 +152,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        # self._send_confirmation_email(order)
+        self._send_confirmation_email(order)
         if order:
             print("order_number is", order.order_number)
         else:

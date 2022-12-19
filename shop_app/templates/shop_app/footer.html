@@ -1,3 +1,5 @@
+{% load static %}
+
 {# newsletter-section #}
 <section class="section newsletter-section has-background-light">
     <div class="container has-text-centered">
@@ -26,10 +28,8 @@
                             name="b_8fcc3b87f9a1fe0f67cd42c95_0e3ad592df" tabindex="-1" value=""></div>
 
                     <div class="optionalParent">
-                        <!-- <div class="clear foot"> -->
                         <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
                             class="button newsletter-button is-link is-medium">
-                        <!-- </div> -->
                     </div>
                 </div>
             </form>
@@ -40,25 +40,35 @@
 {# footer #}
 <footer class="footer has-background-light pb-6">
     <div class="content">
-        <div class=" has-text-centered pb-6">
+        <div class=" has-text-centered">
             <a href="https://www.facebook.com/profile.php?id=100088733114158" target="_blank"
                 rel="noopener noreferrer">Facebook page</a> |
-            <a href="" target="_blank" rel="noopener noreferrer">Site Map</a>
-            <a href="http://eepurl.com/igl9mT" title="Mailchimp - email marketing made easy and fun"><img
-                    src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a>
-
+            <a href="{% url 'privacy_policy' %}" target="_blank" image-cover-index>Privacy Policy</a> |
+            <div class="mt-3">
+                <a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer"><img
+                        class="footer-logos" src="{% static 'shop_app/images/django.svg' %}" alt="link to django">
+                </a>
+                <a href="https://stripe.com/en-ie" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-logos" src="{% static 'shop_app/images/stripe.svg' %}" alt="link to stripe">
+                </a>
+                <a href="https://mailchimp.com/" target="_blank" rel="noopener noreferrer">
+                    <img class="footer-logos" src="{% static 'shop_app/images/mailchimp.svg' %}"
+                        alt="link to mailchimp">
+                </a>
+            </div>
         </div>
-        <div class="has-text-centered">
-            <p>
-                <strong>BookShop</strong> by <a href="https://github.com/dmcginley" target="_blank"
-                    rel="noopener noreferrer">Donnchadh Mc
-                    Ginley</a>.
-                The
-                source code is
-                licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-            </p>
-        </div>
+    </div>
+    <div class="has-text-centered">
+        <p>
+            <strong>BookShop</strong> by <a href="https://github.com/dmcginley" target="_blank"
+                rel="noopener noreferrer">Donnchadh Mc
+                Ginley</a>.
+            The
+            source code is
+            licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+    </div>
     </div>
 </footer>

@@ -1,9 +1,6 @@
 from django.db import models
-# from django.conf import settings
 from django.urls import reverse
-# from datetime import datetime
 from django.utils import timezone
-# from profiles_app.models import UserProfile
 
 
 class Author(models.Model):
@@ -52,8 +49,6 @@ class Book(models.Model):
     """A published book."""
     title = models.CharField(
         max_length=255, help_text="The title of the book.")
-    # first_name= models.CharField(max_length=50)
-    # last_name = models.CharField(max_length=50)
     authors = models.ManyToManyField(Author)
 
     rating = models.DecimalField(

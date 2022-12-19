@@ -215,9 +215,16 @@ def delete_book(request, book_id):
     return redirect(reverse('home'))
 
 
+def privacy_policy(request):
+
+    return render(request, 'shop_app/privacy_policy.html',
+                  {'title': 'Privacy Policy'})
+
 # ------------------------------
 #   error views: 400, 403, 404, & 500
 # ------------------------------
+
+
 def bad_request(request, *args, **argv):
     return render(request, 'shop_app/error400.html', status=400)
 

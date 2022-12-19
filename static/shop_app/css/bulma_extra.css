@@ -429,6 +429,14 @@ footer {
     padding-top: 2em !important;
 }
 
+.footer-logos {
+    background-color: #88cfda;
+}
+
+.footer-logos img {
+    height: 30px;
+}
+
 .cart-toast {
     box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
 }

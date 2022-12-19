@@ -27,14 +27,14 @@
             <figure class="image-cover-index mb-4">
                 <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
                     <img class="cover-img" src="{{ book.image.image.url }}" height="200" loading="lazy"
-                        alt="book cover" />
+                        alt="book cover of {{ book.title }}" />
                 </a>
             </figure>
             {% else %}
             <figure class="image-cover-index mb-4">
                 <a class="cover-index-link" href="{% url 'book_detail' book.id %}">
                     <img class="cover-img" src="{{ MEDIA_URL }}default_covers/no_cover.png" height="200" loading="lazy"
-                        alt="no book cover" />
+                        alt="no book cover available" />
                 </a>
             </figure>
             {% endif %}

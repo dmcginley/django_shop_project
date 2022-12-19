@@ -62,12 +62,12 @@
                             {% if item.book.image %}
                             <figure class="cover-figure">
                                 <img class="cover-img cover-small" src="{{ item.book.image.image.url }}"
-                                    alt="{{ item.book.name }}">
+                                    alt="book cover of {{ item.book.name }}">
                             </figure>
                             {% else %}
                             <figure class="cover-figure">
                                 <img class="cover-img cover-small" src="{{ MEDIA_URL }}default_covers/no_cover.png"
-                                    alt="{{ item.book.name }}">
+                                    alt="no book cover available">
                             </figure>
                             {% endif %}
                         </a>
