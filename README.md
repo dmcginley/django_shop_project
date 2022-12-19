@@ -6,7 +6,9 @@
 
 [Link to github project](https://github.com/dmcginley/shop_project)
 [Link to site](https://web-production-7efa.up.railway.app/)
+
 Superuser name: **superuser**
+
 Password: **user1234**
 
 [Facebook page](https://www.facebook.com/profile.php?id=100088574147985)
@@ -220,7 +222,8 @@ Acceptance criteria:
 
 - [GitHub](https://github.com/) - the version control
 - [SQLite](https://www.sqlite.org/index.html) - database used in development
-- [PostgreSQL](https://www.postgresql.org/) - database for production -[mailchimp](https://mailchimp.com/landers/newsletters/?gclid=CjwKCAiA-dCcBhBQEiwAeWidtdvhJHs73l99kKDOGyTZcQ7NGVbrA0WUOZjT8kMVtaNnxWCQkgjshBoC-oIQAvD_BwE&gclsrc=aw.ds) - for the Newsletter
+- [PostgreSQL](https://www.postgresql.org/) - database for production
+- [mailchimp](https://mailchimp.com/landers/newsletters/?gclid=CjwKCAiA-dCcBhBQEiwAeWidtdvhJHs73l99kKDOGyTZcQ7NGVbrA0WUOZjT8kMVtaNnxWCQkgjshBoC-oIQAvD_BwE&gclsrc=aw.ds) - for the Newsletter
 
 ### The Code
 
@@ -452,7 +455,7 @@ The version control is done using Git through [GitHub](https://github.com/).
 
 ### How To Clone The Project
 
-1. From the repository, https://github.com/dmcginley/shop_project navigate to ** <> Code** button, and in the dropdown menu select the URL: (https://github.com/dmcginley/shop_project.git).
+1. From the repository, https://github.com/dmcginley/shop_project navigate to **Code** button, and in the dropdown menu select the URL: (https://github.com/dmcginley/shop_project.git).
 
 2. Open a Terminal on your computer.
 
