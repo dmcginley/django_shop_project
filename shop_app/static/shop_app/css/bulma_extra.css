@@ -38,7 +38,6 @@ a[disabled] {
 
 div .columns {
     grid-column: 2/4;
-    /* fixes the BUG in Bulma that adds extra margin to the right */
     margin: 0 !important;
 }
 
@@ -71,7 +70,6 @@ div .columns {
 section,
 .sub-grid * {
     grid-column: 2;
-
 }
 
 .hero-container {
@@ -102,10 +100,8 @@ section,
 }
 
 .books-section {
-    grid-template-rows: 2;
     margin: auto;
 }
-
 
 #nav-search-form {
     border-radius: 4px 0 0 4px !important;
@@ -209,7 +205,6 @@ section,
 .cart-toast-item-container {
     background-color: rgb(255, 255, 255);
     max-height: 400px;
-    /* width: 200px; */
     overflow-y: scroll;
 }
 
@@ -320,7 +315,6 @@ section,
 
 .banner {
     background-color: var(--banner-color);
-
     padding: 1em;
     font-weight: 400;
     text-align: center;
@@ -419,13 +413,7 @@ input[type=number] {
 }
 
 .newsletter-section {
-    /* display: none; */
     padding-bottom: .5em;
-    /* z-index: 100 !important; */
-}
-
-.newsletter-section * {
-    /* z-index: 100 !important; */
 }
 
 .newsletter-form {
@@ -444,7 +432,6 @@ footer {
 .cart-toast {
     box-shadow: 0 .4em .4em rgba(56, 56, 56, 0.171)
 }
-
 
 .cart_toast-container,
 .toast-container {
@@ -545,8 +532,6 @@ footer {
         font-size: 1.2rem;
     }
 
-
-
     #cart {
         display: none;
     }
@@ -587,8 +572,6 @@ footer {
     }
 }
 
-@media only screen and (min-width: 960px) {}
-
 /* bulma's desktop: from 1024px */
 @media only screen and (min-width: 1024px) {
 
@@ -614,25 +597,7 @@ footer {
 
 @media only screen and (min-width: 1068px) {
     .books-section {
-        grid-template-rows: 2;
         width: 95%;
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
-/* bulma's widescreen: from 1216px */
-@media only screen and (min-width: 1216px) {}
-
-/* ----------------------------------------- */
-/* Bulma mobile first breakpoints */
-/* tablet: from 769px */
-@media only screen and (min-width: 769px) {}
-
-/* desktop: from 1024px */
-@media only screen and (min-width: 1024px) {}
-
-/* widescreen: from 1216px */
-@media only screen and (min-width: 1216px) {}
-
-/* fullhd: from 1408px */
-@media only screen and (min-width: 1408px) {}

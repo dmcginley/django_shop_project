@@ -1,9 +1,3 @@
-/* .cart-grid {
-    grid-column: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-} */
-
 .cart-grid section {
     grid-column: 1/4;
     background-color: rgb(232, 251, 252);
@@ -11,23 +5,19 @@
 
 .cover-small {
     height: 200px;
-    /* width: 200px; */
 }
 
-
-
-.cart-text-grid {
-    display: grid;
-    grid-template-columns: 1fr minmax(0, 40ch) 1fr;
-    padding: 0;
+.cart-cover-container {
+    display: flex;
+    justify-content: center;
 }
 
 .cart-text-container {
     grid-column: 2;
     padding: 0;
+    width: 260px;
+    margin: auto;
 }
-
-.cart-contents {}
 
 .cart-contents-info {
     width: 50%;
@@ -36,34 +26,15 @@
     margin-top: 0;
 }
 
-
-.cart-contents .field {
-    /* max-width: 200px; */
-    /* margin: auto; */
-}
-
 .cart-contents-info button {
     fill: aliceblue;
 }
-
-button svg {
-    fill: aliceblue;
-}
-
 
 .cart-total {
     grid-column: 1/4;
     /* background-color: rgb(255, 242, 210); */
     width: 100%;
 }
-
-
-
-
-
-
-
-
 
 @media only screen and (min-width: 568px) {
     .cart-contents {
@@ -75,10 +46,6 @@ button svg {
     .cart-contents-info {
         padding-top: 0;
     }
-
-
-
-
 }
 
 
@@ -86,7 +53,6 @@ button svg {
 @media only screen and (min-width: 668px) {
     .cart-grid section {
         grid-column: 1/3;
-        /* background-color: rgb(232, 251, 252); */
     }
 
     .cart-total {
@@ -101,26 +67,20 @@ button svg {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* background-color: rgb(17, 182, 182); */
     }
 
-
+    .reverse-columns-cart {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
 
 /* tablet */
 @media only screen and (min-width: 1024px) {
     .cart-text-container {
         grid-column: 1/3;
-
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* background-color: rgb(69, 182, 17); */
     }
 }
-
-/* widescreen */
-@media only screen and (min-width: 1216px) {}
-
-/* fullhd */
-@media only screen and (min-width: 1408px) {}

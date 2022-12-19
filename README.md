@@ -207,6 +207,13 @@ Acceptance criteria:
 
 ### Validator Testing
 
+All CSS passed with no errors, only a few warning because of vendor extension e.g.
+
+- **-webkit-border-radius is a vendor extension**
+- **-moz-border-radius is a vendor extension**
+
+![image of W3C CSS Validation](readme_images/web3_css.png)
+
 - **lighthouse**
 
 ### Manual Testing
