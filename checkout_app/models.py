@@ -95,4 +95,4 @@ class OrderLineItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'slug {self.book.slug} on order {self.order.order_number}'
+        return f'isbn {self.book.isbn} on order {self.order.order_number}'
