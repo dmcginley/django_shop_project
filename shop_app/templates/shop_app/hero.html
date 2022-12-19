@@ -1,5 +1,3 @@
-{% load static %}
-
 <div class="hero hero-color is-halfheight">
     <div class="banner">
         <p>Free delivery on orders over €{{ free_delivery_threshold }}</p>
@@ -14,7 +12,6 @@
                     <p class="subtitle">
                         Discover your book for the winter
                     </p>
-
                     <a class="button is-white is-medium hero-button hero-button-desktop mt-6"
                         href="{% url 'book_detail' 169 %}">Order
                         Today</a>
@@ -22,8 +19,9 @@
                 <div class="column has-text-centered">
                     <div class="best-seller-book-container">
                         <figure class="">
-                            <img class="best-seller-book-image"
-                                src="{{ MEDIA_URL }}default_covers/book_of_the_month.jpg"
+                            <img class="best-seller-book-image" src="https://djangoproject5bucket.s3.amazonaws.com/book_covers/
+                                9781400096893_eEwbAFq.jpg?AWSAccessKeyId=AKIAQIQYMW6AIGL24LOA&
+                                Signature=gBtxgwpjaURZjVgHuWH2%2BuIiodc%3D&Expires=1671427062"
                                 alt="book of the month book cover">
                         </figure>
                         <a class="button is-white is-medium mt-6 hero-button hero-button-mobile"

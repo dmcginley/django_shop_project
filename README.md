@@ -33,7 +33,13 @@ The necessity for the inclusion of an e-commerce business model, highlighting th
 
 Created in Figma
 
-- <mark>Document the UX design</mark>
+#### UX design
+
+With the UX design I have gone for a muted color palette, so the books stand out and off white background so it is not too glaring on the eyes.
+The general flow of a bookstore or e-commerce book website is fairly well known, so I have not strayed too far from these principles.
+From viewing a book to added it to your cart, and from there you can checkout straight away.
+The user experience is designed to be streamlined and without barriers or elements on the page to put you off your shopping experience.
+I've gone for a classical modernist design to invoke the feeling that you would get usually in a bookshop or library, the use of whitespace is important for keeping the focus on the books while the site itself is just the shelves that the books sit on.
 
 ###### _link to file:_ [https://www.figma.com/file/j25NLKtS...](https://www.figma.com/file/j25NLKtS1bbWLyaCnHOa8U/Untitled?node-id=0%3A1)
 
@@ -192,7 +198,7 @@ Acceptance criteria:
 
 ## Site Layout
 
-###### The general look and feel of the blog
+###### The general look and feel of the shop
 
 <<< TODO images of the site >>>
 
