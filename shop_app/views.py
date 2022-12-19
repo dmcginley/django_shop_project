@@ -56,9 +56,7 @@ def book_search(request):
             matching_authors = Book.objects.filter(Q(
                 authors__first_name__icontains=term) |
                 Q(authors__last_name__icontains=term))
-        print(f"for {term} added {len(matching_authors)} books")
         add_new_books(matching_authors)
-        print(f"total books {len(results)}")
 
     context = {
         'searching': searching.strip(),
@@ -123,7 +121,6 @@ def genre_list(request, genre_slug):
 
     page_title = genres
 
-    print('genre:', genres)
     page = request.GET.get('page', 1)
     paginator = Paginator(book, 8)
 
@@ -166,7 +163,6 @@ def add_book(request):
     context = {
         'form': form,
     }
-    print('book updated')
     return render(request, template, context)
 
 
@@ -197,7 +193,6 @@ def edit_book(request, book_id):
         'form': form,
         'book': book,
     }
-    print('book updated')
 
     return render(request, template, context)
 

@@ -1,13 +1,10 @@
 
 from shop_app.models import Author, Book, Genre, Image, Publisher
-# from shop_app.models import Book
 from csv import DictReader
 import requests
 import os
 import shutil
 from django.core.files import File
-
-from django.db import models
 
 
 def run():
@@ -17,7 +14,6 @@ def run():
 
     for row in reader:
         title = row["title"]
-        # authors = row["authors"]
         rating = row["rating"]
         description = row["description"]
         isbn = row["isbn"]
@@ -36,7 +32,6 @@ def run():
                 name=g, slug=slug)
             genres.append(genre_obj)
 
-        slug = f"{isbn}-{title.replace(' ', '-')}"
         author, author_created = Author.objects.get_or_create(
             first_name=row["author_first_name"],
             last_name=row["author_last_name"])
@@ -51,13 +46,9 @@ def run():
         image_response = requests.get(image_url, stream=True)
         out_dir = os.path.join("media", "book_covers_dl")
         out_file = os.path.join(out_dir, f"{isbn}.jpg")
-        print("this is the file", out_file)
         with open(out_file, "wb") as f:
             image_response.raw.decode_content = True
-            print("writing to ", out_file)
             shutil.copyfileobj(image_response.raw, f)
-        # image = Image.objects.get_or_create(
-        #     image=models.ImageField(filename=f"{isbn}.jpg"))
 
         book, book_created = Book.objects.get_or_create(
             title=title,
@@ -70,7 +61,6 @@ def run():
             image=Image.objects.create(),
             price=price,
             number_in_stock=number_in_stock,
-            # slug=slug + "-xx"  # TEMPORARY
         )
 
         book.image.image.save(f"{isbn}.jpg", File(open(out_file, "rb")))
@@ -81,4 +71,3 @@ def run():
             author_report = ""
             if author_created:
                 author_report = f" (created author {author})"
-        # print(f"Created book '{title}'{author_report}")

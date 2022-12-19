@@ -24,10 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get("DEBUG") == "True"
 RAILWAY_DEPLOYMENT = os.environ.get("RAILWAY_DEPLOYMENT") == "True"
-# DEBUG = False
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://railway.app/',
                  'web-production-7efa.up.railway.app', '127.0.0.1']
@@ -219,7 +217,6 @@ if RAILWAY_DEPLOYMENT:
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 else:
-    print("email dev mode...")
     EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
     DEFAULT_FORM_EMAIL = "bookshop@example.com"
 

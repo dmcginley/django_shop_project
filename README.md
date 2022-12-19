@@ -250,6 +250,12 @@ Acceptance criteria:
 9. Free delivery over a certain amount (€40), this is calculated by the back-end.
 10. Pagination on the home page, genre page and book by price page
 11. Purchase books with a credit card or debit card using stripe
+    &nbsp;
+    **Features in the future**
+
+12. I would add a better method for dealing with the image field as it is giving mean error on the add and edit book page with the widget. So I had to remove the widget to allow the page ont to through up an error.
+13. Add a comment section below the book (on the book detail page)
+14. Add a more editable section of pages for the admin
 
 ## Site Layout
 
