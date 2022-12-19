@@ -85,7 +85,7 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                time.sleep(4)
+                time.sleep(1)
                 order = Order.objects.get(
                     name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
@@ -146,7 +146,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        # self._send_confirmation_email(order)
+        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)

@@ -287,6 +287,15 @@ All CSS passed with no errors, only a few warning because of vendor extension e.
 
 - **lighthouse**
 
+![lighthouse for desktop](readme_images/desktop_test.png)
+![lighthouse for mobile](readme_images/mobile_test.png)
+
+**stripe website**
+
+![stripe webpage](readme_images/stripe.png)
+
+nearly all the time I got a return 200, the times I don't is when there is a duplication emails sent with two different order numbers.
+
 ### Errors
 
 All but a few lines in the python files passed the PEP8 online - (line length set at 79 ch) In settings.py the first NAME of the some in the settings.py I left longer, and in the webhook_handler I left longer so not to break the code as I still havening slight errors with it.
