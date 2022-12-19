@@ -19,10 +19,9 @@
                 <div class="column has-text-centered">
                     <div class="best-seller-book-container">
                         <figure class="">
-                            <img class="best-seller-book-image" src="https://djangoproject5bucket.s3.amazonaws.com/book_covers/
-                                9781400096893_eEwbAFq.jpg?AWSAccessKeyId=AKIAQIQYMW6AIGL24LOA&
-                                Signature=gBtxgwpjaURZjVgHuWH2%2BuIiodc%3D&Expires=1671427062"
-                                alt="book of the month book cover">
+                            <img class="best-seller-book-image"
+                                src="{% static 'shop_app/images/book_of_the_month.webp' %}"
+                                alt="cover of book of the month">
                         </figure>
                         <a class="button is-white is-medium mt-6 hero-button hero-button-mobile"
                             href="{% url 'book_detail' 169 %}">Order
