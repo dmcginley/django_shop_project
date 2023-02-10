@@ -1,6 +1,6 @@
 # Project 5 - BookShop
 
-![navigation bar](readme_images/image_of%20_site.png)
+![images of sites homescreen](readme_images/image_of%20_site.png)
 
 ## The Links
 
